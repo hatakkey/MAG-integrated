@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project is designed to simulate a 4G mobile network without the need for a traditional centralized user plane separation (CUPS). It integrates **Open5GS** as the core network solution and uses **BNGBlaster** to simulate broadband access for customers via PPPoE and IPoE. The entire network is simulated in a containerized environment using **ContainerLab**, allowing for rapid deployment and testing of network configurations.
+This project is designed to simulate a 4G mobile network without the need for traditional centralized user plane separation (CUPS). It integrates **Open5GS** as the core network solution and uses **BNGBlaster** to simulate broadband access for customers via PPPoE and IPoE. The entire network is simulated in a containerized environment using **ContainerLab**, allowing for rapid deployment and testing of network configurations.
 
 The goal of this project is to provide an efficient, scalable, and flexible way to simulate a 4G Non-CUPS network using open-source tools.
 
@@ -19,14 +19,15 @@ The goal of this project is to provide an efficient, scalable, and flexible way 
 ## Components
 
 ### 1. **ContainerLab**
-   - ContainerLab is used to simulate the network components in isolated containers, making the environment lightweight and easy to manage.
-   - Network components, including **Open5GS** (MME, HSS), and the **BNGBlaster**, are all containerized.
-   - srsransim is used to simulate the eNB and UE
+   - **ContainerLab** is used to simulate the network components in isolated containers, making the environment lightweight and easy to manage.
+   - Network components, including **Open5GS** (MME, HSS), and **BNGBlaster**, are all containerized.
+   - **srsRANSim** is used to simulate the eNB and UE.
+
 ### 2. **Open5GS**
-   - **Open5GS** is used to simulate the 4G core network. It implements the **Evolved Packet Core (EPC)** components like **MME** (Mobility Management Entity), and **HSS** ( Home Subscriber Server).
+   - **Open5GS** is used to simulate the 4G core network. It implements the **Evolved Packet Core (EPC)** components like **MME** (Mobility Management Entity) and **HSS** (Home Subscriber Server).
    - Open5GS is configured for **Non-CUPS** mode, meaning the control plane and user plane are not separated.
 
-### 3. **BNGBlaster**  
+### 3. **BNGBlaster**
    - **BNGBlaster** is a tool used to simulate Broadband Network Gateway (BNG) behavior with PPPoE and IPoE session management.
    - It helps simulate end-user access for testing, including IP address allocation, session management, and bandwidth management.
 
@@ -50,21 +51,31 @@ Before you start, ensure that you have the following installed:
    ```bash
    git clone https://github.com/htakkey/cups-integrated.git
    cd cups-integrated
+   
 2.  ** deploy the containerlab **:
+   deploy the clab 
+    ```bash   
    containerlab deploy -t mag-integrated.clab.yml
+   
 3.  ** register the 4G session **:
+      register the IMSI 206010000000001 to the db
+     ```bash
    cd scripts
     ./register_subscriber.sh
 
-3.  ** start the open5Gs elements HSS+MME**:
+4.  ** start the open5Gs elements**:
+    start the HSS and MME 
+	```bash
     cd scripts
     ./start_open5gs.sh
-4.  **Start a IPoE/PPPoE session using BNGBlaster**:
-     cd scripts
-    start_dhcp_bng.sh
-    ./start_pppoe_bng_traffic.sh   (to start session with traffic)
 5.  ** start 4G session**:
+     ```bash
    cd scripts
      ./start_4g_bng.sh
+	 
+6.  **Start a IPoE/PPPoE session using BNGBlaster**:
+     ```bash
+     cd scripts
+    ./start_dhcp_bng.sh
+    ./start_pppoe_bng_traffic.sh   ##(to start session with traffic)
 
-   
