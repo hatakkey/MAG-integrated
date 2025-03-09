@@ -53,15 +53,15 @@ Before you start, ensure that you have the following installed:
    cd cups-integrated
    
 2.  ** deploy the containerlab **:
-   deploy the clab 
-    ```bash   
-   containerlab deploy -t mag-integrated.clab.yml
+       deploy the clab 
+       ```bash   
+       clab dep -t mag-integrated.clab.yml
    
 3.  ** register the 4G session **:
       register the IMSI 206010000000001 to the db
-     ```bash
-   cd scripts
-    ./register_subscriber.sh
+      ```bash
+      cd scripts
+      ./register_subscriber.sh
 
 4.  ** start the open5Gs elements**:
     start the HSS and MME 
@@ -70,7 +70,7 @@ Before you start, ensure that you have the following installed:
     ./start_open5gs.sh
 5.  ** start 4G session**:
      ```bash
-   cd scripts
+     cd scripts
      ./start_4g_bng.sh
 	 
 6.  **Start a IPoE/PPPoE session using BNGBlaster**:
@@ -78,4 +78,6 @@ Before you start, ensure that you have the following installed:
      cd scripts
     ./start_dhcp_bng.sh
     ./start_pppoe_bng_traffic.sh   ##(to start session with traffic)
+
+
 
