@@ -1,0 +1,6 @@
+echo
+echo
+echo "show subscriber-mgmt pfcp association sx"
+show subscriber-mgmt pfcp association "sx"
+echo
+

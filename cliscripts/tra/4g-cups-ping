@@ -1,0 +1,7 @@
+echo
+echo
+echo "Check on MAGC address x.x.x.x from ue1 206010000000001 and then ping from TRA" 
+echo
+echo "command:"
+echo "ping router 500 count 5 x.x.x.x "
+echo

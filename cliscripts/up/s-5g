@@ -1,0 +1,8 @@
+echo
+/show subscriber-mgmt gtp statistics | match ": 0" invert-match
+echo
+/show subscriber-mgmt pfcp session detail
+echo
+/show service active-subscribers hierarchy
+echo
+echo

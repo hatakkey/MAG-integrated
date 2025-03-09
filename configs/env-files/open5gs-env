@@ -1,0 +1,3 @@
+DB_URI: "mongodb://mongo/open5gs"
+APP_ROOT: /opt/open5gs
+HOME: /opt/open5gs

@@ -1,0 +1,8 @@
+Open5GS daemon v2.7.1
+
+03/09 10:37:59.981: [app] INFO: Configuration: '/opt/open5gs/etc/open5gs/hss.yaml' (../lib/app/ogs-init.c:133)
+03/09 10:37:59.981: [app] INFO: File Logging: '/opt/open5gs/var/log/open5gs/hss.log' (../lib/app/ogs-init.c:136)
+03/09 10:38:00.026: [dbi] INFO: MongoDB URI: 'mongodb://mongo/open5gs' (../lib/dbi/ogs-mongoc.c:130)
+03/09 10:38:00.194: [app] INFO: HSS initialize...done (../src/hss/app-init.c:31)
+03/09 10:38:08.266: [diam] INFO: CONNECTED TO 'mme.localdomain' (SCTP,soc#16): (../lib/diameter/common/logger.c:108)
+03/09 10:39:47.288: [dbi] INFO: [imsi-206010000000003] Cannot find IMSI in DB (../lib/dbi/subscription.c:56)

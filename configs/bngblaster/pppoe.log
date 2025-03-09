@@ -1,0 +1,96 @@
+Nov 22 11:56:41.391429 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 22 11:56:41.391457 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 22 11:56:42.436800 Resolve network interfaces
+Nov 22 11:56:42.436863 All network interfaces resolved
+Nov 22 11:56:42.785301 ALL SESSIONS ESTABLISHED
+Nov 22 12:31:28.007550 Received signal Interrupt (2), initiating teardown
+Nov 22 12:31:29.650637 ALL SESSIONS TERMINATED
+Nov 22 13:02:23.281623 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 22 13:02:23.281647 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 22 13:02:24.304606 Resolve network interfaces
+Nov 22 13:02:24.304657 All network interfaces resolved
+Nov 22 13:02:24.619826 ALL SESSIONS ESTABLISHED
+Nov 22 14:01:43.641503 Received signal Interrupt (2), initiating teardown
+Nov 22 14:01:45.616853 ALL SESSIONS TERMINATED
+Nov 26 13:14:20.518640 Interface eth1 in use by process 170 (/run/lock/bngblaster_eth1.lock)
+Nov 26 13:14:20.518666 Failed to add link eth1
+Nov 27 08:33:36.298133 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 27 08:33:36.298157 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 27 08:33:37.465699 Resolve network interfaces
+Nov 27 08:33:37.465772 All network interfaces resolved
+Nov 27 08:33:37.818308 ALL SESSIONS ESTABLISHED
+Nov 27 08:33:45.845116 Received signal Interrupt (2), initiating teardown
+Nov 27 08:33:47.502299 ALL SESSIONS TERMINATED
+Nov 27 08:34:19.828009 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 27 08:34:19.828038 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 27 08:34:20.896858 Resolve network interfaces
+Nov 27 08:34:20.896922 All network interfaces resolved
+Nov 27 08:34:21.224993 ALL SESSIONS ESTABLISHED
+Nov 27 09:02:38.670797 Received signal Interrupt (2), initiating teardown
+Nov 27 09:02:40.075193 ALL SESSIONS TERMINATED
+Nov 27 10:03:42.793158 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 27 10:03:42.793183 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 27 10:03:43.941674 Resolve network interfaces
+Nov 27 10:03:43.941733 All network interfaces resolved
+Nov 27 10:03:44.280668 ALL SESSIONS ESTABLISHED
+Nov 27 10:58:48.875619 Received signal Interrupt (2), initiating teardown
+Nov 27 10:58:50.201270 ALL SESSIONS TERMINATED
+Nov 27 17:33:06.362487 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 27 17:33:06.362515 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 27 17:33:07.395823 Resolve network interfaces
+Nov 27 17:33:07.395857 All network interfaces resolved
+Nov 27 17:33:07.774676 ALL SESSIONS ESTABLISHED
+Nov 27 17:33:41.957838 Received signal Interrupt (2), initiating teardown
+Nov 27 17:33:43.434644 ALL SESSIONS TERMINATED
+Nov 27 17:33:51.621241 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 27 17:33:51.621266 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 27 17:33:52.642623 Resolve network interfaces
+Nov 27 17:33:52.642687 All network interfaces resolved
+Nov 27 17:33:53.052525 ALL SESSIONS ESTABLISHED
+Nov 27 17:34:41.366760 Received signal Interrupt (2), initiating teardown
+Nov 27 17:34:42.689371 ALL SESSIONS TERMINATED
+Nov 28 08:14:41.605016 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 28 08:14:41.605039 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 28 08:14:42.707928 Resolve network interfaces
+Nov 28 08:14:42.707988 All network interfaces resolved
+Nov 28 08:14:43.097843 ALL SESSIONS ESTABLISHED
+Nov 28 10:08:16.829545 Received signal Interrupt (2), initiating teardown
+Nov 28 10:08:18.243167 ALL SESSIONS TERMINATED
+Nov 28 12:06:07.790462 Warning: Interfaces must not have an IP address configured in the host OS!
+Nov 28 12:06:07.790498 Warning: IP address fe80::a8c1:abff:fef7:3b10 on interface eth1 is conflicting!
+Nov 28 12:06:08.861917 Resolve network interfaces
+Nov 28 12:06:08.862011 All network interfaces resolved
+Nov 28 12:06:09.278157 ALL SESSIONS ESTABLISHED
+Nov 28 12:08:16.567116 Received signal Interrupt (2), initiating teardown
+Nov 28 12:08:17.920126 ALL SESSIONS TERMINATED
+Jan 28 12:47:47.187610 Warning: Interfaces must not have an IP address configured in the host OS!
+Jan 28 12:47:47.187656 Warning: IP address fe80::a8c1:abff:fed3:277b on interface eth1 is conflicting!
+Jan 28 12:47:48.299328 Resolve network interfaces
+Jan 28 12:47:48.299407 All network interfaces resolved
+Jan 28 12:47:48.676411 ALL SESSIONS ESTABLISHED
+Jan 28 12:47:58.502068 Received signal Interrupt (2), initiating teardown
+Jan 28 12:48:00.397869 ALL SESSIONS TERMINATED
+Jan 28 13:04:18.024157 Warning: Interfaces must not have an IP address configured in the host OS!
+Jan 28 13:04:18.024191 Warning: IP address fe80::a8c1:abff:fed3:277b on interface eth1 is conflicting!
+Jan 28 13:04:19.161035 Resolve network interfaces
+Jan 28 13:04:19.161113 All network interfaces resolved
+Jan 28 13:04:19.501085 ALL SESSIONS ESTABLISHED
+Jan 28 13:04:39.363431 Received signal Interrupt (2), initiating teardown
+Jan 28 13:04:41.217422 Received signal Interrupt (2), initiating teardown
+Jan 28 13:04:41.226901 ALL SESSIONS TERMINATED
+Mar 05 14:07:45.600961 Warning: Interfaces must not have an IP address configured in the host OS!
+Mar 05 14:07:45.600984 Warning: IP address fe80::a8c1:abff:fe62:7eb0 on interface eth1 is conflicting!
+Mar 05 14:07:46.641251 Resolve network interfaces
+Mar 05 14:07:46.641475 All network interfaces resolved
+Mar 05 14:07:46.670291 ALL SESSIONS ESTABLISHED
+Mar 05 14:08:28.217959 Received signal Interrupt (2), initiating teardown
+Mar 05 14:08:29.647963 ALL SESSIONS TERMINATED
+Mar 05 14:08:34.724566 Warning: Interfaces must not have an IP address configured in the host OS!
+Mar 05 14:08:34.724609 Warning: IP address fe80::a8c1:abff:fe62:7eb0 on interface eth1 is conflicting!
+Mar 05 14:08:34.770690 Warning: IP address fe80::a8c1:abff:fe93:57a8 on interface eth2 is conflicting!
+Mar 05 14:08:35.797337 Resolve network interfaces
+Mar 05 14:08:35.797520 All network interfaces resolved
+Mar 05 14:08:35.818307 ALL SESSIONS ESTABLISHED
+Mar 05 14:08:36.397345 ALL STREAM TRAFFIC FLOWS VERIFIED
+Mar 05 14:08:50.112019 Received signal Interrupt (2), initiating teardown
+Mar 05 14:08:51.801494 ALL SESSIONS TERMINATED

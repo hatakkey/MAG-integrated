@@ -1,0 +1,58 @@
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/mme.log
+  # level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+mme:
+  freeDiameter: /opt/open5gs/etc/freeDiameter/mme.conf
+  s1ap:
+    server:
+      - dev: eth1
+  gtpc:
+    server:
+      - dev: eth2
+    client:
+      sgwc:
+        - address: 1.1.1.1
+          tac: 5
+        - address: 50.50.50.1
+          tac: 1
+      smf:
+        - address: 1.1.1.1
+          tac: 5
+        - address: 50.50.50.1
+          tac: 1
+  metrics:
+    server:
+      - dev: eth3
+        port: 9090
+  gummei:
+    - plmn_id:
+        mcc: 206
+        mnc: 01
+      mme_gid: 2
+      mme_code: 1
+  tai:
+    - plmn_id:
+        mcc: 206
+        mnc: 01
+      tac: [1,5]
+  security:
+    integrity_order : [ EIA2, EIA1, EIA0 ]
+    ciphering_order : [ EEA0, EEA1, EEA2 ]
+  network_name:
+    full: Open5GS
+    short: Next
+  mme_name: open5gs-mme0
+  time:
+#    t3402:
+#      value: 720   # 12 minutes * 60 = 720 seconds
+#    t3412:
+#      value: 3240  # 54 minutes * 60 = 3240 seconds
+#    t3423:
+#      value: 720   # 12 minutes * 60 = 720 seconds

@@ -1,0 +1,48 @@
+{
+  "interfaces": {
+    "mac-modifier": 2,
+    "network": {
+            "interface": "eth2",
+            "address": "10.0.0.1/24",
+            "gateway": "10.0.0.2"
+    },
+    "access": {
+        "__comment__": "DHCP Client 1",
+        "interface": "eth1",
+        "type": "ipoe",
+        "ipv6": "false",
+        "vlan-mode": "1:1",
+        "outer-vlan-min": 201,
+        "outer-vlan-max": 201,
+        "outer-vlan-step": 1,
+        "inner-vlan-min": 100,
+        "inner-vlan-max": 1000,
+        "inner-vlan-step": 1,
+	"stream-group-id": 1
+        }
+  },
+  "dhcp": {
+    "enable": true,
+    "broadcast": false
+},
+  "dhcpv6": {
+    "enable": false,
+    "ia-na": false,
+    "ia-pd": false
+},
+  "access-line": {
+    "agent-remote-id": "7750bng-sub.{session-global}",
+    "agent-circuit-id": "0.0.0.0/0.0.0.0 eth 1:{session-global}"
+  },
+"streams": [
+        {
+            "name": "BestEffort",
+            "stream-group-id": 1,
+            "type": "ipv4",
+            "direction": "both",
+            "pps": 10
+        }
+  ]
+}
+
+

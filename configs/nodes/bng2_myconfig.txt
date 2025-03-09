@@ -1,0 +1,951 @@
+# TiMOS-B-24.10.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2024 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Thu Oct 31 23:49:01 UTC 2024 by builder in /builds/2410B/R1/panos/main/sros
+# Configuration format version 24.10 revision 0
+
+# Generated MON JAN 27 15:36:20 2025 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "BNG"
+        dns
+            address-pref ipv6-first
+        exit
+        netconf
+            listen
+                no shutdown
+            exit
+        exit
+        snmp
+            streaming
+                no shutdown
+            exit
+            packet-size 9216
+        exit
+        time
+            sntp
+                shutdown
+            exit
+            zone CET
+        exit
+        bluetooth
+            module A
+            exit
+            power off
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            profile "administrative"
+                netconf
+                    base-op-authorization
+                        action
+                        cancel-commit
+                        close-session
+                        commit
+                        copy-config
+                        create-subscription
+                        delete-config
+                        discard-changes
+                        edit-config
+                        get
+                        get-config
+                        get-data
+                        get-schema
+                        kill-session
+                        lock
+                        validate
+                    exit
+                exit
+                entry 10
+                    match "configure system security"
+                    action permit
+                exit
+                entry 20
+                    match "show system security"
+                    action permit
+                exit
+                entry 30
+                    match "tools perform security"
+                    action permit
+                exit
+                entry 40
+                    match "tools dump security"
+                    action permit
+                exit
+                entry 42
+                    match "tools dump system security"
+                    action permit
+                exit
+                entry 50
+                    match "admin system security"
+                    action permit
+                exit
+                entry 100
+                    match "configure li"
+                    action deny
+                exit
+                entry 110
+                    match "show li"
+                    action deny
+                exit
+                entry 111
+                    match "clear li"
+                    action deny
+                exit
+                entry 112
+                    match "tools dump li"
+                    action deny
+                exit
+            exit
+            user-template "ldap_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user-template "radius_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user-template "tacplus_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user "admin"
+                password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+                access console ftp snmp netconf grpc
+                no restricted-to-home
+                no save-when-restricted
+                console
+                    member "administrative"
+                exit
+            exit
+            per-peer-queuing
+            telnet
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            ssh
+                inbound-max-sessions 30
+            exit
+            idle-timeout disable
+            motd text "## This node is part of the Broadband Edge CLAB ...Enjoy ##\n"
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+        event-control "logger" 2010 suppress
+        event-control "system" 2052 suppress
+        event-control "system" 2053 suppress
+        log-id 4 name "4"
+            from debug-trace
+            no shutdown
+        exit
+        log-id 5 name "5"
+            from debug-trace
+            no shutdown
+        exit
+        log-id 77 name "77"
+            from debug-trace
+            no shutdown
+        exit
+        log-id 78 name "78"
+            from debug-trace
+            no shutdown
+        exit
+        log-id 88 name "88"
+            from debug-trace
+            no shutdown
+        exit
+        log-id 99 name "99"
+            time-format local
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "System gRPC Configuration"
+#--------------------------------------------------
+    system
+        grpc
+            allow-unsecure-connection
+            rib-api
+                no shutdown
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "QoS Policy Configuration"
+#--------------------------------------------------
+    qos
+        port-scheduler-policy "c2" create
+            max-rate 9900000
+        exit
+        port-scheduler-policy "eNB" create
+            max-rate 7700000
+        exit
+    exit
+#--------------------------------------------------
+echo "Oper-Groups (Declarations) Configuration"
+#--------------------------------------------------
+    service
+    exit
+#--------------------------------------------------
+echo "AAA (Declarations) Configuration"
+#--------------------------------------------------
+    aaa
+        diameter
+            node "bng.localdomain" origin-realm "localdomain" create
+            exit
+        exit
+        radius-server-policy "FreeRadius" create
+        exit
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom-1
+        mda 1
+            mda-type me6-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Connector Configuration"
+#--------------------------------------------------
+    port 1/1/c1
+        connector
+            breakout c1-40g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        connector
+            breakout c1-40g
+        exit
+        no shutdown
+    exit
+    port 1/1/c3
+        connector
+            breakout c1-10g
+        exit
+        no shutdown
+    exit
+    port 1/1/c4
+        shutdown
+    exit
+    port 1/1/c5
+        shutdown
+    exit
+    port 1/1/c6
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Port Cross-Connect Configuration"
+#--------------------------------------------------
+    port-xc
+        pxc 7 create
+            port 1/1/c6/1
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/c1/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c2/1
+        ethernet
+            mode hybrid
+            encap-type qinq
+            egress-scheduler-policy "c2"
+            access
+                egress
+                    vport "ppp-1" create
+                        agg-rate
+                            rate 8000000
+                        exit
+                        host-match dest "201" create
+                    exit
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 1/1/c3/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/c6/1
+        ethernet
+            dot1x
+                tunneling
+            exit
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port pxc-7.a
+        ethernet
+            encap-type qinq
+        exit
+        no shutdown
+    exit
+    port pxc-7.b
+        ethernet
+            encap-type qinq
+            egress-scheduler-policy "eNB"
+            access
+                egress
+                    vport "eNB1" create
+                        agg-rate
+                            rate 4000000
+                        exit
+                        host-match dest "eNB1" create
+                    exit
+                    vport "eNB2" create
+                        agg-rate
+                            rate 6000000
+                        exit
+                        host-match dest "eNB2" create
+                    exit
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port A/1
+    exit
+    port A/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port A/4
+        shutdown
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "QoS Policy Configuration"
+#--------------------------------------------------
+    qos
+        sap-ingress 100 name "100" create
+            queue 1 create
+            exit
+            queue 11 multipoint create
+            exit
+            policer 1 create
+            exit
+            fc "af" create
+                policer 1
+            exit
+            fc "be" create
+                policer 1
+            exit
+            fc "ef" create
+                policer 1
+            exit
+            fc "h1" create
+                policer 1
+            exit
+            fc "h2" create
+                policer 1
+            exit
+            fc "l1" create
+                policer 1
+            exit
+            fc "l2" create
+                policer 1
+            exit
+            fc "nc" create
+                policer 1
+            exit
+        exit
+        sap-egress 100 name "100" create
+            queue 1 create
+                port-parent
+            exit
+            policer 1 create
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Forwarding Path Extensions Configuration"
+#--------------------------------------------------
+    fwd-path-ext
+        fpe 3 create
+            path pxc 7
+            sub-mgmt-extensions
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "system"
+            address 192.0.2.10/32
+            no shutdown
+        exit
+        interface "to-TRA"
+            address 172.16.116.14/30
+            port 1/1/c3/1:0
+            no shutdown
+        exit
+        autonomous-system 65000
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            area 0.0.0.0
+                interface "system"
+                    interface-type point-to-point
+                    no shutdown
+                exit
+                interface "to-TRA"
+                    interface-type point-to-point
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "LDP Configuration"
+#--------------------------------------------------
+        ldp
+            import-pmsi-routes
+            exit
+            tcp-session-parameters
+            exit
+            interface-parameters
+                interface "to-TRA" dual-stack
+                    ipv4
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+            exit
+            targeted-session
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Subscriber-mgmt Configuration"
+#--------------------------------------------------
+    subscriber-mgmt
+        authentication-policy "auth-fwa" create
+            password "McTNkSePNJMVFysxyZa4y9r+tdgtb9A=" hash2
+            pppoe-access-method pap-chap
+            include-radius-attribute
+                acct-session-id session
+                apn
+                circuit-id
+                remote-id
+                nas-port-id
+                pppoe-service-name
+                gprs-negotiated-qos-profile
+                imei
+                imsi
+                mac-address
+                msisdn
+                rat-type
+                uli
+            exit
+            radius-server-policy "FreeRadius"
+        exit
+        radius-accounting-policy "acct-fwa" create
+            no queue-instance-accounting
+            session-accounting interim-update host-update
+            update-interval 10
+            include-radius-attribute
+                apn
+                uli
+                circuit-id
+                imei
+                imsi
+                mac-address
+                msisdn
+                remote-id
+                sla-profile
+                sub-profile
+                subscriber-id
+                user-name
+                alc-acct-triggered-reason
+                no detailed-acct-attributes
+                std-acct-attributes
+                alc-error-code
+            exit
+            radius-server-policy "FreeRadius"
+        exit
+        diameter-application-policy "gx" create
+            application gx
+            diameter-node "bng.localdomain" destination-realm "localdomain"
+            gx
+                avp-subscription-id imsi
+            exit
+        exit
+        gtp
+            apn-policy "apn-policy1" create
+                apn internet.mnc001.mcc206.gprs create
+                exit
+            exit
+            apn-policy "apn-policy2" create
+                apn internet.mnc001.mcc206.gprs create
+                exit
+            exit
+            peer-profile "UERANSIM" create
+                interface-type s11
+                mme
+                    qos
+                        qci 9
+                    exit
+                exit
+            exit
+        exit
+        sla-profile "sla-default" create
+            egress
+                qos 100 vport-scheduler
+                exit
+                report-rate agg-rate-limit
+            exit
+        exit
+        sla-profile "sla-func1" create
+            ingress
+                qos 100
+                exit
+                report-rate policer 1
+            exit
+            egress
+                qos 100 vport-scheduler
+                exit
+                report-rate agg-rate-limit
+            exit
+        exit
+        sub-profile "sub-default" create
+            radius-accounting
+                policy "acct-fwa"
+            exit
+        exit
+        sub-profile "sub-func1" create
+            radius-accounting
+                policy "acct-fwa"
+            exit
+            egress
+                agg-rate-limit 5000
+            exit
+        exit
+        sub-ident-policy "sub-ident-1" create
+            sub-profile-map
+                use-direct-map-as-default
+            exit
+            sla-profile-map
+                use-direct-map-as-default
+            exit
+        exit
+        msap-policy "msap-default" create
+            sub-sla-mgmt
+                def-inter-dest-id use-top-q
+                def-sub-id use-auto-id
+                def-sub-profile "sub-default"
+                def-sla-profile "sla-default"
+                sub-ident-policy "sub-ident-1"
+                multi-sub-sap
+                single-sub-parameters
+                    profiled-traffic-only
+                exit
+            exit
+        exit
+        local-user-db "ESMoGTP" create
+        exit
+        local-user-db "Fixed-users" create
+        exit
+    exit
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+        vprn 51 name "51" customer 1 create
+            subscriber-interface "sub-gtp-1" create
+                group-interface "grp-gtp-1" gtp create
+                exit
+                group-interface "grp-1" create
+                exit
+            exit
+            interface "loopback" create
+            exit
+            interface "system" create
+            exit
+            dhcp
+                local-dhcp-server "esmogtp4" create
+                exit
+            exit
+            dhcp6
+                local-dhcp-server "esmogtp" create
+                exit
+            exit
+        exit
+        vprn 2043 name "2043" customer 1 create
+            interface "to-TRA" create
+            exit
+            interface "SGW/PGW-loopback" create
+            exit
+        exit
+        vprn 51 name "51" customer 1 create
+            interface "loopback" create
+                address 5.5.5.5/32
+                local-dhcp-server "esmogtp4"
+                loopback
+            exit
+            interface "system" create
+                address 192.0.2.10/32
+                loopback
+            exit
+            subscriber-interface "sub-gtp-1" create
+                address 180.0.0.254/24
+                default-dns 91.74.74.74 secondary 94.200.200.200
+                ipv6
+                    allow-unmatching-prefixes
+                    link-local-address fe80::5151:ffff:fe51:4321
+                    subscriber-prefixes
+                        prefix 2001:2001:2001::/48 wan-host
+                    exit
+                exit
+                group-interface "grp-gtp-1" gtp create
+                    gtp-parameters
+                        fpe 3
+                        no shutdown
+                    exit
+                    ipv6
+                        router-advertisements
+                            dns-options
+                                include-dns
+                            exit
+                            prefix-options
+                                autonomous
+                            exit
+                            no shutdown
+                        exit
+                    exit
+                    sap-parameters
+                        sub-sla-mgmt
+                            def-sla-profile "sla-default"
+                            def-sub-profile "sub-default"
+                            sub-ident-policy "sub-ident-1"
+                        exit
+                    exit
+                    ipoe-session
+                        session-limit 100
+                        no shutdown
+                    exit
+                exit
+                group-interface "grp-1" create
+                    dhcp
+                        server 5.5.5.5
+                        trusted
+                        client-applications dhcp ppp
+                        gi-address 180.0.0.254
+                        no shutdown
+                    exit
+                    authentication-policy "auth-fwa"
+                    pppoe
+                        session-limit 131071
+                        sap-session-limit 131071
+                        no shutdown
+                    exit
+                exit
+            exit
+            bgp-ipvpn
+                mpls
+                    auto-bind-tunnel
+                        resolution-filter
+                            ldp
+                        exit
+                        resolution filter
+                    exit
+                    route-distinguisher 51:51
+                    vrf-target target:65000:500
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+        vpls 100 name "100" customer 1 create
+            stp
+                shutdown
+            exit
+            sap 1/1/c2/1:201.* capture-sap create
+                trigger-packet dhcp dhcp6 pppoe
+                msap-defaults
+                    group-interface "grp-1"
+                    policy "msap-default"
+                    service 51
+                exit
+                authentication-policy "auth-fwa"
+                no shutdown
+            exit
+            no shutdown
+        exit
+        vprn 2043 name "2043" customer 1 create
+            gtp
+                s11
+                    interface "SGW/PGW-loopback" create
+                        apn-policy "apn-policy2"
+                    exit
+                    peer-profile-map
+                        address 0.0.0.0/0 peer-profile "UERANSIM"
+                    exit
+                exit
+            exit
+            interface "to-TRA" create
+                address 10.50.43.0/31
+                sap 1/1/c1/1:100 create
+                exit
+            exit
+            interface "SGW/PGW-loopback" create
+                address 50.50.50.1/32
+                loopback
+            exit
+            static-route-entry 10.20.1.0/24
+                next-hop 10.50.43.1
+                    description "to-mme"
+                    no shutdown
+                exit
+            exit
+            static-route-entry 10.30.0.0/24
+                next-hop 10.50.43.1
+                    description "eNB-vLS"
+                    no shutdown
+                exit
+            exit
+            static-route-entry 10.30.1.0/24
+                next-hop 10.50.43.1
+                    description "pcrf-diam"
+                    no shutdown
+                exit
+            exit
+            static-route-entry 10.60.1.0/24
+                next-hop 10.50.43.1
+                    description "eNB-srsran"
+                    no shutdown
+                exit
+            exit
+            static-route-entry 100.0.0.2/32
+                next-hop 10.50.43.1
+                    description "radius"
+                    no shutdown
+                exit
+            exit
+            radius-server
+                server "FreeRadius1" address 100.0.0.2 secret "McTNkSePNJMVFysxyZa4yxx4b0PMi7o=" hash2 create
+                    accept-coa
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            min-route-advertisement 1
+            split-horizon
+            rapid-update
+            group "internal"
+                family ipv4 vpn-ipv4 vpn-ipv6
+                type internal
+                neighbor 192.0.2.1
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Subscriber-mgmt (Service Side) Configuration"
+#--------------------------------------------------
+    subscriber-mgmt
+        local-user-db "ESMoGTP" create
+            ipoe
+                match-list string
+                host "host1" create
+                    host-identification
+                        string "206010000000003"
+                    exit
+                    address 180.0.0.1
+                    identification-strings 254 create
+                        subscriber-id "206010000000003"
+                        sla-profile-string "sla-func1"
+                        sub-profile-string "sub-func1"
+                    exit
+                    interface "grp-gtp-1" service-id 51
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+        local-user-db "Fixed-users" create
+            ppp
+                match-list mac
+                host "BNGblaster-traffic" create
+                    host-identification
+                        mac 02:00:05:00:00:01
+                    exit
+                    address 180.0.0.20/32
+                    no shutdown
+                exit
+                host "BNGblaster-ping-traffic" create
+                    host-identification
+                        mac 02:00:00:00:00:01
+                    exit
+                    address 180.0.0.19/32
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+        gtp
+            apn-policy "apn-policy1" create
+                apn internet.mnc001.mcc206.gprs create
+                    user-db "ESMoGTP"
+                exit
+            exit
+            apn-policy "apn-policy2" create
+                apn internet.mnc001.mcc206.gprs create
+                    ambr-qos-mapping
+                        downlink aggregate-rate
+                        uplink policer 1
+                    exit
+                    radius-auth-policy "auth-fwa"
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Local DHCP Server (Services) Configuration"
+#--------------------------------------------------
+    service
+        vprn 51 name "51" customer 1 create
+            dhcp
+                local-dhcp-server "esmogtp4" create
+                    user-db "Fixed-users"
+                    use-gi-address scope pool
+                    use-pool-from-client
+                    pool "esmogtp" create
+                        subnet 180.0.0.0/24 create
+                            options
+                                subnet-mask 255.255.255.0
+                                default-router 180.0.0.254
+                            exit
+                            exclude-addresses 180.0.0.19 180.0.0.20
+                            address-range 180.0.0.2 180.0.0.20
+                        exit
+                    exit
+                    no shutdown
+                exit
+            exit
+            dhcp6
+                local-dhcp-server "esmogtp" create
+                    use-pool-from-client
+                    pool "esmogtp" create
+                        prefix 2001:2001:2001::/48 pd wan-host create
+                        exit
+                    exit
+                    no shutdown
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Log all events for service vprn, log syslog tls-client-profile Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "AAA Configuration"
+#--------------------------------------------------
+    aaa
+        diameter
+            node "bng.localdomain" origin-realm "localdomain" create
+                router 2043
+                source-address 50.50.50.1
+                peer index 1 "pcrf.localdomain" create
+                    address 10.30.1.4
+                    no shutdown
+                exit
+            exit
+        exit
+        radius-server-policy "FreeRadius" create
+            servers
+                router 2043
+                server 1 name "FreeRadius1"
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Configuration Mode Configuration"
+#--------------------------------------------------
+    system
+        management-interface
+            configuration-mode classic
+        exit
+    exit
+
+exit all
+
+
+

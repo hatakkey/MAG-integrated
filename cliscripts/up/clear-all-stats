@@ -1,0 +1,7 @@
+echo
+echo "clear stats"
+/clear subscriber-mgmt pfcp-association sx statistics
+/clear subscriber-mgmt peakvalue-stats system recursive
+/clear log log-id 99
+echo
+

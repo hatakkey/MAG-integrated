@@ -1,0 +1,27 @@
+/clear subscriber-mgmt peakvalue-stats system recursive
+echo
+echo "Diameter peer status"
+/show aaa diameter-node "bng.localdomain" peers
+echo
+/show aaa diameter-node "bng.localdomain" peer "pcrf.localdomain"
+echo
+/show service active-subscribers hierarchy
+echo
+/show router 2043 gtp  peer
+echo
+/show subscriber-mgmt gtp summary
+echo
+/show subscriber-mgmt gtp s11 session detail
+echo
+/show subscriber-mgmt gtp statistics  | match ": 0" invert-match
+echo
+/show subscriber-mgmt statistics host system non-zero-value-only
+echo
+/show subscriber-mgmt statistics sla-profiles
+echo
+echo
+/show debug
+echo
+echo "command:"
+echo "/ping router 51 180.0.0.1 count 1"
+echo

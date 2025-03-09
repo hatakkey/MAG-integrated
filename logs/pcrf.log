@@ -1,0 +1,6 @@
+Open5GS daemon v2.7.1
+
+03/09 10:38:00.199: [app] INFO: Configuration: '/opt/open5gs/etc/open5gs/pcrf.yaml' (../lib/app/ogs-init.c:133)
+03/09 10:38:00.199: [app] INFO: File Logging: '/opt/open5gs/var/log/open5gs/pcrf.log' (../lib/app/ogs-init.c:136)
+03/09 10:38:00.263: [dbi] INFO: MongoDB URI: 'mongodb://mongo/open5gs' (../lib/dbi/ogs-mongoc.c:130)
+03/09 10:38:00.429: [app] INFO: PCRF initialize...done (../src/pcrf/app-init.c:31)

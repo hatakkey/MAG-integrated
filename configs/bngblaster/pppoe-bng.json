@@ -1,0 +1,78 @@
+{
+    "interfaces": {
+	 "mac-modifier": 5,
+	 "network": {
+            "interface": "eth2",
+            "address": "10.0.0.1/24",
+            "gateway": "10.0.0.2"
+	 },
+         "access":{
+                "interface": "eth1",
+                "type": "pppoe",
+                "outer-vlan-min": 201,
+                "outer-vlan-max": 201,
+                "inner-vlan-min": 1,
+                "inner-vlan-max": 1000,
+                "authentication-protocol": "CHAP",
+		"stream-group-id": 1
+            }
+        },
+   "sessions": {
+	"count": 1000,
+        "max-outstanding": 800,
+        "start-rate": 400,
+        "stop-rate": 400
+    },
+    "pppoe": {
+        "reconnect": true,
+        "discovery-timeout": 3,
+        "discovery-retry": 10
+    },
+    "ppp": {
+        "mru": 1492,
+        "authentication": {
+            "username": "nokia",
+            "password": "nokia123",
+            "timeout": 5,
+            "retry": 30
+        },
+        "lcp": {
+            "conf-request-timeout": 1,
+            "conf-request-retry": 10,
+            "keepalive-interval": 30,
+            "keepalive-retry": 3
+        },
+        "ipcp": {
+            "enable": true,
+            "request-ip": true,
+            "request-dns1": true,
+            "request-dns2": false,
+            "conf-request-timeout": 1,
+            "conf-request-retry": 10
+        },
+        "ip6cp": {
+            "enable": false,
+            "conf-request-timeout": 1,
+            "conf-request-retry": 10
+        }
+    },
+    "dhcpv6": {
+        "enable": true,
+        "rapid-commit": true
+    },
+    "access-line": {
+        "agent-remote-id": "nokia.{session-global}",
+        "agent-circuit-id": "0.0.0.0/0.0.0.0 eth {outer-vlan}:{inner-vlan}",
+        "rate-up": 1024,
+        "rate-down": 16384
+    },
+    "streams": [
+        {
+            "name": "BestEffort",
+            "stream-group-id": 1,
+            "type": "ipv4",
+            "direction": "both",
+            "pps": 10
+        }
+    ]
+}
