@@ -69,7 +69,9 @@ Before you start, ensure that you have the following installed:
     cd scripts
     ./start_open5gs.sh
 5.  ** start 4G session**:
+
 ![Network Topology](images/4g-non-cups.png)
+
      ```bash
      cd scripts
      ./start_4g_bng.sh
