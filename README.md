@@ -11,7 +11,7 @@ The goal of this project is to provide an efficient, scalable, and flexible way 
 ## Features
 
 - **Containerized Simulation**: Uses **ContainerLab** for easy deployment and orchestration of network components.
-- **Open5GS**: Implements an open-source 4G core network with features such as MME, SGW, PGW, and PCRF.
+- **Open5GS**: Implements an open-source 4G core network with features such as MME(Mobility Management Entity), HSS(Home Subscriber Server), and PCRF(Policy and Charging Rules Function).
 - **PPPoE/IPoE Simulation**: Provides simulation of broadband access using **BNGBlaster** for **PPPoE** and **IPoE** sessions.
 - **Flexible Setup**: Easily customizable network topology and components.
 - **Open Source**: The project uses open-source tools, making it suitable for research, testing, and educational purposes.
