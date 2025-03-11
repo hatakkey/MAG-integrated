@@ -155,7 +155,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    │ integrated-webui      │ linux                                     │ running │ 192.168.41.51  │
    │                       │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
    ╰───────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
-    ``` 
+   ``` 
  ### 2.1 **access the container nodes**
     The nodes are accessable via the IP address or the node name
     
