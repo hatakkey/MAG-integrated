@@ -108,8 +108,8 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 ---
 
 ## **License**
-- **ContainerLab images for MAG-C and VSR** are provided by **Nokia** and require a commercial license.
-- **Other ContainerLab images** (Open5GS, FreeRADIUS, UERANSIM) are publicly available.
+- **ContainerLab images for VSR** are provided by **Nokia** and require a commercial license.
+- **Other ContainerLab images** (Open5GS, FreeRADIUS, srsRANSim) are publicly available.
 
 ---
 
