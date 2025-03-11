@@ -93,10 +93,10 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 
 ![Network Topology](images/4g-non-cups.png)
 
-     ```bash
-     cd scripts
-     ./start_4g_bng.sh
-     ```
+    ```bash
+    cd scripts
+    ./start_4g_bng.sh
+    ```
   
 6.  **Start a IPoE/PPPoE session using BNGBlaster**:
      ```bash
