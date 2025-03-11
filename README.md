@@ -85,7 +85,7 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 
 4.  ** start the open5Gs elements**:
     start the HSS and MME 
- ```bash
+    ```bash
     cd scripts
     ./start_open5gs.sh
     ```
@@ -96,7 +96,7 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
      ```bash
      cd scripts
      ./start_4g_bng.sh
-					```
+     ```
   
 6.  **Start a IPoE/PPPoE session using BNGBlaster**:
      ```bash
