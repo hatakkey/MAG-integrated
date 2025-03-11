@@ -51,6 +51,15 @@ Before you start, ensure that you have the following installed:
 - **ContainerLab**: A tool to create and manage container-based network simulations.
 - **Git**: For cloning this repository.
 
+---
+
+### **Getting Started**
+
+Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
+
+---
+
+
 ### Steps
 
 1. **Clone the Repository**:
@@ -87,6 +96,7 @@ Before you start, ensure that you have the following installed:
      ```bash
      cd scripts
      ./start_4g_bng.sh
+					```
   
 6.  **Start a IPoE/PPPoE session using BNGBlaster**:
      ```bash
