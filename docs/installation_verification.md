@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-### 1.2. firewalld configuration 
+### 1.2. Firewalld configuration 
 The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
@@ -31,7 +31,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
 ```   
 
 
-## 1.3. **create the needed bridges**:
+## 1.3. **Create the needed bridges**:
 create the brideges
 ```bash   
 [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -48,7 +48,7 @@ success
 success
 ```
 ---------------------------------------------------  
-## 2. **SCTP is supported host machine**
+## 2. **SCTP is supported on host machine**
 
 - Check if SCTP is supported on your host machine as the communication between HSS and MME is via SCTP and needs to be enabled on your host machine. 
 - If you don’t have SCTP enabled, then a 4G session will fail with error  and you need to install SCTP.
@@ -177,7 +177,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                       │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰───────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ``` 
-### 3.1 **access the container nodes**
+### 3.1 **Access the container nodes**
 The nodes are accessable via the IP address or the node name    
 ```bash  
 docker exec -it cups-hss        bash

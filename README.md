@@ -69,11 +69,11 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
    ```
    
 3. **Register the 4G Subscriber**:
+
+   Use this script to register the **IMSI** with a specific apn,opc,key,sst and sd.
    ```bash
-   cd scripts
-   ./register_subscriber.sh
+   [root@compute-1 scripts]# ./register_subscriber.sh 
    ```
-   - Registers IMSI `206010000000001` in the database.
 
 4. **Start Open5GS Components**:
    ```bash
