@@ -48,7 +48,28 @@ success
 success
 ```
 ---------------------------------------------------  
-## 2. **Deploy the ContainerLab Environment**:
+## 2. **SCTP is supported host machine**
+
+- Check if SCTP is supported on your host machine as the communication between HSS and MME is via SCTP and needs to be enabled on your host machine. 
+- If you don’t have SCTP enabled, then a 4G session will fail with error  and you need to install SCTP.
+In MME.log
+```bash
+ERROR: pid:Main in fd_sctp_create_bind_server@sctp.c:829: ERROR: in '(*sock = socket(family, SOCK_STREAM, IPPROTO_))' : Protocol not supported
+```
+- If command checksctp ---> “STCP supported” then skip (2) install SCTP (ubuntu ---> supported by default)
+```bash
+[root@compute-1 MAG-integrated]# checksctp
+SCTP supported
+```
+- install sctp as below if not enabled
+```bash
+[root@compute-1]# dnf install kernel-modules-extra
+[root@compute-1]# rm /etc/modprobe.d/sctp-blacklist.conf
+[root@compute-1]# rm /etc/modprobe.d/sctp_diag-blacklist.conf
+[root@compute-1]# dnf install lksctp-tools-1.0.18-3.el8.x86_64
+```
+
+## 3. **Deploy the ContainerLab Environment**:
 
 Deploy the containerized network environment using the ContainerLab configuration:
 ```bash
@@ -156,7 +177,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                       │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰───────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ``` 
-### 2.1 **access the container nodes**
+### 3.1 **access the container nodes**
 The nodes are accessable via the IP address or the node name    
 ```bash  
 docker exec -it cups-hss        bash
