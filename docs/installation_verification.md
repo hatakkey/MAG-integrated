@@ -157,18 +157,17 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ╰───────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
    ``` 
  ### 2.1 **access the container nodes**
-     The nodes are accessable via the IP address or the node name
-    
+     The nodes are accessable via the IP address or the node name    
      ```bash  
-					docker exec -it cups-hss        bash
-					docker exec -it cups-mme        bash
-					docker exec -it cups-bsf        bash   
-					docker exec -it cups-enb        bash   
-					docker exec -it cups-radius     sh
-					ssh admin@cups-TRA    ## password=admin    
-					ssh admin@cups-up-1   ## password=admin     
-					ssh admin@cups-up-1   ## password=admin     
-					ssh admin@cups-mag-c1 ## password=admin
-					ssh admin@cups-mag-c2 ## password=admin  
-					```
+     docker exec -it cups-hss        bash
+     docker exec -it cups-mme        bash
+     docker exec -it cups-bsf        bash   
+     docker exec -it cups-enb        bash   
+     docker exec -it cups-radius     sh
+     ssh admin@cups-TRA    ## password=admin    
+     ssh admin@cups-up-1   ## password=admin     
+     ssh admin@cups-up-1   ## password=admin     
+     ssh admin@cups-mag-c1 ## password=admin
+     ssh admin@cups-mag-c2 ## password=admin  
+     ```
       
