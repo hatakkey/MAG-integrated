@@ -136,7 +136,7 @@ cd scripts
 ./start_dhcp_bng.sh
 ./start_pppoe_bng_traffic.sh   ## (Starts session with traffic)
 ```
-    
+![pppoe](images/pppoe.png)    
 ---
 
 #### **9. Troubleshooting**
