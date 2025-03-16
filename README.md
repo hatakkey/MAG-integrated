@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) connections on a single gateway.
+MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on a single gateway.
 
 This project leverages Open5GS for the core network, **srsRANSim** for radio components (eNB and 4G sessions), and **FreeRADIUS**, an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA). It also integrates **BNGBlaster** to simulate fixed PPPoE and IPoE sessions and is deployed in a containerized environment using ContainerLab, enabling rapid setup and flexible network testing.
 
@@ -145,8 +145,8 @@ also  there is another option can be integrated with this containerlab is EdgeSh
 
 
 ## **License**
-•	ContainerLab images for VSR are provided by Nokia and require a commercial license.
-•	All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
+- ContainerLab images for VSR are provided by Nokia and require a commercial license.
+-	All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
 
 ------
 ## **Contributing**
