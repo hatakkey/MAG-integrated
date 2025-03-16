@@ -4,34 +4,35 @@
 
 MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) connections on a single gateway.
 
-This project leverages Open5GS for the core network, srsRANSim for radio components (eNB and 4G sessions), and FreeRADIUS, an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA). It also integrates BNGBlaster to simulate fixed PPPoE and IPoE sessions and is deployed in a containerized environment using ContainerLab, enabling rapid setup and flexible network testing.
-The goal of MAG-Integrated is to provide an efficient, flexible environment for simulating fixed and FWA (Fixed Wireless Access) sessions using open-source tools. It is primarily designed for functional testing and educational purposes.
+This project leverages Open5GS for the core network, **srsRANSim** for radio components (eNB and 4G sessions), and **FreeRADIUS**, an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA). It also integrates **BNGBlaster** to simulate fixed PPPoE and IPoE sessions and is deployed in a containerized environment using ContainerLab, enabling rapid setup and flexible network testing.
+
+The goal of **MAG-Integrated** is to provide an efficient, flexible environment for simulating fixed and FWA (Fixed Wireless Access) sessions using open-source tools. It is primarily designed for functional testing and educational purposes.
 
 ## **Features**
-•	Containerized Simulation: Uses ContainerLab for efficient deployment and orchestration of network components.
-•	Open5GS: Implements an open-source EPC (4G) core network with key elements such as MME (Mobility Management Entity), HSS (Home Subscriber Server), and PCRF (Policy and Charging Rules Function).
-•	PPPoE/IPoE Simulation: Enables broadband access testing with BNGBlaster.
-•	Flexible Setup: Customizable network topology and components.
-•	Open Source: Suitable for research, testing, and educational purposes.
+-	**Containerized Simulation**: Uses ContainerLab for efficient deployment and orchestration of network components.
+-	**Open5GS**: Implements an open-source EPC (4G) core network with key elements such as **MME** (Mobility Management Entity), **HSS** (Home Subscriber Server), and **PCRF** (Policy and Charging Rules Function).
+-	**PPPoE/IPoE Simulation**: Enables broadband access testing with **BNGBlaster**.
+-	**Flexible Setup**: Customizable network topology and components.
+-	**Open Source**: Suitable for research, testing, and educational purposes.
 
 ## **Components**
 ### **1 MAG-integrated (formally known as Broadband Network Gateway)**
-•	**MAG-integrated** (**a.k.a BNG**) is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
--	IP Addressing: Assigns IPs to devices.
--	AAA: Manages authentication, authorization, and accounting.
--	Traffic Management: Ensures QoS and traffic prioritization.
--	Session Management: Tracks user sessions.
+-	**MAG-integrated** (**a.k.a BNG**) is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
+  -	IP Addressing: Assigns IPs to devices.
+  -	AAA: Manages authentication, authorization, and accounting.
+  -	Traffic Management: Ensures QoS and traffic prioritization.
+  -	Session Management: Tracks user sessions.
 -	The BNG supports IPoE and PPPoE for broadband access, offering scalability and reliability for service providers.
 ### **2. ContainerLab**
--	ContainerLab is used to simulate network components in isolated containers, making the environment lightweight and manageable.
--	It orchestrates network elements, including Open5GS, BNGBlaster, and srsRANSim.
+-	**ContainerLab** is used to simulate network components in isolated containers, making the environment lightweight and manageable.
+-	It orchestrates network elements, including **Open5GS**,**BNGBlaster**, and **srsRANSim**.
 ### **3. Open5GS**
--	Open5GS provides the Evolved Packet Core (EPC) components, such as MME, HSS, and PCRF.
+-	Open5GS provides the Evolved Packet Core (EPC) components, such as **MME**, **HSS**, and **PCRF**.
 ### **4. BNGBlaster**
 -	Simulates fixed sessions, like PPPoE and IPoE  for broadband access testing.
 ### **5. srsRANSim** 
--	Provides an open-source LTE/5G software radio stack.
--	Simulates UE and eNB/gNB, facilitating mobile network emulation.
+-	Provides an open-source **LTE/5G** software radio stack.
+-	Simulates **UE** and **eNB/gNB**, facilitating mobile network emulation.
 ### **6. FreeRADIUS**
 -	An open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
 -	Supports EAP, PAP, CHAP and integrates with MySQL, PostgreSQL, and LDAP.
