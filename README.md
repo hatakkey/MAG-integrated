@@ -17,25 +17,25 @@ The goal of MAG-Integrated is to provide an efficient, flexible environment for 
 ## **Components**
 ### **1 MAG-integrated (formally known as Broadband Network Gateway)**
 •	**MAG-integrated** (**a.k.a BNG**) is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
-o	IP Addressing: Assigns IPs to devices.
-o	AAA: Manages authentication, authorization, and accounting.
-o	Traffic Management: Ensures QoS and traffic prioritization.
-o	Session Management: Tracks user sessions.
-•	The BNG supports IPoE and PPPoE for broadband access, offering scalability and reliability for service providers.
+-	IP Addressing: Assigns IPs to devices.
+-	AAA: Manages authentication, authorization, and accounting.
+-	Traffic Management: Ensures QoS and traffic prioritization.
+-	Session Management: Tracks user sessions.
+-	The BNG supports IPoE and PPPoE for broadband access, offering scalability and reliability for service providers.
 ### **2. ContainerLab**
-•	ContainerLab is used to simulate network components in isolated containers, making the environment lightweight and manageable.
-•	It orchestrates network elements, including Open5GS, BNGBlaster, and srsRANSim.
+-	ContainerLab is used to simulate network components in isolated containers, making the environment lightweight and manageable.
+-	It orchestrates network elements, including Open5GS, BNGBlaster, and srsRANSim.
 ### **3. Open5GS**
-•	Open5GS provides the Evolved Packet Core (EPC) components, such as MME, HSS, and PCRF.
+-	Open5GS provides the Evolved Packet Core (EPC) components, such as MME, HSS, and PCRF.
 ### **4. BNGBlaster**
-•	Simulates fixed sessions, like PPPoE and IPoE  for broadband access testing.
+-	Simulates fixed sessions, like PPPoE and IPoE  for broadband access testing.
 ### **5. srsRANSim** 
-•	Provides an open-source LTE/5G software radio stack.
-•	Simulates UE and eNB/gNB, facilitating mobile network emulation.
+-	Provides an open-source LTE/5G software radio stack.
+-	Simulates UE and eNB/gNB, facilitating mobile network emulation.
 ### **6. FreeRADIUS**
-•	An open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
-•	Supports EAP, PAP, CHAP and integrates with MySQL, PostgreSQL, and LDAP.
-•	Used in ISPs and telecom networks for network access control.
+-	An open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
+-	Supports EAP, PAP, CHAP and integrates with MySQL, PostgreSQL, and LDAP.
+-	Used in ISPs and telecom networks for network access control.
 
 ## Installation
 
