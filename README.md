@@ -16,7 +16,7 @@ The goal of **MAG-Integrated** is to provide an efficient, flexible environment 
 -	**Open Source**: Suitable for research, testing, and educational purposes.
 
 ## **Components**
-### **1 MAG-integrated (formally known as Broadband Network Gateway)**
+### **1. MAG-integrated (formally known as Broadband Network Gateway)**
 -	**MAG-integrated** (**a.k.a BNG**) is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
   -	IP Addressing: Assigns IPs to devices.
   -	AAA: Manages authentication, authorization, and accounting.
