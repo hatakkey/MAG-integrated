@@ -13,7 +13,7 @@
 - ✅ Open-Source – Ideal for research, testing, and education.
 
 ## **Components of containerLab**
-- The project is deploted using **containerlab**,check this  [visit contianerlab](https://containerlab.dev/ ) for more details.
+- The project is deployed using **containerlab**,check this  [visit contianerlab](https://containerlab.dev/ ) for more details.
 
 - **ContainerLab** is a lightweight and efficient tool for simulating network components in isolated containers.
 - It simplifies network orchestration by managing various network elements in an easily configurable environment.
