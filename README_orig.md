@@ -1,23 +1,24 @@
-**MAG-Integrated**: Nokia Multi-Access Gateway with Open-Source Tools***
+# **MAG-Integrated: ContainerLab leveraging open-source tools like BNGBlaster, Open5GS, and srsRANSim**
 
 ## **Overview**
 
-**MAG-Integrated** is an open-source project designed around **Nokia Multi-Access Gateway (MAG)** architecture, formerly known as a Broadband Network Gateway (BNG). 
-- It enables multi-access session handling by supporting both fixed (PPPoE & IPoE) and fixed-wireless (4G) sessions on a single gateway.
-- This project integrates several key open-source components i.e. **Open5GS** ,**srsRANSim** ,**FreeRADIUS**  and **BNGBlaster** 
+MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on a single gateway.
 
+This project leverages Open5GS for the core network, **srsRANSim** for radio components (eNB and 4G sessions), and **FreeRADIUS**, an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA). It also integrates **BNGBlaster** to simulate fixed PPPoE and IPoE sessions and is deployed in a containerized environment using ContainerLab, enabling rapid setup and flexible network testing.
 
-**Key Features**
-✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
-✅ Flexible Network Setup – Supports customizable topologies.
-✅ Open-Source – Ideal for research, testing, and education.
+The goal of **MAG-Integrated** is to provide an efficient, flexible environment for simulating fixed and FWA (Fixed Wireless Access) sessions using open-source tools. It is primarily designed for functional testing and educational purposes.
 
-## **Components of containerLab**
-- The project is deploted using **containerlab**,check this  [Visit contianerlab](https://containerlab.dev/ ) for more details.
+## **Features**
+-	**Containerized Simulation**: Uses ContainerLab for efficient deployment and orchestration of network components.
+-	**Open5GS**: Implements an open-source EPC (4G) core network with key elements such as **MME** (Mobility Management Entity), **HSS** (Home Subscriber Server), and **PCRF** (Policy and Charging Rules Function).
+-	**PPPoE/IPoE Simulation**: Enables broadband access testing with **BNGBlaster**.
+-	**Flexible Setup**: Customizable network topology and components.
+-	**Open Source**: Suitable for research, testing, and educational purposes.
 
-- **ContainerLab** is a lightweight and efficient tool for simulating network components in isolated containers.
-- It simplifies network orchestration by managing various network elements in an easily configurable environment.
-- It integrates multiple network elements to create a comprehensive testbed. The main components include:
+## **Components containerLab**
+-	**ContainerLab** is used to simulate network components in isolated containers, making the environment lightweight and manageable.
+-	It orchestrates network elements, including **Open5GS**,**BNGBlaster**, **MAG-integrated** , **FreeRADIUS** and **srsRANSim**.
+- it conists of the below components:
 
 ### **1. MAG-integrated **
 -	**MAG-integrated** is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
@@ -27,21 +28,17 @@
   -	Session Management: Tracks user sessions.
 -	The BNG supports IPoE and PPPoE for broadband access, offering scalability and reliability for service providers.
 
-### **2. Open5GS**
--	Open5GS provides the Evolved Packet Core (EPC) components, such as **MME** (Mobility Management Entity), **HSS** (Home Subscriber Server), and **PCRF**(Policy & Charging Rules Function).
-
-### **3. BNGBlaster**
+### **3. Open5GS**
+-	Open5GS provides the Evolved Packet Core (EPC) components, such as **MME**, **HSS**, and **PCRF**.
+### **4. BNGBlaster**
 -	Simulates fixed sessions, like PPPoE and IPoE  for broadband access testing.
-
-### **4. srsRANSim** 
+### **5. srsRANSim** 
 -	Provides an open-source **LTE/5G** software radio stack.
 -	Simulates **UE** and **eNB/gNB**, facilitating mobile network emulation.
-
-### **5. FreeRADIUS**
+### **6. FreeRADIUS**
 -	An open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
 -	Supports EAP, PAP, CHAP and integrates with MySQL, PostgreSQL, and LDAP.
 -	Used in ISPs and telecom networks for network access control.
-
 
 ## Installation
 
@@ -52,10 +49,15 @@ Ensure the following dependencies are installed:
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
 
+---
+
 ### **Getting Started**
 
 Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
 
+---
+
+### **Installation Steps**
 
 #### **1. Clone the Repository**
 
@@ -83,24 +85,15 @@ The delivered exec CLI scripts are a collection of standard CLI show commands de
 ```bash
 [root@compute-1]# pwd
 /root/MAG-integrated/cliscripts/
-
-## **Testing starup**
-
-### **Topology**
-
-The topology of the setup is illustrated in the diagram below: 
-
-![drawing View](images/topology-mag-integrated.png)	
-
-
-### **1. Register a 5G Subscriber**
+```
+#### **5. Register a 5G Subscriber**
 
 Use this script to register the **IMSI** with a specific apn,opc and key
 ```bash
  root@compute-1 scripts]# ./register_subscriber.sh 
  ```
 	
-### **1.1 GUI Access to the Database**
+##### **5.1 GUI Access to the Database**
 You can verify subscriber records via **Web GUI**:
 
 📌 **URL**: `http://x.x.x.x:9999/' 
@@ -108,7 +101,7 @@ You can verify subscriber records via **Web GUI**:
 
 ![Database View](images/Database.png)	
 
-### **2. Start the Open5GS Core Network**
+#### **6. Start the Open5GS Core Network**
 Run the following script to start the 4G Core( **HSS** and **MME**)
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
@@ -116,19 +109,22 @@ Follow the **[documentation](docs/open5gs_verification.md)** for detailed inform
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
 
-### **3. Start the 4G Session**
+#### **7. Start the 4G Session**
 Start the 4G session 
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
+
+![Network Topology](images/4g-non-cups.png)
 
 
 ```bash
 cd scripts
 ./start_4g_bng.sh
 ```
-### **4. Start PPPoE/IPoE Session using BNGBlaster**
+#### **8. Start PPPoE/IPoE Session using BNGBlaster**
 Start the broadband session using **BNGBlaster**:
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
+![Fixed Network Topology](images/fixed-bng.png)
 
 ```bash
 cd scripts
@@ -139,7 +135,7 @@ cd scripts
     
 ---
 
-### **5. Troubleshooting**
+#### **9. Troubleshooting**
 
 The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
 also  there is another option can be integrated with this containerlab is EdgeShark https://containerlab.dev/manual/wireshark/ 
@@ -162,7 +158,4 @@ Contributions are welcome! Please submit a **pull request** or open an **issue**
 
 ## **Contact**
 For questions, reach out via GitHub issues or contact the **Nokia team** for commercial licensing.
-
-
-
 
