@@ -87,21 +87,21 @@ The delivered exec CLI scripts are a collection of standard CLI show commands de
 
 ## **Testing starup**
 
-### **Topology setup**
+### **1. Topology setup**
 
 The topology of the setup is illustrated in the diagram below: 
 
 ![drawing View](images/topology-mag-integrated.png)	
 
 
-### **1. Register a 5G Subscriber**
+### **2. Register a 5G Subscriber**
 
 Use this script to register the **IMSI** with a specific apn,opc and key
 ```bash
  root@compute-1 scripts]# ./register_subscriber.sh 
  ```
 	
-### **1.1 GUI Access to the Database**
+### **2.1 GUI Access to the Database**
 You can verify subscriber records via **Web GUI**:
 
 📌 **URL**: `http://x.x.x.x:9999/' 
@@ -109,7 +109,7 @@ You can verify subscriber records via **Web GUI**:
 
 ![Database View](images/Database.png)	
 
-### **2. Start the Open5GS Core Network**
+### **3. Start the Open5GS Core Network**
 Run the following script to start the 4G Core( **HSS** and **MME**)
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
@@ -117,7 +117,7 @@ Follow the **[documentation](docs/open5gs_verification.md)** for detailed inform
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
 
-### **3. Start the 4G Session**
+### **4. Start the 4G Session**
 Start the 4G session 
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
@@ -126,7 +126,7 @@ Follow the **[documentation](docs/4G_session_verification.md)** for detailed inf
 cd scripts
 ./start_4g_bng.sh
 ```
-### **4. Start PPPoE/IPoE Session using BNGBlaster**
+### **5. Start PPPoE/IPoE Session using BNGBlaster**
 Start the broadband session using **BNGBlaster**:
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
@@ -140,7 +140,7 @@ cd scripts
     
 ---
 
-### **5. Troubleshooting**
+### **6. Troubleshooting**
 
 The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
 also  there is another option can be integrated with this containerlab is EdgeShark https://containerlab.dev/manual/wireshark/ 

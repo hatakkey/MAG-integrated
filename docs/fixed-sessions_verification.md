@@ -70,7 +70,7 @@ Rem OMCR Alarm Entries  : 0
 ## 2.   **Start PPPoE/IPoE Session using BNGBlaste**
 ----
 Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
-### 1.1. **start dhcpv4v6 session**
+### 1.1. **start IPoEv4v6 session**
 10 dhcp sessions are established using the BNGBlaster
 ```bash
 ./start_dhcp_bng.sh
