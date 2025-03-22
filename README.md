@@ -13,7 +13,7 @@
 - ✅ Open-Source – Ideal for research, testing, and education.
 
 ## **Components of containerLab**
-- The project is deploted using **containerlab**,check this  [Visit contianerlab](https://containerlab.dev/ ) for more details.
+- The project is deploted using **containerlab**,check this  [visit contianerlab](https://containerlab.dev/ ) for more details.
 
 - **ContainerLab** is a lightweight and efficient tool for simulating network components in isolated containers.
 - It simplifies network orchestration by managing various network elements in an easily configurable environment.
@@ -83,10 +83,11 @@ The delivered exec CLI scripts are a collection of standard CLI show commands de
 ```bash
 [root@compute-1]# pwd
 /root/MAG-integrated/cliscripts/
+```
 
 ## **Testing starup**
 
-### **Topology**
+### **Topology setup**
 
 The topology of the setup is illustrated in the diagram below: 
 
