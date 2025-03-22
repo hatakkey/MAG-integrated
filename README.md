@@ -8,9 +8,9 @@
 
 
 **Key Features**
-✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
-✅ Flexible Network Setup – Supports customizable topologies.
-✅ Open-Source – Ideal for research, testing, and education.
+- ✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
+- ✅ Flexible Network Setup – Supports customizable topologies
+- ✅ Open-Source – Ideal for research, testing, and education.
 
 ## **Components of containerLab**
 - The project is deploted using **containerlab**,check this  [Visit contianerlab](https://containerlab.dev/ ) for more details.
