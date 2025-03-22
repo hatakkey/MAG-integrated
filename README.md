@@ -17,7 +17,7 @@
 
 - **ContainerLab** is a lightweight and efficient tool for simulating network components in isolated containers.
 - It simplifies network orchestration by managing various network elements in an easily configurable environment.
-- It integrates multiple network elements to create a comprehensive testbed. The main components include:
+- It integrates multiple network elements to create a comprehensive testbed. **The main components include**:
 
 ### **1. MAG-integrated**
 -	**MAG-integrated** is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
