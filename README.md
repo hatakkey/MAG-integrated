@@ -1,16 +1,16 @@
-#**MAG-Integrated**: Nokia Multi-Access Gateway with Open-Source Tools***
+# **MAG-Integrated**: Nokia Multi-Access Gateway with Open-Source Tools**
 
 ## **Overview**
 
-##**MAG-Integrated** is an open-source project designed around **Nokia Multi-Access Gateway (MAG)** architecture, formerly known as a Broadband Network Gateway (BNG). 
+## **MAG-Integrated** is an open-source project designed around **Nokia Multi-Access Gateway (MAG)** architecture, formerly known as a Broadband Network Gateway (BNG). 
 - It enables multi-access session handling by supporting both fixed (PPPoE & IPoE) and fixed-wireless (4G) sessions on a single gateway.
 - This project integrates several key open-source components i.e. **Open5GS** ,**srsRANSim** ,**FreeRADIUS**  and **BNGBlaster** 
 
 
-##**Key Features**
- ✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
- ✅ Flexible Network Setup – Supports customizable topologies
- ✅ Open-Source – Ideal for research, testing, and education.
+## **Key Features**
+- ✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
+- ✅ Flexible Network Setup – Supports customizable topologies
+- ✅ Open-Source – Ideal for research, testing, and education.
 
 ## **Components of containerLab**
 - The project is deploted using **containerlab**,check this  [Visit contianerlab](https://containerlab.dev/ ) for more details.
