@@ -88,6 +88,8 @@ Register the IMSI’s with a specific apn, opc and key using the pre-defined scr
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
 
+![Database View](images/Database.png)	
+
 ### **7. Start the Open5GS Core Network**
 
 Start the 4G Core (HSS and MME) using the pre-defined script. 
