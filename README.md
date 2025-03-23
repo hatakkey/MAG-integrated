@@ -20,7 +20,7 @@ The topology of the setup is illustrated in the diagram below:
 
 ### **2. FreeRADIUS**
 -	FreeRADIUS is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
-  -	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
+  -	This lab uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
 ### **3. BNGBlaster**
 -	BNG Blaster simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
   -	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
@@ -34,7 +34,7 @@ The topology of the setup is illustrated in the diagram below:
 -	Provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
 -	This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
 
-### Prerequisites
+### LAB Prerequisites
 
 Ensure the following dependencies are installed:
 - **Docker**: Required for running containerized components.
