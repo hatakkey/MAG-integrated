@@ -26,11 +26,11 @@ o	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions a
 -	BNG Blaster simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
 -	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
 
-### **3. Open5GS**
+### **4. Open5GS**
 -	Open5GS provides the Evolved Packet Core (EPC) components, such as MME (Mobility Management Entity), HSS (Home Subscriber Server), and PCRF (Policy & Charging Rules Function).
 -	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
 
-### **4. srsRANSim** 
+### **5. srsRANSim** 
 
 -	Provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
 -	This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
@@ -46,24 +46,24 @@ Ensure the following dependencies are installed:
 
 Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
 
-#### **1. Clone the Repository**
+### **1. Clone the Repository**
 ```bash
 git clone https://github.com/htakkey/cups-integrated.git
 cd cups-integrated
 ```
 
-#### **2. Create Network Bridges**
+### **2. Create Network Bridges**
 For **CentOS** (example):
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
 ```
-#### **3. Deploy the ContainerLab **
+### **3. Deploy the ContainerLab**
 Run the following command to deploy the simulated network:
 ```bash    
 clab deploy -t mag-integrated.clab.yml
 ```
 
-#### **4.Download cliscripts**
+### **4. Download cliscripts**
 The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
 ```bash
 [root@compute-1]# pwd
@@ -101,6 +101,7 @@ Start the 4G session using the pre-defined script
 ```bash
 cd scripts
 ./start_4g_bng.sh
+```
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
 ### **9. Start the PPPoE or IPoE fixed sessions**  
