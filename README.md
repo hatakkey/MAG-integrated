@@ -1,7 +1,7 @@
 # **MAG-Integrated: Multi-Access Gateway with Open-Source Tools**
 
 ## **Objective**
-- The goal of this Multi access gateway integrated (MAG-Integrated) Lab, build with ContainerLab, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
+- The goal of this Multi access gateway integrated lab (MAG-Integrated), build with ContainerLab, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
 
 ## **Overview**
 - **MAG-Integrated** is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG).It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
