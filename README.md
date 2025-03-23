@@ -15,24 +15,26 @@ The topology of the setup is illustrated in the diagram below:
 ## **Components**
 ### **1. MAG-integrated**  
 - **MAG-integrated** (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
-  -  This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
-  -	 This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
+  - This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
+  -	This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
 
 ### **2. FreeRADIUS**
--	**FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
-  -  This lab uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
+- **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
+  -	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
+
+
 ### **3. BNGBlaster**
 -	**BNG Blaster** simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
-  -  This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
+  - This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
 
 ### **4. Open5GS**
 -	**Open5GS** provides the Evolved Packet Core (EPC) components, such as **MME (Mobility Management Entity)**, **HSS (Home Subscriber Server)**, and **PCRF (Policy & Charging Rules Function)**.
-  -	 This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
+  -	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
 
 ### **5. srsRANSim** 
 
 -	**srsRANSim** provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
-  -	 This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
+  -	This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
 
 ### LAB Prerequisites
 
