@@ -1,34 +1,33 @@
-# **MAG-Integrated: Nokia Multi-Access Gateway with Open-Source Tools**
+# **MAG-Integrated: Multi-Access Gateway with Open-Source Tools**
 
 ## **Objective**
-- The goal of this Multi access gateway integrated (MAG-Integrated) Lab, build with ContainerLab, is to provide an efficient, flexible environment for simulating fixed and Fixed Wireless Access (FWA) sessions using open-source test tools.
-- It is primarily designed for functional testing and educational purposes.
+- The goal of this Multi access gateway integrated (MAG-Integrated) Lab, build with ContainerLab, is to provide an efficient, flexible environment for simulating fixed and Fixed Wireless Access (FWA) sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
 
 ## **Overview**
-- MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). 
-- It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
-- This project leverages [Open5GS](https://open5gs.org/) for the core network, [srsRANSim](https://www.srslte.com/) for radio components (eNB and 4G sessions), and [FreeRADIUS](https://www.freeradius.org/), an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
-- It also integrates [BNG Blaster](https://rtbrick.github.io/bngblaster/index.html) to simulate fixed PPPoE and IPoE sessions 
-- It is deployed in a containerized environment using [ContainerLab](https://containerlab.dev/), enabling rapid setup and flexible network testing.
+- MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG).It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
+- This project leverages [Open5GS](https://open5gs.org/) for the core network, [srsRANSim](https://www.srslte.com/) for radio components (eNB and 4G sessions), and [FreeRADIUS](https://www.freeradius.org/), an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA). It also integrates [BNG Blaster](https://rtbrick.github.io/bngblaster/index.html) to simulate fixed PPPoE and IPoE sessions and is deployed in a containerized environment using [ContainerLab](https://containerlab.dev/), enabling rapid setup and flexible network testing.
 
+## **Topology setup**
+
+The topology of the setup is illustrated in the diagram below: 
+
+![drawing View](images/topology-mag-integrated.png)	
 ## **Components**
 ### **1. MAG-integrated**  
--	The MAG-integrated (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. 
-- It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more.
-- The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
--	This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
--	This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
+- The MAG-integrated (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
+  -	This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
+  -	This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
 
 ### **2. FreeRADIUS**
-•	FreeRADIUS is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
-o	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
+-	FreeRADIUS is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
+  -	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
 ### **3. BNGBlaster**
 -	BNG Blaster simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
--	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
+  -	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
 
 ### **4. Open5GS**
 -	Open5GS provides the Evolved Packet Core (EPC) components, such as MME (Mobility Management Entity), HSS (Home Subscriber Server), and PCRF (Policy & Charging Rules Function).
--	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
+  -	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
 
 ### **5. srsRANSim** 
 
@@ -71,14 +70,7 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 ```
 To use them, first manually download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated.
 
-
-### **5. Topology setup**
-
-The topology of the setup is illustrated in the diagram below: 
-
-![drawing View](images/topology-mag-integrated.png)	
-
-### **6. Start sessions**
+### **5. Start sessions**
 
 Register IMSI in database
 Register the IMSI’s with a specific apn, opc and key using the pre-defined script.
@@ -90,7 +82,7 @@ You can verify the registered subscriber records using the Web GUI:
 
 ![Database View](images/Database.png)	
 
-### **7. Start the Open5GS Core Network**
+### **6. Start the Open5GS Core Network**
 
 Start the 4G Core (HSS and MME) using the pre-defined script. 
 ```bash
@@ -98,7 +90,7 @@ Start the 4G Core (HSS and MME) using the pre-defined script.
 ```
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
-### **8. Start the 4G FWA session**
+### **7. Start the 4G FWA session**
 Start the 4G session using the pre-defined script
 ```bash
 cd scripts
@@ -106,7 +98,7 @@ cd scripts
 ```
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
-### **9. Start the PPPoE or IPoE fixed sessions**  
+### **8. Start the PPPoE or IPoE fixed sessions**  
 Start the broadband session the pre-defined script:
 
 ```bash 
@@ -120,7 +112,7 @@ cd scripts
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
 
-### **10. Troubleshooting**
+### **9. Troubleshooting**
 The logs available for analysis are enb1.log, hss.log, mme.log, pcrf.log, radiusd.log, and ue1.log. You can clear these logs using the ./clear_logs.sh script.
 For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
 
