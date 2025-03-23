@@ -25,16 +25,19 @@ The topology of the setup is illustrated in the diagram below:
 
 ### **3. BNGBlaster**
 -	**BNG Blaster** simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
-  - This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
+  -	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
+
 
 ### **4. Open5GS**
--	**Open5GS** provides the Evolved Packet Core (EPC) components, such as **MME (Mobility Management Entity)**, **HSS (Home Subscriber Server)**, and **PCRF (Policy & Charging Rules Function)**.
+-	**Open5GS** provides the Evolved Packet Core (EPC) components, such as **MME** (Mobility Management Entity), **HSS** (Home Subscriber Server), and **PCRF** (Policy & Charging Rules Function).
   -	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
+
 
 ### **5. srsRANSim** 
 
--	**srsRANSim** provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
-  -	This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
+- **srsRANSim** provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
+  - This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
+
 
 ### LAB Prerequisites
 
