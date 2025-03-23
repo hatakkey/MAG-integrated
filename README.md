@@ -1,168 +1,137 @@
 # **MAG-Integrated: Nokia Multi-Access Gateway with Open-Source Tools**
 
+## **Objective**
+- The goal of this Multi access gateway integrated (MAG-Integrated) Lab, build with ContainerLab, is to provide an efficient, flexible environment for simulating fixed and Fixed Wireless Access (FWA) sessions using open-source test tools.
+- It is primarily designed for functional testing and educational purposes.
+
 ## **Overview**
+- MAG-Integrated is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG). 
+- It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
+- This project leverages [Open5GS](https://open5gs.org/) for the core network, [srsRANSim](https://www.srslte.com/) for radio components (eNB and 4G sessions), and [FreeRADIUS](https://www.freeradius.org/), an open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
+- It also integrates [BNG Blaster](https://rtbrick.github.io/bngblaster/index.html) to simulate fixed PPPoE and IPoE sessions 
+- It is deployed in a containerized environment using [ContainerLab](https://containerlab.dev/), enabling rapid setup and flexible network testing.
 
- **MAG-Integrated** is an open-source project designed around **Nokia Multi-Access Gateway (MAG)** architecture, formerly known as a Broadband Network Gateway (BNG). 
-- It enables multi-access session handling by supporting both fixed (PPPoE & IPoE) and fixed-wireless (4G) sessions on a single gateway.
-- This project integrates several key open-source components i.e. **Open5GS** ,**srsRANSim** ,**FreeRADIUS**  and **BNGBlaster** 
+## **Components**
+### **1. MAG-integrated**  
+-	The MAG-integrated (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. 
+- It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more.
+- The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
+-	This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
+-	This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
 
-
-## **Key Features**
-- ✅ Containerized Simulation – Uses ContainerLab for efficient deployment and network orchestration.
-- ✅ Flexible Network Setup – Supports customizable topologies
-- ✅ Open-Source – Ideal for research, testing, and education.
-
-## **Components of containerLab**
-- The project is deployed using **containerlab**,check this  [visit contianerlab](https://containerlab.dev/ ) for more details.
-
-- **ContainerLab** is a lightweight and efficient tool for simulating network components in isolated containers.
-- It simplifies network orchestration by managing various network elements in an easily configurable environment.
-- It integrates multiple network elements to create a comprehensive testbed. **The main components include**:
-
-### **1. MAG-integrated**
--	**MAG-integrated** is a key network element that connects fixed or fixed wireless users to the network via technologies like DSL, Fiber or Wireless. It handles:
-  -	IP Addressing: Assigns IPs to devices.
-  -	AAA: Manages authentication, authorization, and accounting.
-  -	Traffic Management: Ensures QoS and traffic prioritization.
-  -	Session Management: Tracks user sessions.
--	The BNG supports IPoE and PPPoE for broadband access, offering scalability and reliability for service providers.
-
-### **2. Open5GS**
--	Open5GS provides the Evolved Packet Core (EPC) components, such as **MME** (Mobility Management Entity), **HSS** (Home Subscriber Server), and **PCRF**(Policy & Charging Rules Function).
-
+### **2. FreeRADIUS**
+•	FreeRADIUS is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
+o	This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
 ### **3. BNGBlaster**
--	Simulates fixed sessions, like PPPoE and IPoE  for broadband access testing.
+-	BNG Blaster simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
+-	This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
+
+### **3. Open5GS**
+-	Open5GS provides the Evolved Packet Core (EPC) components, such as MME (Mobility Management Entity), HSS (Home Subscriber Server), and PCRF (Policy & Charging Rules Function).
+-	This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
 
 ### **4. srsRANSim** 
--	Provides an open-source **LTE/5G** software radio stack.
--	Simulates **UE** and **eNB/gNB**, facilitating mobile network emulation.
 
-### **5. FreeRADIUS**
--	An open-source RADIUS server for Authentication, Authorization, and Accounting (AAA).
--	Supports EAP, PAP, CHAP and integrates with MySQL, PostgreSQL, and LDAP.
--	Used in ISPs and telecom networks for network access control.
-
-
-## Installation
+-	Provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
+-	This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
 
 ### Prerequisites
-Ensure the following dependencies are installed:
 
+Ensure the following dependencies are installed:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
 
-### **Getting Started**
+## Installation Steps
 
 Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
 
-
 #### **1. Clone the Repository**
+```bash
+git clone https://github.com/htakkey/cups-integrated.git
+cd cups-integrated
+```
 
-   ```bash
-   git clone https://github.com/htakkey/cups-integrated.git
-   cd cups-integrated
-   ```
-#### **2. Create Required Network Bridges**
-
+#### **2. Create Network Bridges**
 For **CentOS** (example):
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
 ```
-   
-#### **3. Deploy the ContainerLab Environment**
-
+#### **3. Deploy the ContainerLab **
 Run the following command to deploy the simulated network:
 ```bash    
 clab deploy -t mag-integrated.clab.yml
 ```
 
-#### **4. cliscripts**
-The delivered exec CLI scripts are a collection of standard CLI show commands designed to simplify session monitoring and management during lab upskilling. Instead of manually searching for the exact commands to run, these scripts provide a convenient way to execute them. You should best manually download, transfer and execute them from CF1 of the BNG and TRA.
-
+#### **4.Download cliscripts**
+The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
 ```bash
 [root@compute-1]# pwd
 /root/MAG-integrated/cliscripts/
 ```
+To use them, first manually download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts on MAG-1, MAG-2, and TRA-integrated.
 
-## **Testing starup**
 
-### **1. Topology setup**
+### **5. Topology setup**
 
 The topology of the setup is illustrated in the diagram below: 
 
 ![drawing View](images/topology-mag-integrated.png)	
 
+### **6. Start sessions**
 
-### **2. Register a 5G Subscriber**
-
-Use this script to register the **IMSI** with a specific apn,opc and key
-```bash
+Register IMSI in database
+Register the IMSI’s with a specific apn, opc and key using the pre-defined script.
+ ```bash
  root@compute-1 scripts]# ./register_subscriber.sh 
  ```
-	
-### **2.1 GUI Access to the Database**
-You can verify subscriber records via **Web GUI**:
+You can verify the registered subscriber records using the Web GUI:
+📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
 
-📌 **URL**: `http://x.x.x.x:9999/' 
-📌 **Username/Password**: `admin/1423'  
+### **7. Start the Open5GS Core Network**
 
-![Database View](images/Database.png)	
-
-### **3. Start the Open5GS Core Network**
-Run the following script to start the 4G Core( **HSS** and **MME**)
-Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
-
+Start the 4G Core (HSS and MME) using the pre-defined script. 
 ```bash
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
+Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
-### **4. Start the 4G Session**
-Start the 4G session 
-Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
-
-
+### **8. Start the 4G FWA session**
+Start the 4G session using the pre-defined script
 ```bash
 cd scripts
 ./start_4g_bng.sh
+Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
+
+### **9. Start the PPPoE or IPoE fixed sessions**  
+Start the broadband session the pre-defined script:
+
+```bash 
+cd scripts
+./start_dhcp_bng.sh
+./start_pppoe_bng_traffic.sh
+./start_pppoe_bng_notraffic.sh
 ```
-### **5. Start PPPoE/IPoE Session using BNGBlaster**
-Start the broadband session using **BNGBlaster**:
+![pppoe](images/pppoe.png)
+
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
 
-```bash
-cd scripts
-./start_dhcp_bng.sh
-./start_pppoe_bng_traffic.sh   ## (Starts session with traffic)
-```
-![pppoe](images/pppoe.png)
-    
----
+### **10. Troubleshooting**
+The logs available for analysis are enb1.log, hss.log, mme.log, pcrf.log, radiusd.log, and ue1.log. You can clear these logs using the ./clear_logs.sh script.
+For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
 
-### **6. Troubleshooting**
-
-The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
-also  there is another option can be integrated with this containerlab is EdgeShark https://containerlab.dev/manual/wireshark/ 
- 
-
-![edgeshark](images/edgeshark.png)
-
----
 
 
 ## **License**
-- ContainerLab images for VSR are provided by Nokia and require a commercial license.
+-	ContainerLab images for VSR are provided by Nokia and require a commercial license.
 -	All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
-
 ------
 ## **Contributing**
-Contributions are welcome! Please submit a **pull request** or open an **issue** if you find bugs or want to improve the project.
-
----
+Contributions are welcome! Please submit a pull request or open an issue if you find bugs or want to improve the project.
 
 ## **Contact**
-For questions, reach out via GitHub issues or contact the **Nokia team** for commercial licensing.
+For questions, reach out via GitHub issues or contact the Nokia team for commercial licensing.
 
 
 
