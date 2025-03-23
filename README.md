@@ -69,7 +69,7 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 [root@compute-1]# pwd
 /root/MAG-integrated/cliscripts/
 ```
-To use them, first manually download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts on MAG-1, MAG-2, and TRA-integrated.
+To use them, first manually download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated.
 
 
 ### **5. Topology setup**
