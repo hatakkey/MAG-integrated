@@ -1,7 +1,7 @@
 # **MAG-Integrated: Multi-Access Gateway with Open-Source Tools**
 
 ## **Objective**
-- The goal of this Multi access gateway integrated lab (MAG-Integrated), build with ContainerLab, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
+- The goal of this Multi access gateway integrated lab (MAG-Integrated), build with **[ContainerLab](https://containerlab.dev/)**, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
 
 ## **Overview**
 - **MAG-Integrated** is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG).It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
@@ -75,9 +75,10 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 ```
 To use them, first manually download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated.
 
-### **5. Start sessions**
+## Start sessions
 
-Register IMSI in database
+### **1. Register IMSI in database**
+
 Register the IMSI’s with a specific apn, opc and key using the pre-defined script.
  ```bash
  root@compute-1 scripts]# ./register_subscriber.sh 
@@ -87,7 +88,7 @@ You can verify the registered subscriber records using the Web GUI:
 
 ![Database View](images/Database.png) 
 
-### **6. Start the Open5GS Core Network**
+### **2. Start the Open5GS Core Network**
 
 Start the 4G Core (HSS and MME) using the pre-defined script. 
 ```bash
@@ -95,15 +96,16 @@ Start the 4G Core (HSS and MME) using the pre-defined script.
 ```
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
-### **7. Start the 4G FWA session**
+### **3. Start the 4G FWA session**
 Start the 4G session using the pre-defined script
 ```bash
 cd scripts
 ./start_4g_bng.sh
 ```
+
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
-### **8. Start the PPPoE or IPoE fixed sessions**  
+### **4. Start the PPPoE or IPoE fixed sessions**  
 Start the broadband session the pre-defined script:
 
 ```bash 
@@ -117,7 +119,7 @@ cd scripts
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
 
-### **9. Troubleshooting**
+### **5. Troubleshooting**
 The logs available for analysis are enb1.log, hss.log, mme.log, pcrf.log, radiusd.log, and ue1.log. You can clear these logs using the ./clear_logs.sh script.
 For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
 
