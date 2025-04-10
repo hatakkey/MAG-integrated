@@ -52,7 +52,7 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/htakkey/cups-integrated.git
+git clone https://github.com/htakkey/mag-integrated.git
 cd cups-integrated
 ```
 
