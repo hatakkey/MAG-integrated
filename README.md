@@ -11,7 +11,7 @@
 
 The topology of the setup is illustrated in the diagram below: 
 
-![drawing View](images/topology-mag-integrated.png) 
+![drawing View](snaps/topology-mag-integrated.png) 
 ## **Components**
 ### **1. MAG-integrated**  
 - **MAG-integrated** (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
@@ -86,7 +86,7 @@ Register the IMSI’s with a specific apn, opc and key using the pre-defined scr
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
 
-![Database View](images/Database.png) 
+![Database View](snaps/Database.png) 
 
 ### **2. Start the Open5GS Core Network**
 
@@ -114,7 +114,7 @@ cd scripts
 ./start_pppoe_bng_traffic.sh
 ./start_pppoe_bng_notraffic.sh
 ```
-![pppoe](images/pppoe.png)
+![pppoe](snaps/pppoe.png)
 
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
@@ -126,8 +126,8 @@ For further troubleshooting, you can use tcpdump to capture traffic on any bridg
 
 
 ## **License**
-- ContainerLab images for VSR are provided by Nokia and require a commercial license.
-- All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
+- ContainerLab snaps for VSR are provided by Nokia and require a commercial license.
+- All other ContainerLab snaps like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
 ------
 ## **Contributing**
 Contributions are welcome! Please submit a pull request or open an issue if you find bugs or want to improve the project.
