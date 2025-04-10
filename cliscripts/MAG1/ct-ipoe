@@ -1,0 +1,17 @@
+/exit all
+debug exclusive
+call-trace ipoe trace "ipoe" mac 02:00:01:00:00:01
+#echo "start call-trace on ipoe mac 02:00:01:00:00:01 to session"
+call-trace ipoe trace "ipoe" profile "profile-debug-output" trace-existing-sessions
+commit
+/admin show configuration debug
+/exit all
+#echo
+configure global
+/configure log log-id 77
+/configure log log-id 77 source debug
+/configure log log-id 77 destination cli
+/configure log log-id 77 admin-state enable
+commit
+/tools perform log subscribe-to log-id 77
+exit all

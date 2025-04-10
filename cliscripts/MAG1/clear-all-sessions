@@ -1,0 +1,9 @@
+#echo
+#echo "clear all sessions"
+/clear service id  51 ppp session all
+/clear service id  51 ipoe session all
+/clear router 51 dhcp6 local-dhcp-server "ldhcpv6-server" leases all
+/clear router 51 dhcp local-dhcp-server "ldhcpv4-server" leases all
+#echo
+#echo "done"
+#echo

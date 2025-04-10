@@ -1,0 +1,10 @@
+#echo
+#echo "make BNG1 master"
+#echo "srrp 1 priority 210"
+/configure global 
+/configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 priority  210
+commit
+#sleep 1
+/show srrp
+#echo
+#echo

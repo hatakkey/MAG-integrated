@@ -1,0 +1,632 @@
+A:admin@MAG2# admin show configuration flat
+# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated 2025-04-09T23:22:39.8+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-08T18:04:02.0+02:00 by admin (MD-CLI) from 172.31.255.29
+# Last saved 2025-04-08T18:04:05.5+02:00 by admin from 172.31.255.29
+
+    configure aaa radius server-policy "FreeRadius" servers router-instance "vprn-2043"
+    configure aaa radius server-policy "FreeRadius" servers source-address 192.0.2.11
+    configure aaa radius server-policy "FreeRadius" servers server 1 server-name "FreeRadius1"
+    configure aaa radius server-policy "FreeRadius-acct" servers router-instance "vprn-2043"
+    configure aaa radius server-policy "FreeRadius-acct" servers source-address 192.0.2.11
+    configure aaa radius server-policy "FreeRadius-acct" servers server 1 server-name "FreeRadius1"
+    configure aaa radius server-policy "FreeRadius-auth" servers router-instance "vprn-2043"
+    configure aaa radius server-policy "FreeRadius-auth" servers source-address 192.0.2.11
+    configure aaa radius server-policy "FreeRadius-auth" servers server 1 server-name "FreeRadius1"
+    configure aaa diameter node "bng.localdomain" origin-realm "localdomain"
+    configure aaa diameter node "bng.localdomain" router-instance "vprn-2043"
+    configure aaa diameter node "bng.localdomain" connection ipv4 local-address 50.50.50.1
+    configure aaa diameter node "bng.localdomain" peer index 1 admin-state enable
+    configure aaa diameter node "bng.localdomain" peer index 1 address 10.30.1.4
+    configure aaa diameter node "bng.localdomain" peer index 1 destination-host "pcrf.localdomain"
+    configure call-trace trace-profile "profile-debug-output" events all
+    configure call-trace trace-profile "profile-debug-output" output debug
+    configure card 1 card-type iom-1
+    configure card 1 mda 1 mda-type me6-100gb-qsfp28
+    configure { card 1 mda 2 }
+    configure { card 1 fp 1 }
+    configure fwd-path-ext fpe 3 path pxc 7
+    configure fwd-path-ext fpe 3 application sub-mgmt-extension true
+    configure log log-events dhcp event sapDHCPSuspiciousPcktRcvd generate false
+    configure log log-events dhcp event sapDHCPSuspiciousPcktRcvd throttle false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseModify generate false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseModify throttle false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseCreate generate false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseCreate throttle false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseDelete generate false
+    configure log log-events dhcps event tmnxDhcpSvrLeaseDelete throttle false
+    configure log log-events logger event tmnxClear generate false
+    configure log log-events logger event tmnxClear throttle false
+    configure log log-events system event tmnxTrapDropped generate false
+    configure log log-events system event tmnxTrapDropped throttle false
+    configure log log-events system event tmnxSysExecStarted generate false
+    configure log log-events system event tmnxSysExecStarted throttle false
+    configure log log-events system event tmnxSysExecFinished generate false
+    configure log log-events system event tmnxSysExecFinished throttle false
+    configure log filter "1001" named-entry "10" description "Collect only events of major severity or higher"
+    configure log filter "1001" named-entry "10" action forward
+    configure log filter "1001" named-entry "10" match severity gte major
+    configure log log-id "4" source debug true
+    configure { log log-id "5" }
+    configure log log-id "77" admin-state enable
+    configure log log-id "77" source main true
+    configure log log-id "77" source debug true
+    configure { log log-id "77" destination cli }
+    configure log log-id "99" description "Default System Log"
+    configure log log-id "99" time-format local
+    configure log log-id "99" source main true
+    configure log log-id "99" destination memory max-entries 500
+    configure log log-id "100" description "Default Serious Errors Log"
+    configure log log-id "100" filter "1001"
+    configure log log-id "100" source main true
+    configure log log-id "100" destination memory max-entries 500
+    configure { policy-options community "RT:65000:51" member "target:65000:51" }
+    configure { policy-options community "RT:65000:2043" member "target:65000:2043" }
+    configure { policy-options prefix-list "dhcp-servers" prefix 5.5.5.5/32 type exact }
+    configure { policy-options prefix-list "dhcp-servers" prefix 6.6.6.6/32 type exact }
+    configure { policy-options prefix-list "dhcp-servers" prefix 2001:db8::48/128 type exact }
+    configure { policy-options prefix-list "dhcp-servers" prefix 2002:db8::48/128 type exact }
+    configure { policy-options prefix-list "fwa-prefix" prefix 180.0.0.1/32 type exact }
+    configure { policy-options prefix-list "loopback" prefix 50.50.50.1/32 type exact }
+    configure { policy-options prefix-list "loopback" prefix 192.0.2.11/32 type exact }
+    configure policy-options policy-statement "subscribers-prefixes" entry 10 from state srrp-master
+    configure policy-options policy-statement "subscribers-prefixes" entry 10 from protocol name [direct]
+    configure policy-options policy-statement "subscribers-prefixes" entry 10 action action-type accept
+    configure policy-options policy-statement "subscribers-prefixes" entry 10 action community add ["RT:65000:51"]
+    configure policy-options policy-statement "subscribers-prefixes" entry 20 from prefix-list ["fwa-prefix"]
+    configure policy-options policy-statement "subscribers-prefixes" entry 20 from protocol name [sub-mgmt]
+    configure policy-options policy-statement "subscribers-prefixes" entry 20 action action-type accept
+    configure policy-options policy-statement "subscribers-prefixes" entry 20 action community add ["RT:65000:51"]
+    configure policy-options policy-statement "subscribers-prefixes" entry 30 from prefix-list ["dhcp-servers"]
+    configure policy-options policy-statement "subscribers-prefixes" entry 30 action action-type accept
+    configure policy-options policy-statement "subscribers-prefixes" entry 30 action community add ["RT:65000:51"]
+    configure policy-options policy-statement "vprn-2043-export" entry 10 from prefix-list ["loopback"]
+    configure policy-options policy-statement "vprn-2043-export" entry 10 action action-type accept
+    configure policy-options policy-statement "vprn-2043-export" entry 10 action metric set 10
+    configure policy-options policy-statement "vprn-2043-export" entry 10 action community add ["RT:65000:2043"]
+    configure port pxc-7.a admin-state enable
+    configure port pxc-7.a ethernet encap-type qinq
+    configure port pxc-7.b admin-state enable
+    configure port pxc-7.b ethernet encap-type qinq
+    configure port pxc-7.b ethernet access egress virtual-port "eNB1" aggregate-rate rate 4000000
+    configure { port pxc-7.b ethernet access egress virtual-port "eNB1" host-match int-dest-id "eNB1" }
+    configure port pxc-7.b ethernet egress port-scheduler-policy policy-name "eNB"
+    configure port 1/1/c1 admin-state enable
+    configure port 1/1/c1 connector breakout c1-40g
+    configure port 1/1/c1/1 admin-state enable
+    configure port 1/1/c1/1 ethernet mode hybrid
+    configure port 1/1/c2 admin-state enable
+    configure port 1/1/c2 connector breakout c1-40g
+    configure port 1/1/c2/1 admin-state enable
+    configure port 1/1/c2/1 ethernet mode hybrid
+    configure port 1/1/c2/1 ethernet encap-type qinq
+    configure port 1/1/c2/1 ethernet access egress virtual-port "fixed-session" aggregate-rate rate 8000000
+    configure { port 1/1/c2/1 ethernet access egress virtual-port "fixed-session" host-match int-dest-id "201" }
+    configure port 1/1/c2/1 ethernet egress port-scheduler-policy policy-name "dslam"
+    configure { port 1/1/c3 }
+    configure { port 1/1/c4 }
+    configure { port 1/1/c5 }
+    configure port 1/1/c6 admin-state enable
+    configure port 1/1/c6 connector breakout c1-100g
+    configure port 1/1/c6/1 admin-state enable
+    configure port 1/1/c6/1 ethernet mode hybrid
+    configure port 1/1/c6/1 ethernet dot1x tunneling true
+    configure port-xc pxc 7 admin-state enable
+    configure port-xc pxc 7 port-id 1/1/c6/1
+    configure { qos sap-ingress "100" policer 1 }
+    configure qos sap-ingress "100" fc "af" policer 1
+    configure qos sap-ingress "100" fc "be" policer 1
+    configure qos sap-ingress "100" fc "ef" policer 1
+    configure qos sap-ingress "100" fc "h1" policer 1
+    configure qos sap-ingress "100" fc "h2" policer 1
+    configure qos sap-ingress "100" fc "l1" policer 1
+    configure qos sap-ingress "100" fc "l2" policer 1
+    configure qos sap-ingress "100" fc "nc" policer 1
+    configure { qos sap-egress "100" queue 1 port-parent }
+    configure { qos sap-egress "100" policer 1 }
+    configure qos port-scheduler-policy "dslam" max-rate 9900000
+    configure qos port-scheduler-policy "eNB" max-rate 7700000
+    configure redundancy multi-chassis peer 192.0.2.10 admin-state enable
+    configure redundancy multi-chassis peer 192.0.2.10 sync admin-state enable
+    configure redundancy multi-chassis peer 192.0.2.10 sync local-dhcp-server true
+    configure redundancy multi-chassis peer 192.0.2.10 sync srrp true
+    configure redundancy multi-chassis peer 192.0.2.10 sync sub-mgmt ipoe true
+    configure redundancy multi-chassis peer 192.0.2.10 sync sub-mgmt pppoe true
+    configure redundancy multi-chassis peer 192.0.2.10 sync tags port 1/1/c2/1 sync-tag "srrp1"
+    configure router "Base" autonomous-system 65000
+    configure router "Base" interface "system" ipv4 primary address 192.0.2.11
+    configure router "Base" interface "system" ipv4 primary prefix-length 32
+    configure router "Base" interface "system" ipv6 address bad:cafe::192:0:2:11 prefix-length 128
+    configure router "Base" interface "to-TRA" port 1/1/c1/1:0
+    configure router "Base" interface "to-TRA" ipv4 primary address 172.16.117.14
+    configure router "Base" interface "to-TRA" ipv4 primary prefix-length 30
+    configure router "Base" interface "to-TRA" ipv6 address bad:cafe::172:16:117:14 prefix-length 124
+    configure router "Base" bgp min-route-advertisement 1
+    configure router "Base" bgp vpn-apply-export true
+    configure router "Base" bgp vpn-apply-import true
+    configure router "Base" bgp split-horizon true
+    configure router "Base" bgp ebgp-default-reject-policy import false
+    configure router "Base" bgp ebgp-default-reject-policy export false
+    configure router "Base" bgp rapid-update vpn-ipv4 true
+    configure router "Base" bgp rapid-update vpn-ipv6 true
+    configure router "Base" bgp rapid-update l2-vpn true
+    configure router "Base" bgp rapid-update mvpn-ipv4 true
+    configure router "Base" bgp rapid-update mdt-safi true
+    configure router "Base" bgp rapid-update mcast-vpn-ipv4 true
+    configure router "Base" bgp rapid-update mvpn-ipv6 true
+    configure router "Base" bgp rapid-update evpn true
+    configure router "Base" bgp rapid-update label-ipv4 true
+    configure router "Base" bgp rapid-update label-ipv6 true
+    configure router "Base" bgp rapid-update mcast-vpn-ipv6 true
+    configure router "Base" bgp group "internal" type internal
+    configure router "Base" bgp group "internal" family ipv4 true
+    configure router "Base" bgp group "internal" family vpn-ipv4 true
+    configure router "Base" bgp group "internal" family vpn-ipv6 true
+    configure router "Base" bgp neighbor "192.0.2.1" group "internal"
+    configure { router "Base" ldp interface-parameters interface "to-TRA" ipv4 }
+    configure router "Base" ospf 0 admin-state enable
+    configure router "Base" ospf 0 area 0.0.0.0 interface "system" interface-type point-to-point
+    configure router "Base" ospf 0 area 0.0.0.0 interface "to-TRA" interface-type point-to-point
+    configure router "Base" ospf3 0 admin-state enable
+    configure router "Base" ospf3 0 area 0.0.0.0 interface "system" interface-type point-to-point
+    configure router "Base" ospf3 0 area 0.0.0.0 interface "to-TRA" interface-type point-to-point
+    configure service sdp 21 admin-state enable
+    configure service sdp 21 delivery-type mpls
+    configure service sdp 21 ldp true
+    configure service sdp 21 far-end ip-address 192.0.2.10
+    configure service vpls "vpls-100" admin-state enable
+    configure service vpls "vpls-100" service-id 100
+    configure service vpls "vpls-100" customer "1"
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* radius-auth-policy "auth-1"
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* track-srrp 1
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* trigger-packet dhcp true
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* trigger-packet dhcp6 true
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* trigger-packet pppoe true
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* msap-defaults policy "msap-default"
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* msap-defaults service-name "vprn-51"
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* msap-defaults group-interface "grp-2"
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* ipoe-session admin-state enable
+    configure service vpls "vpls-100" capture-sap 1/1/c2/1:201.* ipoe-session ipoe-session-policy "default"
+    configure service vprn "vprn-51" admin-state enable
+    configure service vprn "vprn-51" service-id 51
+    configure service vprn "vprn-51" customer "1"
+    configure service vprn "vprn-51" bgp-ipvpn mpls admin-state enable
+    configure service vprn "vprn-51" bgp-ipvpn mpls route-distinguisher "51:2"
+    configure service vprn "vprn-51" bgp-ipvpn mpls vrf-target community "target:65000:51"
+    configure service vprn "vprn-51" bgp-ipvpn mpls vrf-export policy ["subscribers-prefixes"]
+    configure service vprn "vprn-51" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    configure service vprn "vprn-51" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    configure service vprn "vprn-51" interface "loopback" loopback true
+    configure service vprn "vprn-51" interface "loopback" ipv4 local-dhcp-server "ldhcpv4-server"
+    configure service vprn "vprn-51" interface "loopback" ipv4 primary address 6.6.6.6
+    configure service vprn "vprn-51" interface "loopback" ipv4 primary prefix-length 32
+    configure service vprn "vprn-51" interface "loopback" ipv6 local-dhcp-server "ldhcpv6-server"
+    configure service vprn "vprn-51" interface "loopback" ipv6 address 2002:db8::48 prefix-length 128
+    configure service vprn "vprn-51" interface "system" loopback true
+    configure service vprn "vprn-51" interface "system" ipv4 primary address 192.0.2.11
+    configure service vprn "vprn-51" interface "system" ipv4 primary prefix-length 32
+    configure { service vprn "vprn-51" redundant-interface "red-int" spoke-sdp 21:51 }
+    configure service vprn "vprn-51" redundant-interface "red-int" ipv4 primary address 192.168.12.1
+    configure service vprn "vprn-51" redundant-interface "red-int" ipv4 primary prefix-length 31
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" admin-state enable
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" user-db "fixed-users"
+    configure { service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool-selection use-pool-from-client }
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" failover admin-state enable
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" failover peer 192.0.2.10 sync-tag "dhcp"
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" min-lease-time 300
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" options option lease-time duration 3600
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" subnet 180.0.0.0/24 options option subnet-mask hex-string 0xffffff00
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" subnet 180.0.0.0/24 options option default-router hex-string 0xb40000fe
+    configure service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" subnet 180.0.0.0/24 address-range 180.0.0.4 end 180.0.0.20 failover-control-type remote
+    configure { service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" subnet 180.0.0.0/24 address-range 180.0.0.21 end 180.0.0.40 }
+    configure { service vprn "vprn-51" dhcp-server dhcpv4 "ldhcpv4-server" pool "dhcpv4-pool-1" subnet 180.0.0.0/24 exclude-addresses 180.0.0.1 end 180.0.0.3 }
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" admin-state enable
+    configure { service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool-selection use-pool-from-client }
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" failover admin-state enable
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" failover peer 192.0.2.10 sync-tag "dhcpv6"
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2001:2001:2001::/48 failover-control-type remote
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2001:2001:2001::/48 prefix-type pd false
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2002:2002:2002::/48 failover-control-type remote
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2002:2002:2002::/48 prefix-type wan-host false
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2003:2003:2003::/48 prefix-type pd false
+    configure service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-pool-1" prefix 2004:2004:2004::/48 prefix-type wan-host false
+    configure { service vprn "vprn-51" dhcp-server dhcpv6 "ldhcpv6-server" pool "dhcpv6-slaac-pool-1" prefix 2005:2005:2005::/48 }
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv4 default-dns [91.74.74.74 94.200.200.200]
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv4 address 180.0.0.253 prefix-length 24
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv4 address 180.0.0.253 gateway 180.0.0.254
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv4 address 180.0.0.253 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 delegated-prefix-length 56
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 default-dns [4001::208:67:5:1 4001::208:67:5:2]
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2001:2001:2001::/48 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2001:2001:2001::/48 host-type wan
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2002:2002:2002::/48 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2003:2003:2003::/48 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2003:2003:2003::/48 host-type wan
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2004:2004:2004::/48 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2005:2005:2005::/48 track-srrp 1
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 prefix 2005:2005:2005::/48 host-type wan
+    configure service vprn "vprn-51" subscriber-interface "sub-1" ipv6 link-local-address address fe80::5151:ffff:fe51:4321
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" type gtp
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" ipv6 router-advertisements admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" ipv6 router-advertisements options dns include-rdnss true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" ipv6 router-advertisements prefix-options autonomous true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" ipoe-session session-limit 100
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" sap-parameters sub-sla-mgmt sub-ident-policy "sub-ident-1"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" sap-parameters sub-sla-mgmt defaults sub-profile "sub-default"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" sap-parameters sub-sla-mgmt defaults sla-profile "sla-default"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" gtp-parameters admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-1" gtp-parameters fpe 3
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" radius-auth-policy "auth-1"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" oper-up-while-empty true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" redundant-interface "red-int"
+    configure { service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" dynamic-routes-track-srrp }
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 qos-route-lookup destination
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 neighbor-discovery populate true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp server [5.5.5.5 6.6.6.6]
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp trusted true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp gi-address 180.0.0.253
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp proxy-server admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp proxy-server emulated-server 180.0.0.254
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp option-82 vendor-specific-option pool-name true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv4 dhcp client-applications ppp true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 dhcp6 relay admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 dhcp6 relay server ["2001:db8::48" "2002:db8::48"]
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 dhcp6 relay client-applications ppp true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 dhcp6 proxy-server admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 dhcp6 proxy-server client-applications ppp true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 router-advertisements admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 router-advertisements options managed-configuration true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 router-advertisements options other-stateful-configuration true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 router-advertisements options dns include-rdnss true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipv6 router-advertisements prefix-options autonomous true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-linking admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-linking gratuitous-router-advertisement true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session ipoe-session-policy "default"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session session-limit 100
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session sap-session-limit 100
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session force-auth cid-change false
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" ipoe-session force-auth rid-change false
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" pppoe admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" pppoe session-limit 100
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" pppoe sap-session-limit 100
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" local-address-assignment admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" local-address-assignment ipv6 server "ldhcpv6-server"
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" local-address-assignment ipv6 client-applications ppp-slaac true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" local-address-assignment ipv6 client-applications ipoe-slaac true
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 admin-state enable
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 message-path 1/1/c2/1:201.201
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 priority 200
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 send-fib-population-packets outer-tag-only
+    configure service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" srrp 1 one-garp-per-sap true
+    configure { service vprn "vprn-51" subscriber-interface "sub-1" group-interface "grp-2" sap 1/1/c2/1:201.201 }
+    configure service vprn "vprn-2043" admin-state enable
+    configure service vprn "vprn-2043" service-id 2043
+    configure service vprn "vprn-2043" customer "1"
+    configure service vprn "vprn-2043" gtp s11 interface "SGW/PGW-loopback" apn-policy "apn-policy-2"
+    configure service vprn "vprn-2043" gtp s11 peer-profile-map prefix 0.0.0.0/0 peer-profile "UERANSIM"
+    configure service vprn "vprn-2043" bgp-ipvpn mpls admin-state enable
+    configure service vprn "vprn-2043" bgp-ipvpn mpls route-distinguisher "2043:2043"
+    configure service vprn "vprn-2043" bgp-ipvpn mpls vrf-target community "target:65000:2043"
+    configure service vprn "vprn-2043" bgp-ipvpn mpls vrf-export policy ["vprn-2043-export"]
+    configure service vprn "vprn-2043" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    configure service vprn "vprn-2043" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    configure service vprn "vprn-2043" interface "SGW/PGW-loopback" loopback true
+    configure service vprn "vprn-2043" interface "SGW/PGW-loopback" ipv4 primary address 50.50.50.1
+    configure service vprn "vprn-2043" interface "SGW/PGW-loopback" ipv4 primary prefix-length 32
+    configure service vprn "vprn-2043" interface "system" loopback true
+    configure service vprn "vprn-2043" interface "system" ipv4 primary address 192.0.2.11
+    configure service vprn "vprn-2043" interface "system" ipv4 primary prefix-length 32
+    configure service vprn "vprn-2043" radius server "FreeRadius1" address 100.0.0.2
+    configure service vprn "vprn-2043" radius server "FreeRadius1" secret "McTNkSePNJMVFysxyZa4y76ytIga3nM= hash2"
+    configure service vprn "vprn-2043" radius server "FreeRadius1" accept-coa true
+    configure subscriber-mgmt diameter-gx-policy "gx" node origin-host "bng.localdomain"
+    configure subscriber-mgmt diameter-gx-policy "gx" node destination-realm "localdomain"
+    configure subscriber-mgmt diameter-gx-policy "gx" gx avp-subscription-id origin imsi
+    configure { subscriber-mgmt sub-profile "sub-default" }
+    configure subscriber-mgmt sub-profile "sub-fwa" egress qos agg-rate rate 5000
+    configure subscriber-mgmt sub-profile "sub-fwa" radius-accounting policy ["acct-1"]
+    configure subscriber-mgmt sub-profile "sub-ipoe" egress qos agg-rate rate 5000
+    configure subscriber-mgmt sub-profile "sub-ipoe" radius-accounting policy ["acct-1"]
+    configure subscriber-mgmt sub-profile "sub-pppoe" egress qos agg-rate rate 5000
+    configure subscriber-mgmt sub-profile "sub-pppoe" radius-accounting policy ["acct-1"]
+    configure { subscriber-mgmt sla-profile "sla-default" }
+    configure subscriber-mgmt sla-profile "sla-fwa" egress qos sap-egress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-fwa" egress qos sap-egress port-parent-location vport
+    configure subscriber-mgmt sla-profile "sla-fwa" egress report-rate agg-rate
+    configure subscriber-mgmt sla-profile "sla-fwa" ingress qos sap-ingress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-fwa" ingress report-rate policer 1
+    configure subscriber-mgmt sla-profile "sla-ipoe" egress qos sap-egress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-ipoe" egress qos sap-egress port-parent-location vport
+    configure subscriber-mgmt sla-profile "sla-ipoe" ingress qos sap-ingress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-ipoe" ingress report-rate policer 1
+    configure subscriber-mgmt sla-profile "sla-pppoe" egress qos sap-egress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-pppoe" egress qos sap-egress port-parent-location vport
+    configure subscriber-mgmt sla-profile "sla-pppoe" ingress qos sap-ingress policy-name "100"
+    configure subscriber-mgmt sla-profile "sla-pppoe" ingress report-rate policer 1
+    configure subscriber-mgmt sub-ident-policy "sub-ident-1" sla-profile-map use-direct-map-as-default true
+    configure subscriber-mgmt sub-ident-policy "sub-ident-1" sub-profile-map use-direct-map-as-default true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" radius-server-policy "FreeRadius-acct"
+    configure subscriber-mgmt radius-accounting-policy "acct-1" session-id-format number
+    configure subscriber-mgmt radius-accounting-policy "acct-1" queue-instance-accounting admin-state disable
+    configure subscriber-mgmt radius-accounting-policy "acct-1" queue-instance-accounting interim-update false
+    configure subscriber-mgmt radius-accounting-policy "acct-1" session-accounting admin-state enable
+    configure subscriber-mgmt radius-accounting-policy "acct-1" session-accounting interim-update true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" session-accounting host-update true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" update-interval interval 10
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute access-loop-options true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute acct-authentic true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute acct-delay-time true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute acct-triggered-reason true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute error-code true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute all-authorized-session-addresses true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute apn true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute bonding-active-connections true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute bonding-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute brg-num-active-sessions true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute called-station-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute circuit-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute delegated-ipv6-prefix true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute dhcp-vendor-class-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute firewall-info true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-interface-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-ip-address true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-ip-netmask true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-ipv6-prefix true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-ipv6-route true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute framed-route true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute imei true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute ipv6-address true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute lanext-bridge-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute lanext-device-type true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute lanext-route-distinguisher true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute lanext-route-target true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute lanext-vni true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute mac-address true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute msisdn true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute nas-identifier true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute nat-port-range true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute remote-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute sla-profile true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute spi-sharing-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute std-acct-attributes true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute steering-profile true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute sub-profile true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute subscriber-id true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute tunnel-client-attrs true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute user-name true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute v6-aggregate-stats true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute wifi-num-attached-ues true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute wifi-rssi true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute wifi-ssid-vlan true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute uli true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute bearer-fteid true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute xconnect-tunnel-home-address true
+    configure subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute imsi true
+    configure { subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute calling-station-id }
+    configure { subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute nas-port-id }
+    configure { subscriber-mgmt radius-accounting-policy "acct-1" include-radius-attribute nas-port-type }
+    configure subscriber-mgmt radius-authentication-policy "auth-1" password "McTNkSePNJMVFysxyZa4y9jLYqQOQpM= hash2"
+    configure subscriber-mgmt radius-authentication-policy "auth-1" pppoe-access-method pap-chap
+    configure subscriber-mgmt radius-authentication-policy "auth-1" radius-server-policy "FreeRadius-auth"
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute apn true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute circuit-id true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute gprs-negotiated-qos-profile true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute imei true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute mac-address true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute msisdn true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute pppoe-service-name true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute rat-type true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute remote-id true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute uli true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute imsi true
+    configure subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute acct-session-id type session
+    configure { subscriber-mgmt radius-authentication-policy "auth-1" include-radius-attribute nas-port-id }
+    configure subscriber-mgmt msap-policy "msap-default" sticky-msaps true
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt subscriber-limit no-limit
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt sub-ident-policy "sub-ident-1"
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt defaults sla-profile "sla-default"
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt defaults sub-profile "sub-default"
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt defaults int-dest-id top-q-tag
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt defaults subscriber-id auto-id
+    configure subscriber-mgmt msap-policy "msap-default" sub-sla-mgmt single-sub-parameters profiled-traffic-only true
+    configure subscriber-mgmt gtp apn-policy "apn-policy-1" apn "internet.mnc001.mcc206.gprs" user-db "fwa-users"
+    configure subscriber-mgmt gtp apn-policy "apn-policy-2" apn "internet.mnc001.mcc206.gprs" radius-auth-policy "auth-1"
+    configure subscriber-mgmt gtp apn-policy "apn-policy-2" apn "internet.mnc001.mcc206.gprs" ambr-qos-mapping downlink aggregate-rate
+    configure subscriber-mgmt gtp apn-policy "apn-policy-2" apn "internet.mnc001.mcc206.gprs" ambr-qos-mapping uplink policer 1
+    configure subscriber-mgmt gtp peer-profile "UERANSIM" interface-type s11
+    configure subscriber-mgmt gtp peer-profile "UERANSIM" s11 qos qci 9
+    configure subscriber-mgmt local-user-db "fixed-users" admin-state enable
+    configure subscriber-mgmt local-user-db "fixed-users" ipoe match-list [mac]
+    configure subscriber-mgmt local-user-db "fixed-users" ipoe host "ipoe-1" admin-state enable
+    configure subscriber-mgmt local-user-db "fixed-users" ipoe host "ipoe-1" host-identification mac 02:00:01:00:00:01
+    configure subscriber-mgmt local-user-db "fixed-users" ipoe host "ipoe-1" ipv4 address ip-address 180.0.0.2
+    configure subscriber-mgmt local-user-db "fixed-users" ppp match-list [mac]
+    configure subscriber-mgmt local-user-db "fixed-users" ppp host "pppoe-1" admin-state enable
+    configure subscriber-mgmt local-user-db "fixed-users" ppp host "pppoe-1" host-identification mac 02:00:05:00:00:01
+    configure subscriber-mgmt local-user-db "fixed-users" ppp host "pppoe-1" ipv4 address ip-address 180.0.0.3
+    configure subscriber-mgmt local-user-db "fwa-users" admin-state enable
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe match-list [string]
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" admin-state enable
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" host-identification string "206010000000001"
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" gtp-interface name "grp-1"
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" gtp-interface service-id 51
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" identification sla-profile-string "sla-fwa"
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" identification sub-profile-string "sub-fwa"
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" identification subscriber-id "206010000000001"
+    configure subscriber-mgmt local-user-db "fwa-users" ipoe host "host1" ipv4 address ip-address 180.0.0.1
+    configure system name "MAG2"
+    configure system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
+    configure system grpc admin-state enable
+    configure system grpc allow-unsecure-connection
+    configure system grpc rib-api admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "all-sessions" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "all-sessions" cli-command "exec \"cf1:/scripts-md/clear-all-sessions\""
+    configure { system management-interface cli md-cli environment command-alias alias "all-sessions" mount-point "/clear" }
+    configure system management-interface cli md-cli environment command-alias alias "all-stats" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "all-stats" cli-command "exec \"cf1:/scripts-md/clear-all-stats\""
+    configure { system management-interface cli md-cli environment command-alias alias "all-stats" mount-point "/clear" }
+    configure system management-interface cli md-cli environment command-alias alias "ct-fwa" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "ct-fwa" cli-command "exec \"cf1:/scripts-md/ct-fwa\""
+    configure { system management-interface cli md-cli environment command-alias alias "ct-fwa" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "ct-ipoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "ct-ipoe" cli-command "exec \"cf1:/scripts-md/ct-ipoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "ct-ipoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "ct-pppoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "ct-pppoe" cli-command "exec \"cf1:/scripts-md/ct-pppoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "ct-pppoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "fwa" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "fwa" cli-command "exec \"cf1:/scripts-md/clear-fwa\""
+    configure { system management-interface cli md-cli environment command-alias alias "fwa" mount-point "/clear" }
+    configure system management-interface cli md-cli environment command-alias alias "s-fwa" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-fwa" cli-command "exec \"cf1:/scripts-md/s-fwa\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-fwa" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe" cli-command "exec \"cf1:/scripts-md/s-ipoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-ipoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-pppoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-pppoe" cli-command "exec \"cf1:/scripts-md/s-pppoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-pppoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "srrp-backup" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "srrp-backup" cli-command "exec \"cf1:/scripts-md/srrp-backup\""
+    configure { system management-interface cli md-cli environment command-alias alias "srrp-backup" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "srrp-master" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "srrp-master" cli-command "exec \"cf1:/scripts-md/srrp-master\""
+    configure { system management-interface cli md-cli environment command-alias alias "srrp-master" mount-point "/configure" }
+    configure { system management-interface cli md-cli environment command-alias alias "srrp-master" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "vport" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "vport" cli-command "exec \"cf1:/scripts-md/vport\""
+    configure { system management-interface cli md-cli environment command-alias alias "vport" mount-point "/show" }
+    configure system management-interface configuration-save incremental-saves false
+    configure system management-interface netconf listen admin-state enable
+    configure system management-interface snmp packet-size 9216
+    configure system management-interface snmp streaming admin-state enable
+    configure system bluetooth advertising-timeout 30
+    configure system login-control idle-timeout none
+    configure system login-control motd text "## This node is part of the MAG-integrated CLAB ...Enjoy ##\n"
+    configure system login-control ssh inbound-max-sessions 30
+    configure system security aaa local-profiles profile "administrative" default-action permit-all
+    configure system security aaa local-profiles profile "administrative" entry 10 match "configure system security"
+    configure system security aaa local-profiles profile "administrative" entry 10 action permit
+    configure system security aaa local-profiles profile "administrative" entry 20 match "show system security"
+    configure system security aaa local-profiles profile "administrative" entry 20 action permit
+    configure system security aaa local-profiles profile "administrative" entry 30 match "tools perform security"
+    configure system security aaa local-profiles profile "administrative" entry 30 action permit
+    configure system security aaa local-profiles profile "administrative" entry 40 match "tools dump security"
+    configure system security aaa local-profiles profile "administrative" entry 40 action permit
+    configure system security aaa local-profiles profile "administrative" entry 42 match "tools dump system security"
+    configure system security aaa local-profiles profile "administrative" entry 42 action permit
+    configure system security aaa local-profiles profile "administrative" entry 50 match "admin system security"
+    configure system security aaa local-profiles profile "administrative" entry 50 action permit
+    configure system security aaa local-profiles profile "administrative" entry 100 match "configure li"
+    configure system security aaa local-profiles profile "administrative" entry 100 action deny
+    configure system security aaa local-profiles profile "administrative" entry 110 match "show li"
+    configure system security aaa local-profiles profile "administrative" entry 110 action deny
+    configure system security aaa local-profiles profile "administrative" entry 111 match "clear li"
+    configure system security aaa local-profiles profile "administrative" entry 111 action deny
+    configure system security aaa local-profiles profile "administrative" entry 112 match "tools dump li"
+    configure system security aaa local-profiles profile "administrative" entry 112 action deny
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization action true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization cancel-commit true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization close-session true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization commit true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization copy-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization create-subscription true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization delete-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization discard-changes true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization edit-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-data true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-schema true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization kill-session true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization lock true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization validate true
+    configure system security aaa local-profiles profile "default" entry 10 match "exec"
+    configure system security aaa local-profiles profile "default" entry 10 action permit
+    configure system security aaa local-profiles profile "default" entry 20 match "exit"
+    configure system security aaa local-profiles profile "default" entry 20 action permit
+    configure system security aaa local-profiles profile "default" entry 30 match "help"
+    configure system security aaa local-profiles profile "default" entry 30 action permit
+    configure system security aaa local-profiles profile "default" entry 40 match "logout"
+    configure system security aaa local-profiles profile "default" entry 40 action permit
+    configure system security aaa local-profiles profile "default" entry 50 match "password"
+    configure system security aaa local-profiles profile "default" entry 50 action permit
+    configure system security aaa local-profiles profile "default" entry 60 match "show config"
+    configure system security aaa local-profiles profile "default" entry 60 action deny
+    configure system security aaa local-profiles profile "default" entry 65 match "show li"
+    configure system security aaa local-profiles profile "default" entry 65 action deny
+    configure system security aaa local-profiles profile "default" entry 66 match "clear li"
+    configure system security aaa local-profiles profile "default" entry 66 action deny
+    configure system security aaa local-profiles profile "default" entry 67 match "tools dump li"
+    configure system security aaa local-profiles profile "default" entry 67 action deny
+    configure system security aaa local-profiles profile "default" entry 68 match "state li"
+    configure system security aaa local-profiles profile "default" entry 68 action deny
+    configure system security aaa local-profiles profile "default" entry 70 match "show"
+    configure system security aaa local-profiles profile "default" entry 70 action permit
+    configure system security aaa local-profiles profile "default" entry 75 match "state"
+    configure system security aaa local-profiles profile "default" entry 75 action permit
+    configure system security aaa local-profiles profile "default" entry 80 match "enable-admin"
+    configure system security aaa local-profiles profile "default" entry 80 action permit
+    configure system security aaa local-profiles profile "default" entry 90 match "enable"
+    configure system security aaa local-profiles profile "default" entry 90 action permit
+    configure system security aaa local-profiles profile "default" entry 100 match "configure li"
+    configure system security aaa local-profiles profile "default" entry 100 action deny
+    configure system security aaa user-template ldap-default restricted-to-home false
+    configure system security aaa user-template ldap-default save-when-restricted false
+    configure system security aaa user-template radius-default restricted-to-home false
+    configure system security aaa user-template radius-default save-when-restricted false
+    configure system security aaa user-template tacplus-default restricted-to-home false
+    configure system security aaa user-template tacplus-default save-when-restricted false
+    configure system security ssh server-cipher-list-v2 cipher 190 name aes256-ctr
+    configure system security ssh server-cipher-list-v2 cipher 192 name aes192-ctr
+    configure system security ssh server-cipher-list-v2 cipher 194 name aes128-ctr
+    configure system security ssh server-cipher-list-v2 cipher 200 name aes128-cbc
+    configure system security ssh server-cipher-list-v2 cipher 205 name 3des-cbc
+    configure system security ssh server-cipher-list-v2 cipher 225 name aes192-cbc
+    configure system security ssh server-cipher-list-v2 cipher 230 name aes256-cbc
+    configure system security ssh client-cipher-list-v2 cipher 190 name aes256-ctr
+    configure system security ssh client-cipher-list-v2 cipher 192 name aes192-ctr
+    configure system security ssh client-cipher-list-v2 cipher 194 name aes128-ctr
+    configure system security ssh client-cipher-list-v2 cipher 200 name aes128-cbc
+    configure system security ssh client-cipher-list-v2 cipher 205 name 3des-cbc
+    configure system security ssh client-cipher-list-v2 cipher 225 name aes192-cbc
+    configure system security ssh client-cipher-list-v2 cipher 230 name aes256-cbc
+    configure system security ssh server-mac-list-v2 mac 200 name hmac-sha2-512
+    configure system security ssh server-mac-list-v2 mac 210 name hmac-sha2-256
+    configure system security ssh server-mac-list-v2 mac 215 name hmac-sha1
+    configure system security ssh server-mac-list-v2 mac 220 name hmac-sha1-96
+    configure system security ssh server-mac-list-v2 mac 225 name hmac-md5
+    configure system security ssh server-mac-list-v2 mac 240 name hmac-md5-96
+    configure system security ssh client-mac-list-v2 mac 200 name hmac-sha2-512
+    configure system security ssh client-mac-list-v2 mac 210 name hmac-sha2-256
+    configure system security ssh client-mac-list-v2 mac 215 name hmac-sha1
+    configure system security ssh client-mac-list-v2 mac 220 name hmac-sha1-96
+    configure system security ssh client-mac-list-v2 mac 225 name hmac-md5
+    configure system security ssh client-mac-list-v2 mac 240 name hmac-md5-96
+    configure system security user-params local-user user "admin" password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+    configure system security user-params local-user user "admin" restricted-to-home false
+    configure system security user-params local-user user "admin" save-when-restricted false
+    configure system security user-params local-user user "admin" access console true
+    configure system security user-params local-user user "admin" access ftp true
+    configure system security user-params local-user user "admin" access snmp true
+    configure system security user-params local-user user "admin" access netconf true
+    configure system security user-params local-user user "admin" access grpc true
+    configure system security user-params local-user user "admin" console member ["administrative"]
+    configure system time zone standard name cet
+    configure system time daylight-saving-time-zone standard name cest
+    configure system time ntp admin-state enable
+    configure { system time ntp ntp-server }
+    configure system time ntp server 10.171.8.4 router-instance "management" prefer true
+    configure { system time ntp server 10.171.8.45 router-instance "management" }
+
+# Finished 2025-04-09T23:22:39.8+02:00
+
+[/]
+A:admin@MAG2#
+

@@ -1,0 +1,64 @@
+#echo
+#echo
+#echo "ipoe"
+#echo
+#echo "show subscriber-mgmt statistics sla-profiles"
+/show subscriber-mgmt statistics sla-profiles
+#echo
+#echo "show subscriber-mgmt statistics sub-profiles"
+/show subscriber-mgmt statistics sub-profiles
+#echo
+#echo "show subscriber-mgmt statistics system summary"
+/show subscriber-mgmt statistics system summary
+#echo
+#echo "show subscriber-mgmt statistics system non-zero-value-only"
+/show subscriber-mgmt statistics system non-zero-value-only
+#echo
+#echo "show subscriber-mgmt statistics group-interface all service vprn-51 non-zero-value-only"
+/show subscriber-mgmt statistics group-interface all service service-id vprn-51 non-zero-value-only
+#echo
+#
+#echo "show router 51 dhcp local-dhcp-server ldhcpv4-server leases"
+/show router 51 dhcp local-dhcp-server ldhcpv4-server leases
+#echo
+#echo "show router 51 dhcp6 local-dhcp-server ldhcpv6-server leases"
+/show router 51 dhcp6 local-dhcp-server ldhcpv6-server leases
+#echo
+#
+#echo "show aaa radius-server-policy FreeRadius statistics"
+/show aaa radius-server-policy FreeRadius statistics | match ": 0" invert-match
+##echo "show router 51 route-table"
+#/show router 51 route-table
+##echo
+##echo "show router ospf neighbor"
+##echo "show router ospf3 neighbor"
+#
+#echo "show srrp"
+/show srrp
+#echo
+#echo "show service active-subscribers hierarchy subscriber 02:00:01:00:00:01|1/1/c2/1:201.100"
+/show service active-subscribers hierarchy subscriber "02:00:01:00:00:01|1/1/c2/1:201.100"
+#echo
+#echo "show service active-subscribers subscriber 02:00:01:00:00:01|1/1/c2/1:201.100 detail"
+/show service active-subscribers subscriber "02:00:01:00:00:01|1/1/c2/1:201.100" detail
+#echo
+#echo "show qos scheduler-hierarchy subscriber 02:00:01:00:00:01|1/1/c2/1:201.100 egress detail"
+/show qos scheduler-hierarchy subscriber "02:00:01:00:00:01|1/1/c2/1:201.100" egress detail
+#echo
+#echo "show service id  51 ipoe session sap 1/1/c2/1:201.100"
+/show service id vprn-51 ipoe session sap "1/1/c2/1:201.201" 
+#echo
+#echo "show service id  51 ipoe session  mac 02:00:01:00:00:01"
+/show service id  51 ipoe session  mac 02:00:01:00:00:01
+#echo
+#echo "show service id  51 ipoe session  mac 02:00:01:00:00:01 detail"
+/show service id  51 ipoe session  mac 02:00:01:00:00:01 detail
+#echo
+#
+#echo "show service active-subscribers hierarchy subscriber 02:00:01:00:00:01|1/1/c2/1:201.100 radius-acct"
+/show service active-subscribers hierarchy subscriber "02:00:01:00:00:01|1/1/c2/1:201.100" radius-acct                                                     
+#echo
+#echo "show service active-subscribers hierarchy subscriber 02:00:01:00:00:01|1/1/c2/1:201.100"
+/show service active-subscribers hierarchy subscriber "02:00:01:00:00:01|1/1/c2/1:201.100"
+#echo
+#echo

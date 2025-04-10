@@ -1,9 +1,0 @@
-echo
-echo "show subscriber-mgmt pfcp association sx statistics"
-echo
-show subscriber-mgmt pfcp association "sx" statistics
-echo
-echo "Clear command"
-echo "clear subscriber-mgmt pfcp-association sx statistics"
-echo
-

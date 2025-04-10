@@ -1,0 +1,12 @@
+#echo
+#echo
+#echo "1) ping fwa1"
+#echo "ping 180.0.0.1 router-instance "51" count 5"
+#echo
+#echo "2) ping ipoe1"
+#echo "ping 180.0.0.2 router-instance "51" count 5"
+#echo
+#echo "3) ping pppoe1"
+#echo "ping 180.0.0.3 router-instance "51" count 5"
+#echo
+#echo

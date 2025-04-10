@@ -1,7 +1,0 @@
-echo
-/show service id  500 subscriber-hosts mac 02:00:03:00:00:01
-echo
-/show subscriber-mgmt pfcp session mac 02:00:03:00:00:01 detail
-echo
-
-

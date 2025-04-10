@@ -1,4 +1,0 @@
-echo
-/ping router 51 180.0.0.1 count 1
-echo
-

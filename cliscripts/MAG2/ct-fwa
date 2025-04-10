@@ -1,0 +1,18 @@
+/exit all
+debug exclusive
+subscriber-mgmt gtp packets detail-level high
+subscriber-mgmt gtp packets mode all
+router "vprn-2043" radius
+commit
+/admin show configuration debug
+/exit all
+configure global
+/configure log log-id 77
+/configure log log-id 77 source debug
+/configure log log-id 77 destination cli
+/configure log log-id 77 admin-state enable
+commit
+/tools perform log subscribe-to log-id 77
+/exit
+
+
