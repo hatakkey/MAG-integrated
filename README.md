@@ -121,7 +121,9 @@ Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed
 
 ### **5. Troubleshooting**
 The logs available for analysis are enb1.log, hss.log, mme.log, pcrf.log, radiusd.log, and ue1.log. You can clear these logs using the ./clear_logs.sh script.
-For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
+For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. 
+Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
+![pcap](snaps/edgeshark.png)
 
 
 
