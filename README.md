@@ -77,8 +77,7 @@ To use them, first run the below script
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated.
-
+To download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. 
 ## Start sessions
 
 ### **1. Register IMSI in database**
