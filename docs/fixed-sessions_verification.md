@@ -79,7 +79,7 @@ Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session m
 ./start_dhcp_bng.sh
 ```
 
-![dhcp_red](../images/dhcp.png)
+![dhcp_red](../snaps/dhcp.png)
 
 The 10 IPOEs sessions are established and can be verified using the below script
 
@@ -2593,7 +2593,7 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
  ./start_pppoe_bng_traffic.sh
 ```
 
-![pppoe](../images/pppoe.png)
+![pppoe](../snaps/pppoe.png)
   
 The 10 PPPoEv4v6 sessions are etsblished and can be verified using the below script
 
