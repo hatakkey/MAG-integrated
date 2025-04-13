@@ -2,7 +2,7 @@
 You can check the logs for the open5GS and UERANSIM
 ```bash
 [root@compute-4 logs]# ls
-enb1.log  hss.log  mme.log  pcrf.log  ue1.log
+enb1.log  hss.log  mme.log  pcrf.log  radiusd.log  ue1.log
 [root@compute-4 logs]#
 ```
 The below are the logs for 1 IMSI connected

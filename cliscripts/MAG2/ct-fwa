@@ -2,7 +2,14 @@
 debug exclusive
 subscriber-mgmt gtp packets detail-level high
 subscriber-mgmt gtp packets mode all
-router "vprn-2043" radius
+router "vprn-2043" radius  {
+                 detail-level high
+                packet-types {
+                    authentication true
+                    accounting true
+                    coa true
+                }
+            }
 commit
 /admin show configuration debug
 /exit all
