@@ -174,7 +174,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │ integrated-webui          │ linux                                     │ running │ 192.168.41.51  │
 │                           │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰───────────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
-``` 
+```
 ### 3.1 **Access the container nodes**
 The nodes are accessable via the IP address or the node name    
 ```bash  
@@ -185,6 +185,25 @@ docker exec -it integrated-enodeb1        bash
 docker exec -it integrated-radius     sh
 ssh admin@integrated-TRA-integrated   ## password=admin     
 ssh admin@integrated-MAG1 ## password=admin
-ssh admin@integrated-MAG2 ## password=admin  
+ssh admin@integrated-MAG2 ## password=admin 
 ```
+
+###4. **Downloadin the CLIscripts**
+ 
+Via using the below pre-defined scripts,the cliscripts can be download to the nodes
+
+```bash 
+[root@compute-1 scripts]# ./upload-cliscripts.sh
+integrated-MAG1 is up, starting SFTP upload...
+Upload complete for integrated-MAG1.
+integrated-MAG2 is up, starting SFTP upload...
+Upload complete for integrated-MAG2.
+integrated-TRA-integrated is up, starting SFTP upload...
+Upload complete for integrated-TRA-integrated.
+[root@compute-1 scripts]# ssh -l admin integrated-TRA-integrated
+```
+ 
+
+
+
       
