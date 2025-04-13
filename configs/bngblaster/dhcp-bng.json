@@ -1,6 +1,6 @@
 {
   "interfaces": {
-    "mac-modifier": 2,
+    "mac-modifier": 1,
     "network": {
             "interface": "eth2",
             "address": "10.0.0.1/24",
@@ -10,7 +10,7 @@
         "__comment__": "DHCP Client 1",
         "interface": "eth1",
         "type": "ipoe",
-        "ipv6": "false",
+        "ipv6": true,
         "vlan-mode": "1:1",
         "outer-vlan-min": 201,
         "outer-vlan-max": 201,
@@ -23,13 +23,13 @@
   },
   "dhcp": {
     "enable": true,
-    "broadcast": false
-},
+    "broadcast": true
+    },
   "dhcpv6": {
-    "enable": false,
+    "enable": true,
     "ia-na": false,
-    "ia-pd": false
-},
+    "ia-pd": true
+  },
   "access-line": {
     "agent-remote-id": "7750bng-sub.{session-global}",
     "agent-circuit-id": "0.0.0.0/0.0.0.0 eth 1:{session-global}"
