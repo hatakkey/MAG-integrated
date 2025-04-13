@@ -73,7 +73,8 @@ SCTP supported
 
 Deploy the containerized network environment using the ContainerLab configuration:
 ```bash
-[root@compute-3 mag-integrated]# clab dep -t mag-integrated.clab.yml
+[root@compute-1 MAG-integrated]# export CLAB_SKIP_SROS_SSH_KEY_CONFIG=true
+[root@compute-1 MAG-integrated]# clab dep -t mag-integrated.clab.yml
 12:31:16 INFO Containerlab started version=0.67.0
 12:31:16 INFO Parsing & checking topology file=mag-integrated.clab.yml
 12:31:16 INFO Creating docker network name=integ IPv4 subnet=192.168.41.0/24 IPv6 subnet="" MTU=0
