@@ -8,14 +8,13 @@
 
 
 206010000000001 Cleartext-Password:= "alcatel"
-         Alc-Interface = grp-gtp-1,
-         Alc-Subsc-Prof-Str = "sub-func1",
-         Alc-SLA-Prof-Str = "sla-func1",
+         Alc-Interface = grp-1,
+         Alc-Subsc-Prof-Str = "sub-fwa",
+         Alc-SLA-Prof-Str = "sla-fwa",
          Alc-Serv-Id   = 51,
-         Framed-IP-Address = 180.0.0.2,
-         Framed-IP-Netmask = 255.255.255.0,
-#         Alc-Subscriber-QoS-Override ="i:p:1:pir=60000,cir=0",
-#         Alc-Subscriber-QoS-Override ="e:r:rate=110000",
+         Framed-IP-Address = 180.0.0.1,
+         Alc-Subscriber-QoS-Override ="i:p:1:pir=60000,cir=0",
+         Alc-Subscriber-QoS-Override ="e:r:rate=110000",
          Alc-Int-Dest-Id-Str = "eNB1",
          Class = "user1"
 
@@ -27,8 +26,13 @@
 
 # PPPoE  
 nokia  Cleartext-Password :=nokia123, Auth-Type :=CHAP
-         Alc-Subsc-Prof-Str = "sub-default",
-         Alc-SLA-Prof-Str = "sla-default",
+         Alc-Subsc-Prof-Str = "sub-pppoe",
+         Alc-SLA-Prof-Str = "sla-pppoe",
+         Framed-Pool = "dhcpv4-pool-1",
+         #Framed-IP-Address = 180.0.0.3,
+         #Framed-IPv6-Pool = "dhcpv6-pool-1",
+         Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+         Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1", 
          Alc-Subscriber-QoS-Override ="i:p:1:pir=20000,cir=0",
          Alc-Subscriber-QoS-Override ="e:r:rate=200000",
          Class = "ppp-1"
@@ -36,26 +40,106 @@ nokia  Cleartext-Password :=nokia123, Auth-Type :=CHAP
 #
 # IPoE 
 02:00:01:00:00:01  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                  # Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-1
+
 02:00:01:00:00:02  Auth-Type :=Accept
+                   Alc-Subsc-Prof-Str = "sub-ipoe",
+                   Alc-SLA-Prof-Str = "sla-ipoe",
+                 # Framed-IP-Address = 180.0.0.4,
+                   Framed-Pool = "dhcpv4-pool-1",
+                   Framed-IPv6-Pool = "dhcpv6-pool-1",
+                   Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                   Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                   Class = ipoe-2
+
 02:00:01:00:00:03  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-3
+
 02:00:01:00:00:04  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-4
+
 02:00:01:00:00:05  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                   # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-5
+
 02:00:01:00:00:06  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-6
+
 02:00:01:00:00:07  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-7
+
 02:00:01:00:00:08  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-8
+
 02:00:01:00:00:09  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-9
+
 02:00:01:00:00:0a  Auth-Type :=Accept
+                    Alc-Subsc-Prof-Str = "sub-ipoe",
+                    Alc-SLA-Prof-Str = "sla-ipoe",
+                  # Framed-IP-Address = 180.0.0.4,
+                    Framed-Pool = "dhcpv4-pool-1",
+                    Framed-IPv6-Pool = "dhcpv6-pool-1",
+                    Alc-SLAAC-IPv6-Pool= "dhcpv6-slaac-pool-1",
+                    Alc-Delegated-IPv6-Pool= "dhcpv6-pool-1",
+                    Class = ipoe-10
+
 #
-02:00:02:00:00:01  Auth-Type :=Accept
-02:00:02:00:00:02  Auth-Type :=Accept
-02:00:02:00:00:03  Auth-Type :=Accept
-02:00:02:00:00:04  Auth-Type :=Accept
-02:00:02:00:00:05  Auth-Type :=Accept
-02:00:02:00:00:06  Auth-Type :=Accept
-02:00:02:00:00:07  Auth-Type :=Accept
-02:00:02:00:00:08  Auth-Type :=Accept
-02:00:02:00:00:09  Auth-Type :=Accept
-02:00:02:00:00:0a  Auth-Type :=Accept
 
 #
 #EndCLAB
