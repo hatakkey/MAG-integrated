@@ -17,6 +17,7 @@ The topology of the setup is illustrated in the diagram below:
 - **MAG-integrated** (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
   - This lab initiates 10 statefull redundant dual-stack PPPoE or IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
   - This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
+		- This lab also includes a set of predefined CLI scripts (show commands) designed to streamline session monitoring and management during lab upskilling, eliminating the need for manually searching for specific commands.
 
 ### **2. FreeRADIUS**
 - **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
@@ -57,7 +58,8 @@ cd mag-integrated
 ```
 
 ### **2. Create Network Bridges**
-We have two examples for creating the bridges one for CentOS and another one for ubuntu 
+
+We have two examples for creating the bridges one for CentOS and another one for Ubuntu 
 For **CentOS** (example):
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -78,7 +80,7 @@ To use them, first run the below script
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
+To download and upload the predefined scripts from /root/mag-integrated/cliscripts/ to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
 ## Start sessions
 
 ### **1. Register IMSI in database**
@@ -107,6 +109,10 @@ cd scripts
 ./start_4g_bng.sh
 ```
 
+Note that the sessions created can be terminated from the home-user using the predefined script /stop_4g_bng.sh or from the MAG using the predefined script clear fwa.
+
+
+
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
 ### **4. Start the PPPoE or IPoE fixed sessions**  
@@ -118,6 +124,8 @@ cd scripts
 ./start_pppoe_bng_traffic.sh
 ./start_pppoe_bng_notraffic.sh
 ```
+Bngblaster properly terminates the sessions by using Control-C
+
 ![pppoe](snaps/pppoe.png)
 
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .

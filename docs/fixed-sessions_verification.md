@@ -1,4 +1,4 @@
-## 1. checking the MCS between the 2 MAGs
+## 1. Checking the MCS between the 2 MAGs
 
 MAG1 is the master and can be checked via the below predefined script
 
@@ -73,7 +73,7 @@ Executed 10 lines in 0.2 seconds from file "cf1:\scripts-md\srrp-master"
 ----
 Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
 
-### 1.1. **start IPoEv4v6 session**
+### 2.1 **start IPoEv4v6 session**
 10 dhcp sessions are established using the BNGBlaster
 ```bash
 ./start_dhcp_bng.sh
@@ -1232,6 +1232,8 @@ Active Subscribers Hierarchy
 ===============================================================================
 Executed 64 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 ```
+
+### 2.1.1. **Start call-trace for the session**
 
 A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2
 
@@ -2580,12 +2582,22 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
 
 
 
+### 2.1.2 **Data-plane verification IPOE sessions**
 
+The data-plane verifciation for the IPoE sessions can be checked via a predefined script from the TRA
 
+```bash
+A:admin@TRA-integrated# show ping-ipoe
+PING 180.0.0.2 56 data bytes
+64 bytes from 180.0.0.2: icmp_seq=1 ttl=63 time=2.57ms.
+64 bytes from 180.0.0.2: icmp_seq=2 ttl=63 time=2.99ms.
+64 bytes from 180.0.0.2: icmp_seq=3 ttl=63 time=1.84ms.
+```bash
 
+Note: There's also an option to send data traffic from the BNG Blaster by creating sessions.
+      The previous script used for session creation via BNG Blaster is already included it
 
-
-### 1.2. **start PPPoEv4v6 sessios **
+### 2.2. **start PPPoEv4v6 sessios **
   
  Another example with 10 PPPoE v4v6 sessions
  
@@ -3915,11 +3927,9 @@ Active Subscribers Hierarchy
 
 ===============================================================================
 Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
-
 [/]
-
-
 ```
+### 2.2.1 **start call-trace for the session **
 
 A call trace can be run to check the operation on MAG1&MAG2
 
@@ -6971,3 +6981,19 @@ Subscriber 02:00:05:00:00:09|1/1/c2/1:201.9|1 has been created in the system
 Subscriber 02:00:05:00:00:0a|1/1/c2/1:201.10|1 has been created in the system
 ```
 
+### 2.2.2 **Data-plane verification PPPoE sessions **
+
+The data-plane verifciation for the PPPoE sessions can be checked via a predefined script from the TRA
+
+```bash
+A:admin@TRA-integrated# show ping-pppoe
+PING 180.0.0.3 56 data bytes
+64 bytes from 180.0.0.3: icmp_seq=1 ttl=63 time=6.10ms.
+64 bytes from 180.0.0.3: icmp_seq=2 ttl=63 time=3.39ms.
+64 bytes from 180.0.0.3: icmp_seq=3 ttl=63 time=4.07ms.
+```
+
+Note: There is also option to send a data-traffic from the bngblaster with creating the sessions using the below predefined script
+```bash
+[root@ scripts]# ./start_pppoe_bng_traffic.sh
+```

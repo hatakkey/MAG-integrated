@@ -47,6 +47,12 @@ Warning: ALREADY_ENABLED: br-enb
 success
 success
 ```
+## 1.4. **install lftp**:
+ lftp needs to be installed to run the  upload-cliscripts.sh script
+	centos example
+	```bash
+	yum install lftp
+```
 ---------------------------------------------------  
 ## 2. **SCTP is supported on host machine**
 
@@ -190,7 +196,7 @@ ssh admin@integrated-MAG2 ## password=admin
 
 ###4. **Downloadin the CLIscripts**
  
-The following predefined scripts can be used to download the CLI scripts directly to the nodes
+Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh

@@ -1,6 +1,6 @@
-## 1. **start the 4G session**
+## 1. **FWA 4G session Verification**
 ----
-### 1.1. start 4G session
+### 1.1. Start 4G session
 Use the below predefined script to start the 4G session
 
 it takes 15~20 secs to have the session UP.
@@ -14,7 +14,7 @@ Waiting for tun_srsue to be ready...
 Waiting for tun_srsue to be ready...
 IP route added successfully.
 ```
-### 1.1.1 check the session on MAG2
+### 1.2 Check the session on MAG2
 
 The session is created on MAG2
 ```bash
@@ -582,8 +582,8 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
 ```
 
 
-### 1.6. checking the UE 
- You can check the UE VM that tun_srsue is created with the UE IP 180.0.0.2/24
+### 1.3 Checking the FWA 4G home-user
+ You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.2/24
 ```bash
 [root@compute-1 scripts]# docker exec -it integrated-ue1 bash
 root@ue1:/# ip a
@@ -612,7 +612,7 @@ root@ue1:/# ip a
 
 ```
 
-The session goes to idel state
+The session goes to idle state
 ```bash
 A:admin@MAG2# show s-fwa
 
@@ -742,9 +742,9 @@ RRC IDLE
 ```
 
 
-## 1.7 **checking the dataplane**
+### 1.4 Checking the dataplane
 
-The UE can reach the internet VRF 500 on TRA via the tun_srsue
+The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue
 ```bash
 root@ue1:/# ip r
 default via 192.168.41.1 dev eth0
@@ -761,8 +761,18 @@ PING 1.1.1.201 (1.1.1.201) 56(84) bytes of data.
 64 bytes from 1.1.1.201: icmp_seq=3 ttl=63 time=299 ms
 ```
 
-After this ping the session will go to active 
 
+Also you can ping the 4G FWA home-user from the TRA via a predefined script
+
+A:admin@TRA-integrated# show ping-fwa
+PING 180.0.0.1 56 data bytes
+64 bytes from 180.0.0.1: icmp_seq=1 ttl=63 time=50.4ms.
+64 bytes from 180.0.0.1: icmp_seq=2 ttl=63 time=30.1ms.
+64 bytes from 180.0.0.1: icmp_seq=3 ttl=63 time=33.4ms.
+64 bytes from 180.0.0.1: icmp_seq=4 ttl=63 time=38.8ms.
+64 bytes from 180.0.0.1: icmp_seq=5 ttl=63 time=45.8ms.
+
+After this ping the session will go to active 
 
 ```bash
 336 2025/04/13 16:13:03.952 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -1035,13 +1045,13 @@ Service Request successful.
 
 
 
-#### 1.8 **Stopping the session** 
-You can stop the 4G session using this script
+### 1.5 Stopping the 4G session
+
+You can stop the 4G session using the below predefined script
 
 ```bash
 [root@compute-1 scripts]# ./stop_4g_bng.sh
-[root@compute-1 scripts]# ./stop_4g_bng.sh
-Stopping eNodeB and UE processes...
+Stopping eNodeB and 4G FWA home-user processes...
 Processes after pkill:
 UID          PID    PPID  C STIME TTY          TIME CMD
 root           1       0  0 21:38 pts/0    00:00:00 /bin/bash

@@ -5,7 +5,7 @@ You can check the logs for the open5GS and UERANSIM
 enb1.log  hss.log  mme.log  pcrf.log  radiusd.log  ue1.log
 [root@compute-4 logs]#
 ```
-The below are the logs for 1 IMSI connected
+The below are the logs for single IMSI connected
 ###1.1. **Checking the HSS logs**
 The HSS diameter is connected with the MME
 
@@ -93,7 +93,7 @@ User 0x46 connected
 
 
 ```
-### 1.4. **Checking the UE logs**
+### 1.4. **Checking the 4G FWA home-user logs**
 
 UE1 log showing that the session is created with uesimtun0 and IP 43.0.32.1
 ```bash
@@ -129,7 +129,7 @@ Network attach successful. IP: 180.0.0.2
     
 ### 1.5. **Clearing the logs**
 
-clear the logs before starting 10 IMSIs
+Clear all logs before starting 10 IMSIs
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
 ```
