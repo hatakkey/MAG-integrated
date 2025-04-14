@@ -1,4 +1,4 @@
-## 1.Statefull SRRP master/backup status
+## 1. Statefull SRRP master/backup status
 
 MAG1 is the master and can be checked via the below predefined script
 
