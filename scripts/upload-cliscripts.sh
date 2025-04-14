@@ -2,9 +2,9 @@
 
 # List of hosts with their respective details (host, local directory)
 hosts=(
-    "integrated-MAG1:/root/MAG-integrated/cliscripts//MAG1"
-    "integrated-MAG2:/root/MAG-integrated/cliscripts/MAG2"
-    "integrated-TRA-integrated:/root/MAG-integrated/cliscripts/TRA-integrated"
+    "integrated-MAG1:/root/mag-integrated/cliscripts//MAG1"
+    "integrated-MAG2:/root/mag-integrated/cliscripts/MAG2"
+    "integrated-TRA-integrated:/root/mag-integrated/cliscripts/TRA-integrated"
 )
 
 USER="admin"

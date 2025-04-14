@@ -1,4 +1,4 @@
-## 1. Checking the MCS between the 2 MAGs
+## 1.Statefull SRRP master/backup status
 
 MAG1 is the master and can be checked via the below predefined script
 
@@ -69,19 +69,82 @@ Executed 10 lines in 0.2 seconds from file "cf1:\scripts-md\srrp-master"
 
 
 
-## 2.   **Start PPPoE/IPoE Session using BNGBlaste**
+## 2.   **Start PPPoE/IPoE Session using BNGBlaster**
 ----
-Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
+Start the broadband session using BNGBlaster to simulate PPPoE or IPoE sessions
 
-### 2.1 **start IPoEv4v6 session**
+### 2.1. **IPoE session**
+The below section include the steps to establish/debug IPoE sessions
+
+### 2.1.1 **Start call-trace for the session**
+
+A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2 once the session is started
+
+```bash
+A:admin@MAG1# show ct-ipoe
+INFO: CLI #2056: Exiting global configuration mode
+INFO: CLI #2060: Entering exclusive configuration mode
+INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
+# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated 2025-04-13T17:00:28.3+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-13T15:59:48.5+02:00 by admin (MD-CLI) from 172.31.255.29
+
+debug {
+    call-trace {
+        ipoe {
+            trace "ipoe" {
+                mac "02:00:01:00:00:01"
+                profile "profile-debug-output"
+                trace-existing-sessions true
+            }
+        }
+        pppoe {
+            trace "pppoe" {
+                mac "02:00:05:00:00:01"
+                profile "profile-debug-output"
+                trace-existing-sessions true
+            }
+        }
+    }
+    router "2043" {
+        radius {
+            servers {
+                detail-level medium
+                packet-types {
+                    authentication true
+                    accounting true
+                    coa true
+                }
+            }
+        }
+    }
+    router "vprn-2043" {
+    }
+    subscriber-mgmt {
+        gtp {
+            packets {
+                mode all
+                detail-level high
+            }
+        }
+    }
+}
+```
+### 2.1.2 **start IPoEv4v6 session**
+
 10 dhcp sessions are established using the BNGBlaster
+
 ```bash
 ./start_dhcp_bng.sh
 ```
 
 ![dhcp_red](../snaps/dhcp.png)
 
-The 10 IPOEs sessions are established and can be verified using the below script
+The 10 IPoEs sessions are established and besides generic also detailed session information for the first IPoE session is available using the below script
 
    
 ```bash
@@ -1233,64 +1296,11 @@ Active Subscribers Hierarchy
 Executed 64 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 ```
 
-### 2.1.1. **Start call-trace for the session**
+### 2.1.3 **call-trace output**
 
-A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2
+The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
 
 ```bash
-A:admin@MAG1# show ct-ipoe
-INFO: CLI #2056: Exiting global configuration mode
-INFO: CLI #2060: Entering exclusive configuration mode
-INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
-# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
-# Configuration format version 25.3 revision 0
-
-# Generated 2025-04-13T17:00:28.3+02:00 by admin from 172.31.255.29
-# Last modified 2025-04-13T15:59:48.5+02:00 by admin (MD-CLI) from 172.31.255.29
-
-debug {
-    call-trace {
-        ipoe {
-            trace "ipoe" {
-                mac "02:00:01:00:00:01"
-                profile "profile-debug-output"
-                trace-existing-sessions true
-            }
-        }
-        pppoe {
-            trace "pppoe" {
-                mac "02:00:05:00:00:01"
-                profile "profile-debug-output"
-                trace-existing-sessions true
-            }
-        }
-    }
-    router "2043" {
-        radius {
-            servers {
-                detail-level high
-                packet-types {
-                    authentication true
-                    accounting true
-                    coa true
-                }
-            }
-        }
-    }
-    router "vprn-2043" {
-    }
-    subscriber-mgmt {
-        gtp {
-            packets {
-                mode all
-                detail-level high
-            }
-        }
-    }
-}
-
 491 2025/04/13 17:04:30.128 CEST minor: CALLTRACE #2003 Base CALL-TRACE
 CALL-TRACE: CPM A
    Info:     sap-id: 1/1/c2/1:201.100
@@ -2531,10 +2541,9 @@ CALL-TRACE: CPM A
 [/]
 ```
 
-On the backup MAG2
+On the backup MAG2,protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created log
 
 ```bash
-
 3 2025/04/13 17:33:15.652 CEST minor: CALLTRACE #2003 Base CALL-TRACE
 CALL-TRACE: CPM A
    Info:     sap-id: 1/1/c2/1:201.100
@@ -2582,7 +2591,7 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
 
 
 
-### 2.1.2 **Data-plane verification IPOE sessions**
+### 2.1.4. **Data-plane verification IPOE sessions**
 
 The data-plane verifciation for the IPoE sessions can be checked via a predefined script from the TRA
 
@@ -2597,9 +2606,71 @@ PING 180.0.0.2 56 data bytes
 Note: There's also an option to send data traffic from the BNG Blaster by creating sessions.
       The previous script used for session creation via BNG Blaster is already included it
 
-### 2.2. **start PPPoEv4v6 sessios **
+## 2.2. **start PPPoEv4v6 sessios**
+The below section include the steps to establish/debug PPPoE sessions
+
+
+
+### 2.2.1. **Start call-trace for the session**
+A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2 once the session is started
+
+```bash
+A:admin@MAG1# show ct-pppoe
+INFO: CLI #2060: Entering exclusive configuration mode
+INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
+# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated 2025-04-13T17:20:27.0+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-13T15:59:48.5+02:00 by admin (MD-CLI) from 172.31.255.29
+
+debug {
+    call-trace {
+        ipoe {
+            trace "ipoe" {
+                mac "02:00:01:00:00:01"
+                profile "profile-debug-output"
+                trace-existing-sessions true
+            }
+        }
+        pppoe {
+            trace "pppoe" {
+                mac "02:00:05:00:00:01"
+                profile "profile-debug-output"
+                trace-existing-sessions true
+            }
+        }
+    }
+    router "2043" {
+        radius {
+            servers {
+                detail-level medium
+                packet-types {
+                    authentication true
+                    accounting true
+                    coa true
+                }
+            }
+        }
+    }
+    router "vprn-2043" {
+    }
+    subscriber-mgmt {
+        gtp {
+            packets {
+                mode all
+                detail-level high
+            }
+        }
+    }
+}
+```
+### 2.2.2. **start PPPoEv4v6 session**
   
- Another example with 10 PPPoE v4v6 sessions
+ Another example with 10 PPPoE v4v6 sessions can be started using the below predefined script
+	
  
 ```bash
  ./start_pppoe_bng_traffic.sh
@@ -2607,7 +2678,8 @@ Note: There's also an option to send data traffic from the BNG Blaster by creati
 
 ![pppoe](../snaps/pppoe.png)
   
-The 10 PPPoEv4v6 sessions are etsblished and can be verified using the below script
+
+The 10 PPPoEv4v6 sessions are established and  besides generic also detailed session information for the first PPPoE session is available using the below script 
 
 ```bash
 A:admin@MAG1# show s-pppoe
@@ -3929,64 +4001,11 @@ Active Subscribers Hierarchy
 Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 [/]
 ```
-### 2.2.1 **start call-trace for the session **
-
-A call trace can be run to check the operation on MAG1&MAG2
-
-```bash
-A:admin@MAG1# show ct-pppoe
-INFO: CLI #2060: Entering exclusive configuration mode
-INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
-# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
-# Configuration format version 25.3 revision 0
-
-# Generated 2025-04-13T17:20:27.0+02:00 by admin from 172.31.255.29
-# Last modified 2025-04-13T15:59:48.5+02:00 by admin (MD-CLI) from 172.31.255.29
-
-debug {
-    call-trace {
-        ipoe {
-            trace "ipoe" {
-                mac "02:00:01:00:00:01"
-                profile "profile-debug-output"
-                trace-existing-sessions true
-            }
-        }
-        pppoe {
-            trace "pppoe" {
-                mac "02:00:05:00:00:01"
-                profile "profile-debug-output"
-                trace-existing-sessions true
-            }
-        }
-    }
-    router "2043" {
-        radius {
-            servers {
-                detail-level high
-                packet-types {
-                    authentication true
-                    accounting true
-                    coa true
-                }
-            }
-        }
-    }
-    router "vprn-2043" {
-    }
-    subscriber-mgmt {
-        gtp {
-            packets {
-                mode all
-                detail-level high
-            }
-        }
-    }
-}
 
 
+### 2.2.3. **call-trace output**
+
+The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
 
 585 2025/04/13 17:23:55.028 CEST minor: CALLTRACE #2003 Base CALL-TRACE
 CALL-TRACE: CPM A
@@ -6889,7 +6908,7 @@ CALL-TRACE: CPM A
 [/]
 ```
 
-On MAG2
+Protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created logs.
 ```bash
 ALL-TRACE: CPM A
    Info:     sap-id: 1/1/c2/1:201.1
@@ -6981,7 +7000,7 @@ Subscriber 02:00:05:00:00:09|1/1/c2/1:201.9|1 has been created in the system
 Subscriber 02:00:05:00:00:0a|1/1/c2/1:201.10|1 has been created in the system
 ```
 
-### 2.2.2 **Data-plane verification PPPoE sessions **
+### 2.2.4. **Data-plane verification PPPoE sessions**
 
 The data-plane verifciation for the PPPoE sessions can be checked via a predefined script from the TRA
 

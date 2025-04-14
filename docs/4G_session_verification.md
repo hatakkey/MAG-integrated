@@ -1,7 +1,45 @@
 ## 1. **FWA 4G session Verification**
 ----
-### 1.1. Start 4G session
-Use the below predefined script to start the 4G session
+### 1.1 Start the FWA debug
+call trace can be started using the below predefined script
+
+```bash
+A:admin@MAG2# show ct-fwa
+INFO: CLI #2060: Entering exclusive configuration mode
+INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
+# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated 2025-04-13T15:48:46.3+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
+
+debug {
+    router "vprn-2043" {
+        radius {
+            servers {
+                detail-level medium
+                packet-types {
+                    authentication true
+                    accounting true
+                    coa true
+                }
+            }
+        }
+    }
+    subscriber-mgmt {
+        gtp {
+            packets {
+                mode all
+                detail-level high
+            }
+        }
+    }
+}
+```
+### 1.2. Start 4G session
+Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully"
 
 it takes 15~20 secs to have the session UP.
 
@@ -14,9 +52,10 @@ Waiting for tun_srsue to be ready...
 Waiting for tun_srsue to be ready...
 IP route added successfully.
 ```
-### 1.2 Check the session on MAG2
 
-The session is created on MAG2
+### 1.3. Check the session on MAG2
+
+The session is created on MAG2 and can be checked via the predefined script
 ```bash
 A:admin@MAG2# show s-fwa
 ===============================================================================
@@ -180,63 +219,15 @@ Total                                            1
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
 # Configuration format version 25.3 revision 0
-
 # Generated 2025-04-13T15:54:51.5+02:00 by admin from 172.31.255.29
 # Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
 ```
 
-call trace can be started using the below predefined script
+### 1.4. gtp debug outpu
+
+The gtp debug was enabled before starting the FWA 4G session ,the debug output is shown below
 
 ```bash
-A:admin@MAG2# show ct-fwa
-INFO: CLI #2060: Entering exclusive configuration mode
-INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
-# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
-# Configuration format version 25.3 revision 0
-
-# Generated 2025-04-13T15:48:46.3+02:00 by admin from 172.31.255.29
-# Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
-
-debug {
-    call-trace {
-        pppoe {
-            trace "pppoe" {
-                mac "02:00:05:00:00:01"
-                profile "profile-debug-output"
-                trace-existing-sessions true
-            }
-        }
-    }
-    router "vprn-2043" {
-        radius {
-            servers {
-                detail-level high
-                packet-types {
-                    authentication true
-                    accounting true
-                    coa true
-                }
-            }
-        }
-    }
-    subscriber-mgmt {
-        gtp {
-            packets {
-                mode all
-                detail-level high
-            }
-        }
-    }
-}
-
-# Finished 2025-04-13T15:48:46.3+02:00
-INFO: CLI #2064: Exiting exclusive configuration mode
-INFO: CLI #2054: Entering global configuration mode
-INFO: CLI #2056: Exiting global configuration mode
-Executed 25 lines in 0.0 seconds from file "cf1:\scripts-md\ct-fwa"
-
 223 2025/04/13 15:49:21.501 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP: GTPv2_INGRESS
 IP Hdr: Src: 10.20.1.2, Dst: 50.50.50.1, Len: 76
@@ -304,38 +295,6 @@ RADIUS: Transmit
       INPUT_ALL_OCTETS_64 [116] 10 0x80010000000000000000
       INPUT_ALL_PACKETS_64 [118] 10 0x80010000000000000000
 
-  Hex Packet Dump:
-  28 06 00 00 00 02 04 06 c0 00 02 0b 01 11 32 30 36 30 31 30 30 30 30 30 30
-  30 30 30 31 08 06 b4 00 00 01 09 06 ff ff ff ff 19 07 75 73 65 72 31 1e 0a
-  69 6e 74 65 72 6e 65 74 20 06 4d 41 47 32 2c 18 41 42 44 45 31 42 30 30 30
-  30 30 30 31 38 36 37 46 42 42 46 38 38 2e 06 00 00 01 59 31 06 00 00 00 01
-  1a 2b 00 00 19 7f e2 06 00 00 01 13 e3 1f 47 54 50 20 75 73 65 72 20 69 6e
-  69 74 69 61 74 65 64 20 64 69 73 63 6f 6e 6e 65 63 74 32 18 41 42 44 45 31
-  42 30 30 30 30 30 30 31 41 36 37 46 42 42 46 38 38 37 06 67 fb c0 e1 3d 06
-  00 00 00 05 57 40 47 54 50 20 72 74 72 2d 33 23 6c 69 70 2d 35 30 2e 35 30
-  2e 35 30 2e 31 23 72 69 70 2d 31 30 2e 32 30 2e 31 2e 32 23 6c 74 65 69 64
-  2d 31 31 37 39 36 34 38 23 72 74 65 69 64 2d 34 38 34 1a 29 00 00 19 7f 0b
-  11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 0c 09 73 75 62 2d 66 77 61
-  0d 09 73 6c 61 2d 66 77 61 f1 0b 1a 00 00 19 7f 2f 53 41 50 1a 19 00 00 19
-  7f 1b 13 30 30 3a 30 33 3a 30 30 3a 31 32 3a 30 30 3a 30 35 29 06 00 00 00
-  00 2d 06 00 00 00 01 1a 29 00 00 28 af 14 12 33 35 33 34 39 30 30 36 39 38
-  37 33 33 31 35 33 01 11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 1a 23
-  00 00 19 7f 92 1d 69 6e 74 65 72 6e 65 74 2e 6d 6e 63 30 30 31 2e 6d 63 63
-
-
-225 2025/04/13 15:49:21.503 CEST minor: DEBUG #2001 vprn2043 Continuation
-Continuation: Transmit
-  32 30 36 2e 67 70 72 73 1a 15 00 00 28 af 16 0f 82 02 f6 10 00 01 02 f6 10
-  00 00 01 01 f1 44 1a 00 00 19 7f 38 72 74 72 2d 33 23 62 69 64 2d 35 23 6c
-  69 70 2d 35 30 2e 35 30 2e 35 30 2e 31 23 72 69 70 2d 30 2e 30 2e 30 2e 30
-  23 6c 74 65 69 64 2d 31 31 37 39 36 35 33 23 72 74 65 69 64 2d 30 2f 06 00
-  00 00 00 2a 06 00 00 00 00 30 06 00 00 00 00 2b 06 00 00 00 00 1a 76 00 00
-  19 7f c2 06 00 00 00 00 c3 06 00 00 00 00 c5 06 00 00 00 00 c6 06 00 00 00
-  00 15 0c 00 01 00 00 00 00 00 00 00 00 16 0c 00 01 00 00 00 00 00 00 00 00
-  19 0c 00 01 00 00 00 00 00 00 00 00 1a 0c 00 01 00 00 00 00 00 00 00 00 6b
-  10 30 78 38 30 30 31 20 6d 69 6e 69 6d 61 6c 74 0c 80 01 00 00 00 00 00 00
-  00 00 76 0c 80 01 00 00 00 00 00 00 00 00
-
 
 
 226 2025/04/13 15:49:21.503 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -360,7 +319,7 @@ Subscriber 206010000000001 has been removed from the system
 RADIUS: Receive
   Accounting-Response(5) id 65 len 20 from 100.0.0.2:1813 vrid 3 pol FreeRadius-acct
 
-  Hex Packet Dump:
+
 
 
 
@@ -416,18 +375,6 @@ RADIUS: Transmit
     NAS PORT ID [87] 56 GTP rtr-3#lip-50.50.50.1#rip-10.20.1.2#lteid-0#rteid-484
     SESSION ID [44] 22 ABDE1B0000001B67FBC0E1
 
-  Hex Packet Dump:
-  01 11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 02 12 fc 67 56 96 8a a1
-  17 26 54 b0 f2 ee e2 05 49 9c 04 06 c0 00 02 0b 1a 18 00 00 28 af 14 12 33
-  35 33 34 39 30 30 36 39 38 37 33 33 31 35 33 1a 23 00 00 19 7f 92 1d 69 6e
-  74 65 72 6e 65 74 2e 6d 6e 63 30 30 31 2e 6d 63 63 32 30 36 2e 67 70 72 73
-  1a 42 00 00 28 af 15 03 06 16 0f 82 02 f6 10 00 01 02 f6 10 00 00 01 01 05
-  19 30 38 2d 36 30 30 39 30 30 30 66 34 32 34 30 30 30 30 66 34 32 34 30 01
-  11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 3d 06 00 00 00 05 57 3a 47
-  54 50 20 72 74 72 2d 33 23 6c 69 70 2d 35 30 2e 35 30 2e 35 30 2e 31 23 72
-  69 70 2d 31 30 2e 32 30 2e 31 2e 32 23 6c 74 65 69 64 2d 30 23 72 74 65 69
-  64 2d 34 38 34 2c 18 41 42 44 45 31 42 30 30 30 30 30 30 31 42 36 37 46 42
-  43 30 45 31
 
 
 
@@ -460,13 +407,7 @@ RADIUS: Receive
       INT DEST ID STR [28] 4 eNB1
     CLASS [25] 5 0x7573657231
 
-  Hex Packet Dump:
-  1a 0d 00 00 19 7f 65 07 67 72 70 2d 31 1a 0f 00 00 19 7f 0c 09 73 75 62 2d
-  66 77 61 1a 0f 00 00 19 7f 0d 09 73 6c 61 2d 66 77 61 1a 0c 00 00 19 7f 64
-  06 00 00 00 33 08 06 b4 00 00 01 1a 1d 00 00 19 7f 7e 17 69 3a 70 3a 31 3a
-  70 69 72 3d 36 30 30 30 30 2c 63 69 72 3d 30 1a 17 00 00 19 7f 7e 11 65 3a
-  72 3a 72 61 74 65 3d 31 31 30 30 30 30 1a 0c 00 00 19 7f 1c 06 65 4e 42 31
-  19 07 75 73 65 72 31
+
 
 
 
@@ -509,26 +450,7 @@ RADIUS: Transmit
     VSA [241.26] 60 Nokia(6527)
       GTP BEARER FTEID [56] 60 rtr-3#bid-5#lip-50.50.50.1#rip-0.0.0.0#lteid-1310725#rteid-0
 
-  Hex Packet Dump:
-  28 06 00 00 00 01 04 06 c0 00 02 0b 01 11 32 30 36 30 31 30 30 30 30 30 30
-  30 30 30 31 08 06 b4 00 00 01 09 06 ff ff ff ff 19 07 75 73 65 72 31 1e 0a
-  69 6e 74 65 72 6e 65 74 20 06 4d 41 47 32 2c 18 41 42 44 45 31 42 30 30 30
-  30 30 30 31 42 36 37 46 42 43 30 45 31 32 18 41 42 44 45 31 42 30 30 30 30
-  30 30 31 44 36 37 46 42 43 30 45 31 37 06 67 fb c0 e1 3d 06 00 00 00 05 57
-  40 47 54 50 20 72 74 72 2d 33 23 6c 69 70 2d 35 30 2e 35 30 2e 35 30 2e 31
-  23 72 69 70 2d 31 30 2e 32 30 2e 31 2e 32 23 6c 74 65 69 64 2d 31 33 31 30
-  37 32 30 23 72 74 65 69 64 2d 34 38 34 1a 29 00 00 19 7f 0b 11 32 30 36 30
-  31 30 30 30 30 30 30 30 30 30 31 0c 09 73 75 62 2d 66 77 61 0d 09 73 6c 61
-  2d 66 77 61 f1 0b 1a 00 00 19 7f 2f 53 41 50 1a 19 00 00 19 7f 1b 13 30 30
-  3a 30 33 3a 30 30 3a 31 34 3a 30 30 3a 30 35 29 06 00 00 00 00 2d 06 00 00
-  00 01 1a 29 00 00 28 af 14 12 33 35 33 34 39 30 30 36 39 38 37 33 33 31 35
-  33 01 11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 1a 23 00 00 19 7f 92
-  1d 69 6e 74 65 72 6e 65 74 2e 6d 6e 63 30 30 31 2e 6d 63 63 32 30 36 2e 67
-  70 72 73 1a 15 00 00 28 af 16 0f 82 02 f6 10 00 01 02 f6 10 00 00 01 01 f1
-  44 1a 00 00 19 7f 38 72 74 72 2d 33 23 62 69 64 2d 35 23 6c 69 70 2d 35 30
-  2e 35 30 2e 35 30 2e 31 23 72 69 70 2d 30 2e 30 2e 30 2e 30 23 6c 74 65 69
-  64 2d 31 33 31 30 37 32 35 23 72 74 65 69 64 2d 30
-
+  
 
 
 238 2025/04/13 15:49:21.624 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -554,7 +476,7 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Create Session Resp
 RADIUS: Receive
   Accounting-Response(5) id 66 len 20 from 100.0.0.2:1813 vrid 3 pol FreeRadius-acct
 
-  Hex Packet Dump:
+
 
 
 
@@ -582,8 +504,9 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
 ```
 
 
-### 1.3 Checking the FWA 4G home-user
- You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.2/24
+### 1.5. Checking the FWA 4G home-user
+
+ You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24
 ```bash
 [root@compute-1 scripts]# docker exec -it integrated-ue1 bash
 root@ue1:/# ip a
@@ -612,7 +535,8 @@ root@ue1:/# ip a
 
 ```
 
-The session goes to idle state
+When the eNB does not detect data traffic for the session , it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state.
+This is noticed in the below trace. 
 ```bash
 A:admin@MAG2# show s-fwa
 
@@ -742,7 +666,7 @@ RRC IDLE
 ```
 
 
-### 1.4 Checking the dataplane
+### 1.6. Checking the dataplane
 
 The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue
 ```bash
@@ -772,7 +696,8 @@ PING 180.0.0.1 56 data bytes
 64 bytes from 180.0.0.1: icmp_seq=4 ttl=63 time=38.8ms.
 64 bytes from 180.0.0.1: icmp_seq=5 ttl=63 time=45.8ms.
 
-After this ping the session will go to active 
+The ping will trigger the paging procedure on which the bearer between eNB and MAG will be activated again. 
+This is noticed in the below trac
 
 ```bash
 336 2025/04/13 16:13:03.952 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -1040,14 +965,12 @@ Random Access Complete.     c-rnti=0x47, ta=0
 Service Request successful.
 ```
 
+### 1.7. Stopping the 4G session
 
-
-
-
-
-### 1.5 Stopping the 4G session
-
-You can stop the 4G session using the below predefined script
+You can stop the 4G session using the predefined script below.
+Note, however, that the .stop_4g_bng.sh script does not initiate a release procedure towards the network.
+The release procedure, followed by the creation of a new session, will be triggered during the next run of .start_4g_bng.sh.
+Alternatively, the session can also be cleared directly from the MAG.
 
 ```bash
 [root@compute-1 scripts]# ./stop_4g_bng.sh
@@ -1171,38 +1094,7 @@ RADIUS: Transmit
       INPUT_ALL_OCTETS_64 [116] 10 0x80010000000000000000
       INPUT_ALL_PACKETS_64 [118] 10 0x80010000000000000000
 
-  Hex Packet Dump:
-  28 06 00 00 00 02 04 06 c0 00 02 0b 01 11 32 30 36 30 31 30 30 30 30 30 30
-  30 30 30 31 08 06 b4 00 00 01 09 06 ff ff ff ff 19 07 75 73 65 72 31 1e 0a
-  69 6e 74 65 72 6e 65 74 20 06 4d 41 47 32 2c 18 41 42 44 45 31 42 30 30 30
-  30 30 30 31 45 36 37 46 42 43 33 38 36 2e 06 00 00 00 31 31 06 00 00 00 01
-  1a 2b 00 00 19 7f e2 06 00 00 01 13 e3 1f 47 54 50 20 75 73 65 72 20 69 6e
-  69 74 69 61 74 65 64 20 64 69 73 63 6f 6e 6e 65 63 74 32 18 41 42 44 45 31
-  42 30 30 30 30 30 30 32 30 36 37 46 42 43 33 38 36 37 06 67 fb c3 b7 3d 06
-  00 00 00 05 57 3f 47 54 50 20 72 74 72 2d 33 23 6c 69 70 2d 35 30 2e 35 30
-  2e 35 30 2e 31 23 72 69 70 2d 31 30 2e 32 30 2e 31 2e 32 23 6c 74 65 69 64
-  2d 31 34 34 31 37 39 32 23 72 74 65 69 64 2d 33 37 1a 29 00 00 19 7f 0b 11
-  32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 0c 09 73 75 62 2d 66 77 61 0d
-  09 73 6c 61 2d 66 77 61 f1 0b 1a 00 00 19 7f 2f 53 41 50 1a 19 00 00 19 7f
-  1b 13 30 30 3a 30 33 3a 30 30 3a 31 36 3a 30 30 3a 30 35 29 06 00 00 00 00
-  2d 06 00 00 00 01 1a 29 00 00 28 af 14 12 33 35 33 34 39 30 30 36 39 38 37
-  33 33 31 35 33 01 11 32 30 36 30 31 30 30 30 30 30 30 30 30 30 31 1a 23 00
-  00 19 7f 92 1d 69 6e 74 65 72 6e 65 74 2e 6d 6e 63 30 30 31 2e 6d 63 63 32
-
-
-296 2025/04/13 16:01:27.029 CEST minor: DEBUG #2001 vprn2043 Continuation
-Continuation: Transmit
-  30 36 2e 67 70 72 73 1a 15 00 00 28 af 16 0f 82 02 f6 10 00 01 02 f6 10 00
-  00 01 01 f1 44 1a 00 00 19 7f 38 72 74 72 2d 33 23 62 69 64 2d 35 23 6c 69
-  70 2d 35 30 2e 35 30 2e 35 30 2e 31 23 72 69 70 2d 30 2e 30 2e 30 2e 30 23
-  6c 74 65 69 64 2d 31 34 34 31 37 39 37 23 72 74 65 69 64 2d 30 2f 06 00 00
-  00 00 2a 06 00 00 00 00 30 06 00 00 00 00 2b 06 00 00 00 00 1a 76 00 00 19
-  7f c2 06 00 00 00 00 c3 06 00 00 00 00 c5 06 00 00 00 00 c6 06 00 00 00 00
-  15 0c 00 01 00 00 00 00 00 00 00 00 16 0c 00 01 00 00 00 00 00 00 00 00 19
-  0c 00 01 00 00 00 00 00 00 00 00 1a 0c 00 01 00 00 00 00 00 00 00 00 6b 10
-  30 78 38 30 30 31 20 6d 69 6e 69 6d 61 6c 74 0c 80 01 00 00 00 00 00 00 00
-  00 76 0c 80 01 00 00 00 00 00 00 00 00
-
+ 
 
 
 297 2025/04/13 16:01:27.029 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -1226,8 +1118,6 @@ Connection interrupted with GTP Peer 10.20.1.2 port 2123 in router vprn2043.
 301 2025/04/13 16:01:27.034 CEST minor: DEBUG #2001 vprn2043 RADIUS
 RADIUS: Receive
   Accounting-Response(5) id 70 len 20 from 100.0.0.2:1813 vrid 3 pol FreeRadius-acct
-
-  Hex Packet Dump:
 [/]
 ```
 
