@@ -17,7 +17,7 @@ The topology of the setup is illustrated in the diagram below:
 - **MAG-integrated** (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
   - This lab initiates 10 statefull redundant dual-stack PPPoE or IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
   - This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
-		- This lab also includes a set of predefined CLI scripts (show commands) designed to streamline session monitoring and management during lab upskilling, eliminating the need for manually searching for specific commands.
+  - This lab also includes a set of predefined CLI scripts (show commands) designed to streamline session monitoring and management during lab upskilling, eliminating the need for manually searching for specific commands.
 
 ### **2. FreeRADIUS**
 - **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
@@ -87,7 +87,7 @@ To download and upload the predefined scripts from /root/mag-integrated/cliscrip
 
 Register the IMSI’s with a specific apn, opc and key using the pre-defined script.
  ```bash
-	[root@compute-1 mag-integrated]#./scripts/register_subscriber.sh
+ [root@compute-1 mag-integrated]#./scripts/register_subscriber.sh
  ```
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
