@@ -32,7 +32,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
 
 
 ## 1.3. **Create the needed bridges**:
-create the brideges
+Create the bridges
 ```bash   
 [root@compute-1 scripts]# ./create_bridges-centos.sh
 Warning: ALREADY_ENABLED: br-s1ap
@@ -190,7 +190,7 @@ ssh admin@integrated-MAG2 ## password=admin
 
 ###4. **Downloadin the CLIscripts**
  
-Via using the below pre-defined scripts,the cliscripts can be download to the nodes
+The following predefined scripts can be used to download the CLI scripts directly to the nodes
 
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh

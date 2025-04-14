@@ -1,7 +1,7 @@
 # **MAG-Integrated: Multi-Access Gateway with Open-Source Tools**
 
 ## **Objective**
-- The goal of this Multi access gateway integrated lab (MAG-Integrated), build with **[ContainerLab](https://containerlab.dev/)**, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
+- The goal of this Multi-Access Gateway integrated lab (MAG-Integrated), build with **[ContainerLab](https://containerlab.dev/)**, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA)** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
 
 ## **Overview**
 - **MAG-Integrated** is an open-source project built around an integrated Multi-Access Gateway architecture, previously known as a Broadband Network Gateway (BNG).It enables multi-access sessions by handling both fixed (PPPoE and IPoE) and fixed-wireless (4G) sessions on the same gateway.
@@ -15,7 +15,7 @@ The topology of the setup is illustrated in the diagram below:
 ## **Components**
 ### **1. MAG-integrated**  
 - **MAG-integrated** (also known as BNG) is a crucial network component that connects fixed (IPoE and/or PPPoE) or 4G fixed wireless users to the network through technologies such as DSL, Fiber, or Wireless. It is responsible for managing session authentication, authorization, and accounting (AAA), assigning IPv4 and/or IPv6 addresses, handling Quality of Service (QoS), and more. The MAG-integrated offers scalability and reliability, making it a vital solution for service providers.
-  - This lab initiates 10 dual-stack PPPoE or 10 dual-stack stateful redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
+  - This lab initiates 10 statefull redundant dual-stack PPPoE or IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
   - This lab initiates a single ipv4 none-redundant 4G FWA session using predefined scripts that trigger the srsRANSim application, including ./start_4g_bng.sh and ./stop_4g_bng.sh
 
 ### **2. FreeRADIUS**
@@ -53,10 +53,11 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 ### **1. Clone the Repository**
 ```bash
 git clone https://github.com/hatakkey/mag-integrated.git
-cd cups-integrated
+cd mag-integrated
 ```
 
 ### **2. Create Network Bridges**
+We have two examples for creating the bridges one for CentOS and another one for ubuntu 
 For **CentOS** (example):
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -77,7 +78,7 @@ To use them, first run the below script
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG-1, MAG-2, and TRA-integrated. 
+To download and upload the predefined scripts from /root/MAG-integrated/cliscripts/ to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
 ## Start sessions
 
 ### **1. Register IMSI in database**
