@@ -149,13 +149,14 @@ configure global
 commit
 /exit
 ```
-To display the debug output on your screen, run the following command:
+
+Note: The call-trace script includes all necessary protocol debugging and log settings via log-77. However, output redirection is not handled within the script and must be performed manually.
+      To view the debug output in your session you should subscribe to log-id 77, using command :
 ```bash
 tools perform log subscribe-to log-id 77
-```bash
+```
  
-To stop the debug output from appearing on your screen, use:
- 
+To stop the output redirection  to your session, unsubscribe from log-id 77, using command :
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
@@ -2696,23 +2697,13 @@ debug {
     }
 }
 ```
-The call-trace script above includes the configuration for log-id 77, as shown below:
-```bash
-configure global
-/configure log log-id 77
-/configure log log-id 77 source debug
-/configure log log-id 77 destination cli
-/configure log log-id 77 admin-state enable
-commit
-/exit
-```
-To display the debug output on your screen, run the following command:
+Note: The call-trace script includes all necessary protocol debugging and log settings via log-77. However, output redirection is not handled within the script and must be performed manually.
+      To view the debug output in your session you should subscribe to log-id 77, using command :
 ```bash
 tools perform log subscribe-to log-id 77
-```bash
+```
  
-To stop the debug output from appearing on your screen, use:
- 
+To stop the output redirection  to your session, unsubscribe from log-id 77, using command :
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
