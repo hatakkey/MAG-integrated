@@ -5,6 +5,7 @@ call trace can be started using the below predefined script
 
 ```bash
 A:admin@MAG2# show ct-fwa
+A:admin@MAG2# show ct-fwa
 INFO: CLI #2060: Entering exclusive configuration mode
 INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
 # TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
@@ -12,8 +13,8 @@ INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
 # Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
 # Configuration format version 25.3 revision 0
 
-# Generated 2025-04-13T15:48:46.3+02:00 by admin from 172.31.255.29
-# Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
+# Generated 2025-04-15T13:18:52.0+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-15T13:18:52.0+02:00 by admin (MD-CLI) from 172.31.255.29
 
 debug {
     router "vprn-2043" {
@@ -24,6 +25,12 @@ debug {
                     authentication true
                     accounting true
                     coa true
+                }
+                attribute "radius-attr" {
+                    type 1
+                    value {
+                        string "206010000000001"
+                    }
                 }
             }
         }
@@ -37,6 +44,12 @@ debug {
         }
     }
 }
+
+# Finished 2025-04-15T13:18:52.0+02:00
+INFO: CLI #2064: Exiting exclusive configuration mode
+INFO: CLI #2054: Entering global configuration mode
+INFO: CLI #2056: Exiting global configuration mode
+Executed 35 lines in 0.0 seconds from file "cf1:\scripts-md\ct-fwa"
 ```
 ### 1.2. **Start 4G session**
 Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully"
