@@ -2541,7 +2541,7 @@ CALL-TRACE: CPM A
 [/]
 ```
 
-On the backup MAG2,protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created log
+On the backup MAG2, protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created log
 
 ```bash
 3 2025/04/13 17:33:15.652 CEST minor: CALLTRACE #2003 Base CALL-TRACE
