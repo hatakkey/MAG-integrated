@@ -11,6 +11,12 @@ router "vprn-2043" {
                     accounting true
                     coa true
                 }
+                attribute "radius-attr" {
+                    type 1
+                    value {
+                        string "206010000000001"
+                    }
+                }
             }
         }
     }
