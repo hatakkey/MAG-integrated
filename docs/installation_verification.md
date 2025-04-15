@@ -192,7 +192,7 @@ ssh admin@integrated-MAG1 ## password=admin
 ssh admin@integrated-MAG2 ## password=admin 
 ```
 
-##4. **Transferring CLI Scripts to Nodes via SFTP**
+## 4. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
