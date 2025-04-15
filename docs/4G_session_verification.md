@@ -548,7 +548,7 @@ root@ue1:/# ip a
 
 ```
 
-When the eNB does not detect data traffic for the session , it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state.
+When the eNB does not detect data traffic for the session, it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state
 This is noticed in the below trace. 
 
 ```bash

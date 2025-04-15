@@ -74,11 +74,11 @@ Executed 10 lines in 0.2 seconds from file "cf1:\scripts-md\srrp-master"
 Start the broadband session using BNGBlaster to simulate PPPoE or IPoE sessions
 
 ### 2.1. **IPoE session**
-The below section include the steps to establish/debug IPoE sessions
+The below section includes the steps to establish/debug IPoE sessions
 
 ### 2.1.1 **Start call-trace for the session**
 
-A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2 once the session is started
+A call trace can be started using predefined script to check the operation on MAG1 and MAG2 once the session is started
 
 ```bash
 A:admin@MAG1# show ct-ipoe
