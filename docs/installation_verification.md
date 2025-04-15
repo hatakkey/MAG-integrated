@@ -1,6 +1,6 @@
-## 1. Pre-requirements for CLAB Setup
+## 1. **Pre-requirements for CLAB Setup**
 ------
-### 1.1. SELinux Configuration
+### 1.1. **SELinux Configuration**
 
 Before starting the setup, **SELinux** should be disabled on your server for this CLAB to function properly. Check the current status of SELinux:
 
@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-### 1.2. Firewalld configuration 
+### 1.2. **Firewalld configuration** 
 The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-integrated]# systemctl status firewalld
@@ -29,9 +29,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    CGroup: /system.slice/firewalld.service
            └─2015 /usr/libexec/platform-python -s /usr/sbin/firewalld --nofork --nopid
 ```   
-
-
-## 1.3. **Create the needed bridges**:
+### 1.3. **Create the needed bridges**
 Create the bridges
 ```bash   
 [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -47,11 +45,11 @@ Warning: ALREADY_ENABLED: br-enb
 success
 success
 ```
-## 1.4. **install lftp**:
- lftp needs to be installed to run the  upload-cliscripts.sh script
-	centos example
-	```bash
-	yum install lftp
+### 1.4. **Install lftp**
+lftp needs to be installed to run the  upload-cliscripts.sh script
+CentOS example
+```bash
+yum install lftp
 ```
 ---------------------------------------------------  
 ## 2. **SCTP is supported on host machine**
@@ -75,7 +73,7 @@ SCTP supported
 [root@compute-1]# dnf install lksctp-tools-1.0.18-3.el8.x86_64
 ```
 
-## 3. **Deploy the ContainerLab Environment**:
+## 3. **Deploy the ContainerLab Environment**
 
 Deploy the containerized network environment using the ContainerLab configuration:
 ```bash
@@ -181,7 +179,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                           │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰───────────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
-### 3.1 **Access the container nodes**
+### 3.1. **Access the container nodes**
 The nodes are accessable via the IP address or the node name    
 ```bash  
 docker exec -it integrated-hss        bash
@@ -194,7 +192,7 @@ ssh admin@integrated-MAG1 ## password=admin
 ssh admin@integrated-MAG2 ## password=admin 
 ```
 
-###4. **Downloadin the CLIscripts**
+##4. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
