@@ -8,7 +8,7 @@ Before starting the setup, **SELinux** should be disabled on your server for thi
 [root@compute-1 ~]# sestatus
 SELinux status:      disabled
 ```
-If status is different then  disabled, change it to disabled in /etc/selinux/config and reboot your server
+If status is different then disabled, change it to disabled in /etc/selinux/config and reboot your server 
 ```bash
 [root@compute-1 ~]# more /etc/selinux/config
 SELINUX=disabled
@@ -16,7 +16,8 @@ SELINUXTYPE=targeted
 ```
 
 ### 1.2. **Firewalld configuration** 
-The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
+The firewall should be enabled, if the firewall is not enabled or inactive, start the firewalld service
+
 ```bash
 [root@compute-1 MAG-integrated]# systemctl status firewalld
 ● firewalld.service - firewalld - dynamic firewall daemon
@@ -55,7 +56,7 @@ yum install lftp
 ## 2. **SCTP is supported on host machine**
 
 - Check if SCTP is supported on your host machine as the communication between HSS and MME is via SCTP and needs to be enabled on your host machine. 
-- If you don’t have SCTP enabled, then a 4G session will fail with error  and you need to install SCTP.
+- If you don’t have SCTP enabled, then a 4G session will fail with error and you need to install SCTP
 In MME.log
 ```bash
 ERROR: pid:Main in fd_sctp_create_bind_server@sctp.c:829: ERROR: in '(*sock = socket(family, SOCK_STREAM, IPPROTO_))' : Protocol not supported

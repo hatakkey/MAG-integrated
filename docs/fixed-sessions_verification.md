@@ -110,7 +110,7 @@ debug {
             }
         }
     }
-    router "2043" {
+    router "vprn-2043" {
         radius {
             servers {
                 detail-level medium
@@ -119,11 +119,15 @@ debug {
                     accounting true
                     coa true
                 }
+                attribute "radius-attr" {
+                    type 1
+                    value {
+                        string "206010000000001"
+                    }
+                }
             }
         }
-    }
-    router "vprn-2043" {
-    }
+    } 
     subscriber-mgmt {
         gtp {
             packets {
@@ -133,6 +137,27 @@ debug {
         }
     }
 }
+```
+
+The call-trace script above includes the configuration for log-id 77, as shown below:
+```bash
+configure global
+/configure log log-id 77
+/configure log log-id 77 source debug
+/configure log log-id 77 destination cli
+/configure log log-id 77 admin-state enable
+commit
+/exit
+```
+To display the debug output on your screen, run the following command:
+```bash
+tools perform log subscribe-to log-id 77
+```bash
+ 
+To stop the debug output from appearing on your screen, use:
+ 
+```bash
+tools perform log unsubscribe-from log-id 77
 ```
 ### 2.1.2 **start IPoEv4v6 session**
 
@@ -2643,7 +2668,7 @@ debug {
             }
         }
     }
-    router "2043" {
+    router "vprn-2043" {
         radius {
             servers {
                 detail-level medium
@@ -2652,10 +2677,14 @@ debug {
                     accounting true
                     coa true
                 }
+                attribute "radius-attr" {
+                    type 1
+                    value {
+                        string "206010000000001"
+                    }
+                }
             }
         }
-    }
-    router "vprn-2043" {
     }
     subscriber-mgmt {
         gtp {
@@ -2666,6 +2695,26 @@ debug {
         }
     }
 }
+```
+The call-trace script above includes the configuration for log-id 77, as shown below:
+```bash
+configure global
+/configure log log-id 77
+/configure log log-id 77 source debug
+/configure log log-id 77 destination cli
+/configure log log-id 77 admin-state enable
+commit
+/exit
+```
+To display the debug output on your screen, run the following command:
+```bash
+tools perform log subscribe-to log-id 77
+```bash
+ 
+To stop the debug output from appearing on your screen, use:
+ 
+```bash
+tools perform log unsubscribe-from log-id 77
 ```
 ### 2.2.2. **start PPPoEv4v6 session**
   

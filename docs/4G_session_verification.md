@@ -51,6 +51,31 @@ INFO: CLI #2054: Entering global configuration mode
 INFO: CLI #2056: Exiting global configuration mode
 Executed 35 lines in 0.0 seconds from file "cf1:\scripts-md\ct-fwa"
 ```
+
+The call-trace script above includes the configuration for log-id 77, as shown below:
+```bash
+configure global
+/configure log log-id 77
+/configure log log-id 77 source debug
+/configure log log-id 77 destination cli
+/configure log log-id 77 admin-state enable
+commit
+/exit
+```
+To display the debug output on your screen, run the following command:
+```bash
+tools perform log subscribe-to log-id 77
+```bash
+
+To stop the debug output from appearing on your screen, use:
+
+```bash
+tools perform log unsubscribe-from log-id 77
+```
+
+
+
+
 ### 1.2. **Start 4G session**
 Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully"
 

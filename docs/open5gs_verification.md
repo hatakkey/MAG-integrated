@@ -1,6 +1,6 @@
 ### 1. **Clearing the logs**
 
-Before starting your 4G FWA sessions , you can run a script that clears all relevant logs from Open5GS and UERANSIM. This ensures you start with a clean log environment, making it easier to identify and troubleshoot any issues that arise during the session
+Before starting your 4G FWA sessions, you can run a script that clears all relevant logs from Open5GS and UERANSIM. This ensures you start with a clean log environment, making it easier to identify and troubleshoot any issues that arise during the session
 
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
@@ -30,7 +30,7 @@ Open5GS daemon v2.7.1
 
 ### 2.2. **Checking the MME logs**
 
-The MME is showing that diameter is connected with HSS , that enb-s1 is established and that the session is created.
+The MME is showing that diameter is connected with HSS, that enb-s1 is established and that the session is created.
 
 ```bash
 [root@compute-1 logs]# more mme.log

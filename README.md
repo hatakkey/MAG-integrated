@@ -38,7 +38,8 @@ The topology of the setup is illustrated in the diagram below:
 
 - **srsRANSim** provides an open-source LTE/5G software radio stack that simulates UE and eNB/gNB for mobile network emulation.
   - This LAB initiates a single ipv4 4G FWA session using pre-defined scripts: start_4g_bng.sh and stop_4g_bng.sh
-
+		
+**All scripts for initializing, starting, and stopping sessions are located in ../mag-integrated/scripts and should be executed from within that directory**
 
 ### LAB Prerequisites
 
@@ -62,7 +63,8 @@ cd mag-integrated
 We have two examples for creating the bridges one for CentOS and another one for Ubuntu 
 For **CentOS** (example):
 ```bash
-[root@compute-1 mag-integrated]#./scripts/create_bridges-centos.sh
+[root@compute-1 mag-integrated]#cd scripts
+[root@compute-1 scripts]#./create_bridges-centos.sh
 ```
 ### **3. Deploy the ContainerLab**
 Run the following command to deploy the simulated network:
@@ -73,21 +75,21 @@ Run the following command to deploy the simulated network:
 ### **4. Download cliscripts**
 The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
 ```bash
-[root@compute-1]# pwd
+[root@compute-1 cliscripts]# pwd
 /root/MAG-integrated/cliscripts/
 ```
 To use them, first run the below script 
 ```bash
-[root@compute-1 mag-integrated]#./scripts/upload-cliscripts.sh
+[root@compute-1 scripts]#./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/mag-integrated/cliscripts/ to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
+To download and upload the predefined scripts from ../cliscripts/ directory to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
 ## Start sessions
 
 ### **1. Register IMSI in database**
 
 Register the IMSI’s with a specific apn, opc and key using the pre-defined script.
- ```bash
- [root@compute-1 mag-integrated]#./scripts/register_subscriber.sh
+ ```bash	
+ [root@compute-1 scripts]#./register_subscriber.sh
  ```
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
@@ -98,17 +100,15 @@ You can verify the registered subscriber records using the Web GUI:
 
 Start the 4G Core (HSS and MME) using the pre-defined script. 
 ```bash
-[root@compute-1 mag-integrated]#./scripts/start_open5gs.sh
+[root@compute-1 scripts]#./start_open5gs.sh
 ```
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ### **3. Start the 4G FWA session**
 Start the 4G session using the pre-defined script
 ```bash
-[root@compute-1 mag-integrated]#./scripts/start_4g_bng.sh
+[root@compute-1 scripts]#./start_4g_bng.sh
 ```
-
-
 Note that the sessions created can be terminated from the home-user using the predefined script /stop_4g_bng.sh or from the MAG using the md-cli command "A:admin@MAG1# clear fwa" which on his turn calls the predefined script clear-fwa
 
 
@@ -119,9 +119,9 @@ Follow the **[documentation](docs/4G_session_verification.md)** for detailed inf
 Start the broadband session using the pre-defined script:
 
 ```bash 
-[root@compute-1 mag-integrated]#./scripts/start_dhcp_bng.sh
-[root@compute-1 mag-integrated]#./scripts/start_pppoe_bng_traffic.sh
-[root@compute-1 mag-integrated]#./scripts/start_pppoe_bng_notraffic.sh
+[root@compute-1 scripts]#./start_dhcp_bng.sh
+[root@compute-1 scripts]#./start_pppoe_bng_traffic.sh
+[root@compute-1 scripts]#./start_pppoe_bng_notraffic.sh
 ```
 Bngblaster properly terminates the sessions by using Control-C
 
