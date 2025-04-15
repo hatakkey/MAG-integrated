@@ -4006,7 +4006,7 @@ Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 ### 2.2.3. **call-trace output**
 
 The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
-
+```bash
 585 2025/04/13 17:23:55.028 CEST minor: CALLTRACE #2003 Base CALL-TRACE
 CALL-TRACE: CPM A
    Info:     sap-id: 1/1/c2/1:201.1
