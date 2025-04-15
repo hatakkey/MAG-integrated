@@ -223,7 +223,7 @@ Total                                            1
 # Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
 ```
 
-### 1.4. **GTP session debug outpu**
+### 1.4. **GTP session debug output**
 
 The gtp debug was enabled before starting the FWA 4G session ,the debug output is shown below
 
