@@ -1,10 +1,10 @@
 ## 1. **FWA 4G session Verification**
 ----
 ### 1.1. **Start the FWA debug**
-call trace can be started using the below predefined script
+
+Enable call-trace on MAG2 (session is by default terminated on MAG2) using the below predefined script
 
 ```bash
-A:admin@MAG2# show ct-fwa
 A:admin@MAG2# show ct-fwa
 INFO: CLI #2060: Entering exclusive configuration mode
 INFO: CLI #2061: Uncommitted changes are discarded on configuration mode exit
@@ -238,7 +238,7 @@ Total                                            1
 
 ### 1.4. **GTP session debug output**
 
-The gtp debug was enabled before starting the FWA 4G session ,the debug output is shown below
+Since the gtp and Radius debug was enabled prior to the FWA 4G session activation we will see the call-trace output on the CLI session as shown below.
 
 ```bash
 223 2025/04/13 15:49:21.501 CEST minor: DEBUG #2001 vprn2043 GTP

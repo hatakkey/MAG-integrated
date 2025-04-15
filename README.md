@@ -108,14 +108,15 @@ Start the 4G session using the pre-defined script
 [root@compute-1 mag-integrated]#./scripts/start_4g_bng.sh
 ```
 
-Note that the sessions created can be terminated from the home-user using the predefined script /stop_4g_bng.sh or from the MAG using the predefined script clear fwa.
 
+Note that the sessions created can be terminated from the home-user using the predefined script /stop_4g_bng.sh or from the MAG using the md-cli command "A:admin@MAG1# clear fwa" which on his turn calls the predefined script clear-fwa
 
 
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
-### **4. Start the PPPoE or IPoE fixed sessions**  
-Start the broadband session the pre-defined script:
+### **4. Start the PPPoE or IPoE fixed sessions** 
+ 
+Start the broadband session using the pre-defined script:
 
 ```bash 
 [root@compute-1 mag-integrated]#./scripts/start_dhcp_bng.sh

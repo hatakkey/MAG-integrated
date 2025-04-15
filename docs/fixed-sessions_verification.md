@@ -1,4 +1,4 @@
-## 1. Statefull SRRP master/backup status
+## 1. **Statefull SRRP master/backup status**
 
 MAG1 is the master and can be checked via the below predefined script
 
@@ -136,7 +136,7 @@ debug {
 ```
 ### 2.1.2 **start IPoEv4v6 session**
 
-10 dhcp sessions are established using the BNGBlaster
+10 dual-stack dhcp sessions are established using the BNGBlaster application.
 
 ```bash
 ./start_dhcp_bng.sh
@@ -724,7 +724,7 @@ Executed 64 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 ```
 
 
-Same scrip can be run on the backup BNG 
+Same script can be run on the backup BNG 
 
 ```bash
 A:admin@MAG2# show s-ipoe
@@ -2591,9 +2591,11 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
 
 
 
-### 2.1.4. **Data-plane verification IPOE sessions**
+### 2.1.4. **Data-plane verification IPoE sessions**
 
-The data-plane verifciation for the IPoE sessions can be checked via a predefined script from the TRA
+The script ./start_dhcp_bng.sh, introduced in the previous section, was already generating traffic as part of the session establishment process.
+Additionally, you can manually initiate traffic for the first IPoE user by running the show ping-ipoe command via md-cli on the TRA-integrated node, as shown in the example below.
+
 
 ```bash
 A:admin@TRA-integrated# show ping-ipoe
@@ -2603,8 +2605,6 @@ PING 180.0.0.2 56 data bytes
 64 bytes from 180.0.0.2: icmp_seq=3 ttl=63 time=1.84ms.
 ```bash
 
-Note: There's also an option to send data traffic from the BNG Blaster by creating sessions.
-      The previous script used for session creation via BNG Blaster is already included it
 
 ## 2.2. **start PPPoEv4v6 sessios**
 The below section include the steps to establish/debug PPPoE sessions
@@ -2612,7 +2612,7 @@ The below section include the steps to establish/debug PPPoE sessions
 
 
 ### 2.2.1. **Start call-trace for the session**
-A call trace can be started uisng predefined script to check the operation on MAG1 and MAG2 once the session is started
+A call trace is started using the customized md-cli command A:admin@MAG1# show ct-ipoe . The debug output is automatically routed to your current session as seen below.
 
 ```bash
 A:admin@MAG1# show ct-pppoe
@@ -3335,7 +3335,7 @@ Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 
 ```
 
-The same scrip can be run on the backup MAG
+The same script can be run on the backup MAG
 
 ```bash
 A:admin@MAG2# show s-pppoe
@@ -7002,7 +7002,10 @@ Subscriber 02:00:05:00:00:0a|1/1/c2/1:201.10|1 has been created in the system
 
 ### 2.2.4. **Data-plane verification PPPoE sessions**
 
-The data-plane verifciation for the PPPoE sessions can be checked via a predefined script from the TRA
+There are two different scripts available for initiating PPPoE sessions.
+The first is ./start_pppoe_bng_traffic.sh, which was introduced in the previous section. As the name suggests, this script not only establishes PPPoE sessions but also starts bi-directional traffic for those sessions. 
+The second script, ./start_pppoe_bng_notraffic.sh, is used solely to establish the PPPoE sessions without initiating any traffic. 
+In this case, you can manually start traffic for the first PPPoE user using the md-cli command show ping-pppoe, executed from the TRA-integrated node, as demonstrated in the example below.
 
 ```bash
 A:admin@TRA-integrated# show ping-pppoe
@@ -7012,7 +7015,4 @@ PING 180.0.0.3 56 data bytes
 64 bytes from 180.0.0.3: icmp_seq=3 ttl=63 time=4.07ms.
 ```
 
-Note: There is also option to send a data-traffic from the bngblaster with creating the sessions using the below predefined script
-```bash
-[root@ scripts]# ./start_pppoe_bng_traffic.sh
-```
+
