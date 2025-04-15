@@ -1,6 +1,6 @@
 ## 1. **FWA 4G session Verification**
 ----
-### 1.1 Start the FWA debug
+### 1.1. **Start the FWA debug**
 call trace can be started using the below predefined script
 
 ```bash
@@ -38,7 +38,7 @@ debug {
     }
 }
 ```
-### 1.2. Start 4G session
+### 1.2. **Start 4G session**
 Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully"
 
 it takes 15~20 secs to have the session UP.
@@ -53,7 +53,7 @@ Waiting for tun_srsue to be ready...
 IP route added successfully.
 ```
 
-### 1.3. Check the session on MAG2
+### 1.3. **Check the session on MAG2**
 
 The session is created on MAG2 and can be checked via the predefined script
 ```bash
@@ -223,7 +223,7 @@ Total                                            1
 # Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
 ```
 
-### 1.4. gtp debug outpu
+### 1.4. **GTP session debug outpu**
 
 The gtp debug was enabled before starting the FWA 4G session ,the debug output is shown below
 
@@ -504,9 +504,9 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
 ```
 
 
-### 1.5. Checking the FWA 4G home-user
+### 1.5. **Checking the FWA 4G home-user**
 
- You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24
+You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24
 ```bash
 [root@compute-1 scripts]# docker exec -it integrated-ue1 bash
 root@ue1:/# ip a
@@ -537,6 +537,7 @@ root@ue1:/# ip a
 
 When the eNB does not detect data traffic for the session , it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state.
 This is noticed in the below trace. 
+
 ```bash
 A:admin@MAG2# show s-fwa
 
@@ -666,7 +667,7 @@ RRC IDLE
 ```
 
 
-### 1.6. Checking the dataplane
+### 1.6. **Checking the dataplane**
 
 The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue
 ```bash
@@ -688,6 +689,7 @@ PING 1.1.1.201 (1.1.1.201) 56(84) bytes of data.
 
 Also you can ping the 4G FWA home-user from the TRA via a predefined script
 
+```bash
 A:admin@TRA-integrated# show ping-fwa
 PING 180.0.0.1 56 data bytes
 64 bytes from 180.0.0.1: icmp_seq=1 ttl=63 time=50.4ms.
@@ -695,9 +697,9 @@ PING 180.0.0.1 56 data bytes
 64 bytes from 180.0.0.1: icmp_seq=3 ttl=63 time=33.4ms.
 64 bytes from 180.0.0.1: icmp_seq=4 ttl=63 time=38.8ms.
 64 bytes from 180.0.0.1: icmp_seq=5 ttl=63 time=45.8ms.
-
+```
 The ping will trigger the paging procedure on which the bearer between eNB and MAG will be activated again. 
-This is noticed in the below trac
+This is noticed in the below trace
 
 ```bash
 336 2025/04/13 16:13:03.952 CEST minor: DEBUG #2001 vprn2043 GTP
@@ -707,7 +709,6 @@ UDP Hdr: Src: 2123, Dst: 2123, Len: 21
 GTPv2 Hdr: Len: 9, Seq: 10,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Echo Req
   [RECOVERY]               : 1
-
 337 2025/04/13 16:13:03.954 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  INGRESS
 IP Hdr: Src: 10.20.1.2, Dst: 50.50.50.1, Len: 42
@@ -716,7 +717,6 @@ GTPv2 Hdr: Len: 14, Seq: 10,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 10.20.1.2 | Rx: Echo Resp
   [RECOVERY]               : 1
   [152]                    : Len: 1 Val: 00
-
 338 2025/04/13 16:14:03.952 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  GTPv2_EGRESS
 IP Hdr: Src: 50.50.50.1, Dst: 10.20.1.2, Len: 41
@@ -724,7 +724,6 @@ UDP Hdr: Src: 2123, Dst: 2123, Len: 21
 GTPv2 Hdr: Len: 9, Seq: 11,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Echo Req
   [RECOVERY]               : 1
-
 339 2025/04/13 16:14:03.954 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  INGRESS
 IP Hdr: Src: 10.20.1.2, Dst: 50.50.50.1, Len: 42
@@ -733,7 +732,6 @@ GTPv2 Hdr: Len: 14, Seq: 11,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 10.20.1.2 | Rx: Echo Resp
   [RECOVERY]               : 1
   [152]                    : Len: 1 Val: 00
-
 340 2025/04/13 16:15:03.952 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  GTPv2_EGRESS
 IP Hdr: Src: 50.50.50.1, Dst: 10.20.1.2, Len: 41
@@ -741,7 +739,6 @@ UDP Hdr: Src: 2123, Dst: 2123, Len: 21
 GTPv2 Hdr: Len: 9, Seq: 12,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Echo Req
   [RECOVERY]               : 1
-
 341 2025/04/13 16:15:03.955 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  INGRESS
 IP Hdr: Src: 10.20.1.2, Dst: 50.50.50.1, Len: 42
@@ -750,7 +747,6 @@ GTPv2 Hdr: Len: 14, Seq: 12,
 GID: 1 | GRP: 1 | I:*** | A:*** | S11-C: 10.20.1.2 | Rx: Echo Resp
   [RECOVERY]               : 1
   [152]                    : Len: 1 Val: 00
-
 342 2025/04/13 16:15:04.425 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP: GTPv2_INGRESS
 IP Hdr: Src: 10.20.1.2, Dst: 50.50.50.1, Len: 84
@@ -761,7 +757,6 @@ GTPv2_INGRESS| S11-C: 10.20.1.2 | Rx: Modify Bearer Req
   [DELAY VALUE]            : 0
   [BEARER CXT]             : Add :0x5
       [S1-U eNB F-TEID]    : 0x00000002 IPv4: 10.60.1.11
-
 343 2025/04/13 16:15:04.427 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  GTPv2_EGRESS
 IP Hdr: Src: 50.50.50.1, Dst: 10.20.1.2, Len: 79
@@ -772,7 +767,6 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
   [RECOVERY]               : 1
   [BEARER CXT]             : Add :0x5 Cause: SUCCESS
       [S1-U SGW F-TEID]    : 0x00180005 IPv4: 50.50.50.1
-
 [/]
 ```
 
@@ -812,7 +806,6 @@ Local IP address            : 50.50.50.1
 Local TCP port              : 51850
 Last management change      : 04/07/2025 20:57:18
 ===============================================================================
-
 ===============================================================================
 Active Subscribers Hierarchy
 ===============================================================================
@@ -829,7 +822,6 @@ Active Subscribers Hierarchy
 Number of active subscribers : 1
 Flags: (N) = the host or the managed route is in non-forwarding state
 ===============================================================================
-
 ===============================================================================
 Peers
 ===============================================================================
@@ -847,7 +839,6 @@ Time                        : 2025/04/13 16:03:04
 -------------------------------------------------------------------------------
 No. of Peers: 1
 ===============================================================================
-
 ===============================================================================
 GTP system summary
 ===============================================================================
@@ -859,7 +850,6 @@ Actual number of Mobile Gateways                        : 0
 Actual number of Uplinks                                : 0
 Actual number of Uplinks in Hold                        : 0
 ===============================================================================
-
 ===============================================================================
 GTP S11 sessions
 ===============================================================================
@@ -913,7 +903,6 @@ rx discarded pkts                                       : 7
 rx pkts                                                 : 373
 tx pkts                                                 : 383
 ===============================================================================
-
 ===============================================================================
 Subscriber Management Statistics for System
 ===============================================================================
@@ -931,7 +920,6 @@ Total  IPOE Hosts                                1        1 04/13/2025 16:15:44
 -------------------------------------------------------------------------------
 ===============================================================================
 Peak values last reset at : 04/13/2025 16:15:44
-
 ===============================================================================
 SLA Profile Statistics
 ===============================================================================
@@ -945,7 +933,6 @@ sla-pppoe                                        0       10 04/08/2025 11:06:25
 Total                                            1
 ===============================================================================
 ```
-
 Also can be checked via the UE1.log
 
 ```bash
@@ -965,7 +952,7 @@ Random Access Complete.     c-rnti=0x47, ta=0
 Service Request successful.
 ```
 
-### 1.7. Stopping the 4G session
+### 1.7. **Stopping the 4G session**
 
 You can stop the 4G session using the predefined script below.
 Note, however, that the .stop_4g_bng.sh script does not initiate a release procedure towards the network.
@@ -989,6 +976,7 @@ root        1371       0  0 22:08 ?        00:00:00 bash -c pkill -9 srsue; slee
 root        1379    1371  0 22:08 ?        00:00:00 ps -ef
 Process check completed.
 ```
+
 Also a clear command from MAG can be executed
 
 ```bash
@@ -1093,10 +1081,6 @@ RADIUS: Transmit
       INPUT_STATMODE [107] 14 0x8001 minimal
       INPUT_ALL_OCTETS_64 [116] 10 0x80010000000000000000
       INPUT_ALL_PACKETS_64 [118] 10 0x80010000000000000000
-
- 
-
-
 297 2025/04/13 16:01:27.029 CEST minor: DEBUG #2001 vprn2043 GTP
 GTP:  GTPv2_EGRESS
 IP Hdr: Src: 50.50.50.1, Dst: 10.20.1.2, Len: 51
