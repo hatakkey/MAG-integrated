@@ -32,8 +32,9 @@ No. of SRRP Entries: 1
 [/]
 ```
 
-There is a script that can change the status for the MAG1 to be the backup and MAG2 to be the master
-
+There are two scripts for managing MAG1 and MAG2 roles. Both should be executed on MAG1 and toggle the SRRP status between master and backupShunt
+•	srrp-master: sets MAG1 as master and MAG2 as backupShunt.
+•	srrp-backup: sets MAG1 as backupShunt and MAG2 as master.
 
 ```bash
 A:admin@MAG1# show srrp-backup
@@ -2629,10 +2630,10 @@ PING 180.0.0.2 56 data bytes
 64 bytes from 180.0.0.2: icmp_seq=1 ttl=63 time=2.57ms.
 64 bytes from 180.0.0.2: icmp_seq=2 ttl=63 time=2.99ms.
 64 bytes from 180.0.0.2: icmp_seq=3 ttl=63 time=1.84ms.
-```bash
+```
 
 
-## 2.2. **start PPPoEv4v6 sessios**
+## 2.2. **Start PPPoEv4v6 sessios**
 The below section include the steps to establish/debug PPPoE sessions
 
 

@@ -41,14 +41,14 @@ The topology of the setup is illustrated in the diagram below:
 		
 **All scripts for initializing, starting, and stopping sessions are located in ../mag-integrated/scripts and should be executed from within that directory**
 
-### LAB Prerequisites
+### **LAB Prerequisites**
 
 Ensure the following dependencies are installed:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
 
-## Installation Steps
+## **Installation Steps**
 
 Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
 
@@ -73,17 +73,17 @@ Run the following command to deploy the simulated network:
 ```
 
 ### **4. Download cliscripts**
-The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
-```bash
+
+The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific CLI commands, these scripts provide a convenient way to execute them. All scripts are in the below directory.
+
+```bash 
 [root@compute-1 cliscripts]# pwd
-/root/MAG-integrated/cliscripts/
+/root/mag-integrated/cliscripts/
 ```
-To use them, first run the below script 
-```bash
-[root@compute-1 scripts]#./upload-cliscripts.sh
-```
-To download and upload the predefined scripts from ../cliscripts/ directory to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated. 
-## Start sessions
+To use the CLI scripts, wait **a few minutes** for the CLAB nodes to fully initialize. Then, run the script below to transfer all CLI scripts from ../cliscripts/ directory to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated node. Once the SFTP transfer is successfully completed, you can run all CLI scripts directly on each node. 
+
+
+## **Start Sessions**
 
 ### **1. Register IMSI in database**
 
