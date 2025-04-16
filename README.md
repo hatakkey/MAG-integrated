@@ -43,10 +43,12 @@ The topology of the setup is illustrated in the diagram below:
 
 ### **LAB Prerequisites**
 
-Ensure the following dependencies are installed:
+Ensure the following requirements are installed or fulfilled:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
+- Convert the QCOW2 images for SR OS and MAG-C (SR AG) into Docker images using **[vrnetlab] https://containerlab.dev/manual/vrnetlab/#vrnetlab)**
+- Requesting the needed NOKIA license for SR OS and MAG-C (SR AG)
 
 ## **Installation Steps**
 
@@ -82,6 +84,9 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 ```
 To use the CLI scripts, wait **a few minutes** for the CLAB nodes to fully initialize. Then, run the script below to transfer all CLI scripts from ../cliscripts/ directory to cf1:\scripts-md on MAG1, MAG2, and TRA-integrated node. Once the SFTP transfer is successfully completed, you can run all CLI scripts directly on each node. 
 
+```bash 
+[root@compute-1 scripts]#./upload-cliscripts.sh
+```
 
 ## **Start Sessions**
 
@@ -92,7 +97,7 @@ Register the IMSI’s with a specific apn, opc and key using the pre-defined scr
  [root@compute-1 scripts]#./register_subscriber.sh
  ```
 You can verify the registered subscriber records using the Web GUI:
-📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423'
+📌 URL: http://x.x.x.x:9999/' 📌 **Username/Password**: admin/1423
 
 ![Database View](snaps/Database.png) 
 
@@ -105,7 +110,9 @@ Start the 4G Core (HSS and MME) using the pre-defined script.
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ### **3. Start the 4G FWA session**
-Start the 4G session using the pre-defined script
+The script ./start_4g_bng.sh initiates the 4G FWA session setup. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, enabling you to monitor session activity as it occurs. All details are described in the documentation link below.
+Start the 4G session using the pre-defined script:
+
 ```bash
 [root@compute-1 scripts]#./start_4g_bng.sh
 ```
@@ -115,7 +122,7 @@ Note that the sessions created can be terminated from the home-user using the pr
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
 ### **4. Start the PPPoE or IPoE fixed sessions** 
- 
+The scripts ./start_dhcp_bng.sh, ./start_pppoe_bng_traffic.sh, and ./start_pppoe_bng_notraffic.sh initiate their respective fixed session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. All details are described in the documentation link below.
 Start the broadband session using the pre-defined script:
 
 ```bash 

@@ -1,1 +1,2 @@
-add the needed license for VSR
+Nokia provides virtual simulator (vSIM) images in QCOW2 format for each SR OS and MAG-c (SR AG) release, available for download with a valid Nokia account. To use these with Containerlab, you must first build Docker images from the vSIM files using the vrnetlab framework. Refer to the vrnetlab documentation for detailed build instructions.
+Please note that deploying SR OS or MAG-c (SR AG) nodes in Containerlab also requires valid licenses. To obtain these, contact your Nokia account representative.

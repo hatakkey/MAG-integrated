@@ -31,10 +31,9 @@ No. of SRRP Entries: 1
 ===============================================================================
 [/]
 ```
-
-There are two scripts for managing MAG1 and MAG2 roles. Both should be executed on MAG1 and toggle the SRRP status between master and backupShunt
-•	srrp-master: sets MAG1 as master and MAG2 as backupShunt.
-•	srrp-backup: sets MAG1 as backupShunt and MAG2 as master.
+There are two scripts for managing MAG1 and MAG2 roles. Both should be executed on MAG1 and toggle the SRRP status between master and backupShunt. 
+- srrp-master: sets MAG1 as master and MAG2 as backupShunt. 
+- srrp-backup: sets MAG1 as backupShunt and MAG2 as master.
 
 ```bash
 A:admin@MAG1# show srrp-backup
