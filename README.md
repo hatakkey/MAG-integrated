@@ -110,8 +110,8 @@ Start the 4G Core (HSS and MME) using the pre-defined script.
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ### **3. Start the 4G FWA session**
-The script ./start_4g_bng.sh initiates the 4G FWA session setup. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, enabling you to monitor session activity as it occurs. All details are described in the documentation link below.
-Start the 4G session using the pre-defined script:
+- The script ./start_4g_bng.sh initiates the 4G FWA session setup. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, enabling you to monitor session activity as it occurs. All details are described in the documentation link below.
+- Start the 4G session using the pre-defined script:
 
 ```bash
 [root@compute-1 scripts]#./start_4g_bng.sh
@@ -122,8 +122,8 @@ Note that the sessions created can be terminated from the home-user using the pr
 Follow the **[documentation](docs/4G_session_verification.md)** for detailed information/checking .
 
 ### **4. Start the PPPoE or IPoE fixed sessions** 
-The scripts ./start_dhcp_bng.sh, ./start_pppoe_bng_traffic.sh, and ./start_pppoe_bng_notraffic.sh initiate their respective fixed session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. All details are described in the documentation link below.
-Start the broadband session using the pre-defined script:
+- The scripts ./start_dhcp_bng.sh, ./start_pppoe_bng_traffic.sh, and ./start_pppoe_bng_notraffic.sh initiate their respective fixed session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. All details are described in the documentation link below.
+- Start the broadband session using the pre-defined script:
 
 ```bash 
 [root@compute-1 scripts]#./start_dhcp_bng.sh
