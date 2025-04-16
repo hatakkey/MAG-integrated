@@ -48,7 +48,7 @@ Ensure the following requirements are installed or fulfilled:
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
 - Convert the QCOW2 images for SR OS and MAG-C (SR AG) into Docker images using **[vrnetlab](https://containerlab.dev/manual/vrnetlab/#vrnetlab)**
-- Requesting the needed NOKIA license for SR OS and MAG-C (SR AG)
+- Request a Nokia license for SR OS and MAG-C (SR AG), and save it as license.lic
 
 ## **Installation Steps**
 
@@ -145,7 +145,9 @@ Additionally, EdgeShark can be integrated with Containerlab for more advanced pa
 
 
 ## **License**
-- ContainerLab snaps for VSR are provided by Nokia and require a commercial license.
+- Nokia provides virtual simulator (vSIM) images in QCOW2 format for each SR OS and MAG-c (SR AG) release, available for download with a valid Nokia account.
+  To use these with Containerlab, you must first build Docker images from the vSIM files using the vrnetlab framework. Refer to the vrnetlab documentation for detailed build instructions.
+  Please note that deploying SR OS or MAG-c (SR AG) nodes in Containerlab also requires valid licenses. To obtain these, contact your Nokia account representative. The license should be created with the name license.lic and placed in the mag-integrated project directory.
 - All other ContainerLab snaps like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
 ------
 ## **Contributing**
