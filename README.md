@@ -47,7 +47,7 @@ Ensure the following requirements are installed or fulfilled:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
-- Convert the QCOW2 images for SR OS and MAG-C (SR AG) into Docker images using **[vrnetlab] https://containerlab.dev/manual/vrnetlab/#vrnetlab)**
+- Convert the QCOW2 images for SR OS and MAG-C (SR AG) into Docker images using **[vrnetlab](https://containerlab.dev/manual/vrnetlab/#vrnetlab)**
 - Requesting the needed NOKIA license for SR OS and MAG-C (SR AG)
 
 ## **Installation Steps**
