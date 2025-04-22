@@ -2,7 +2,7 @@
 ----
 ### 1.1. **Start the FWA debug**
 
-Enable call-trace on MAG2 (session is by default terminated on MAG2) using the below predefined script
+Enable call-trace on MAG2 (session is by default terminated on MAG2) using the below predefined script.
 
 ```bash
 A:admin@MAG2# show ct-fwa
@@ -53,19 +53,19 @@ Executed 35 lines in 0.0 seconds from file "cf1:\scripts-md\ct-fwa"
 ```
 
 Note: The call-trace script includes all necessary protocol debugging and log settings via log-77. However, output redirection is not handled within the script and must be performed manually.
-      To view the debug output in your session you should subscribe to log-id 77, using command :
+      To view the debug output in your session you should subscribe to log-id 77, using command:
 ```bash
 tools perform log subscribe-to log-id 77
 ```
  
-To stop the output redirection  to your session, unsubscribe from log-id 77, using command :
+To stop the output redirection  to your session, unsubscribe from log-id 77, using command:
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
 ### 1.2. **Start 4G session**
-Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully"
+Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully".
 
-it takes 15~20 secs to have the session UP.
+It takes 15~20 secs to have the session UP.
 
 ```bash
 [root@compute-1 scripts]# ./start_4g_bng.sh
@@ -79,7 +79,7 @@ IP route added successfully.
 
 ### 1.3. **Check the session on MAG2**
 
-The session is created on MAG2 and can be checked via the predefined script
+The session is created on MAG2 and can be checked via the predefined script.
 ```bash
 A:admin@MAG2# show s-fwa
 ===============================================================================
@@ -530,7 +530,7 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
 
 ### 1.5. **Checking the FWA 4G home-user**
 
-You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24
+You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24.
 ```bash
 [root@compute-1 scripts]# docker exec -it integrated-ue1 bash
 root@ue1:/# ip a
@@ -559,7 +559,7 @@ root@ue1:/# ip a
 
 ```
 
-When the eNB does not detect data traffic for the session, it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state
+When the eNB does not detect data traffic for the session, it initiates the idling procedure on which the 4G FWA session on the MAG enters an idle state.
 This is noticed in the below trace. 
 
 ```bash
@@ -693,7 +693,7 @@ RRC IDLE
 
 ### 1.6. **Checking the dataplane**
 
-The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue
+The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue.
 ```bash
 root@ue1:/# ip r
 default via 192.168.41.1 dev eth0
@@ -711,7 +711,7 @@ PING 1.1.1.201 (1.1.1.201) 56(84) bytes of data.
 ```
 
 
-Also you can ping the 4G FWA home-user from the TRA via a predefined script
+Also you can ping the 4G FWA home-user from the TRA via a predefined script.
 
 ```bash
 A:admin@TRA-integrated# show ping-fwa
@@ -957,7 +957,7 @@ sla-pppoe                                        0       10 04/08/2025 11:06:25
 Total                                            1
 ===============================================================================
 ```
-Also can be checked via the UE1.log
+Also can be checked via the UE1.log.
 
 ```bash
 Found Cell:  Mode=FDD, PCI=1, PRB=50, Ports=1, CP=Normal, CFO=0.0 KHz
@@ -979,8 +979,8 @@ Service Request successful.
 ### 1.7. **Stopping the 4G session**
 
 You can stop the 4G session using the predefined script below.
-Note, however, that the .stop_4g_bng.sh script does not initiate a release procedure towards the network.
-The release procedure, followed by the creation of a new session, will be triggered during the next run of .start_4g_bng.sh.
+Note, however, that the `./stop_4g_bng.sh` script does not initiate a release procedure towards the network.
+The release procedure, followed by the creation of a new session, will be triggered during the next run of `./start_4g_bng.sh`.
 Alternatively, the session can also be cleared directly from the MAG.
 
 ```bash
@@ -1001,7 +1001,7 @@ root        1379    1371  0 22:08 ?        00:00:00 ps -ef
 Process check completed.
 ```
 
-Also a clear command from MAG can be executed
+Also a clear command from MAG can be executed.
 
 ```bash
 A:admin@MAG2# clear fwa
