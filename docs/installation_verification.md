@@ -8,7 +8,7 @@ Before starting the setup, **SELinux** should be disabled on your server for thi
 [root@compute-1 ~]# sestatus
 SELinux status:      disabled
 ```
-If status is different then disabled, change it to disabled in /etc/selinux/config and reboot your server 
+If status is different then disabled, change it to disabled in `/etc/selinux/config` and reboot your server.
 ```bash
 [root@compute-1 ~]# more /etc/selinux/config
 SELINUX=disabled
@@ -16,7 +16,7 @@ SELINUXTYPE=targeted
 ```
 
 ### 1.2. **Firewalld configuration** 
-The firewall should be enabled, if the firewall is not enabled or inactive, start the firewalld service
+The firewall should be enabled, if the firewall is not enabled or inactive, start the firewalld service.
 
 ```bash
 [root@compute-1 MAG-integrated]# systemctl status firewalld
@@ -31,7 +31,7 @@ The firewall should be enabled, if the firewall is not enabled or inactive, star
            └─2015 /usr/libexec/platform-python -s /usr/sbin/firewalld --nofork --nopid
 ```   
 ### 1.3. **Create the needed bridges**
-Create the bridges
+Create the bridges.
 ```bash   
 [root@compute-1 scripts]# ./create_bridges-centos.sh
 Warning: ALREADY_ENABLED: br-s1ap
@@ -47,7 +47,7 @@ success
 success
 ```
 ### 1.4. **Install lftp**
-lftp needs to be installed to run the  upload-cliscripts.sh script
+lftp needs to be installed to run the  `./upload-cliscripts.sh` script.
 CentOS example
 ```bash
 yum install lftp
@@ -56,17 +56,17 @@ yum install lftp
 ## 2. **SCTP is supported on host machine**
 
 - Check if SCTP is supported on your host machine as the communication between HSS and MME is via SCTP and needs to be enabled on your host machine. 
-- If you don’t have SCTP enabled, then a 4G session will fail with error and you need to install SCTP
-In MME.log
+- If you don’t have SCTP enabled, then a 4G session will fail with error and you need to install SCTP.
+In MME.log:
 ```bash
 ERROR: pid:Main in fd_sctp_create_bind_server@sctp.c:829: ERROR: in '(*sock = socket(family, SOCK_STREAM, IPPROTO_))' : Protocol not supported
 ```
-- If command checksctp ---> “STCP supported” then skip (2) install SCTP (ubuntu ---> supported by default)
+- If command checksctp ---> “STCP supported” then skip (2) install SCTP (ubuntu ---> supported by default).
 ```bash
 [root@compute-1 MAG-integrated]# checksctp
 SCTP supported
 ```
-- install sctp as below if not enabled
+- install sctp as below if not enabled.
 ```bash
 [root@compute-1]# dnf install kernel-modules-extra
 [root@compute-1]# rm /etc/modprobe.d/sctp-blacklist.conf
@@ -181,7 +181,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 ╰───────────────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
 ### 3.1. **Access the container nodes**
-The nodes are accessable via the IP address or the node name    
+The nodes are accessable via the IP address or the node name  .  
 ```bash  
 docker exec -it integrated-hss        bash
 docker exec -it integrated-mme        bash
@@ -195,7 +195,7 @@ ssh admin@integrated-MAG2 ## password=admin
 
 ## 4. **Transferring CLI Scripts to Nodes via SFTP**
  
-Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
+Use the `./upload-cliscripts.sh` script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly.
 
 ```bash 
 [root@compute-1 scripts]# ./upload-cliscripts.sh
