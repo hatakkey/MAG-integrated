@@ -1,6 +1,6 @@
 ## 1. **Statefull SRRP master/backup status**
 
-MAG1 is the master and can be checked via the below predefined script
+MAG1 is the master and can be checked via the below predefined script.
 
 ```bash
 A:admin@MAG1# show srrp
@@ -71,14 +71,14 @@ Executed 10 lines in 0.2 seconds from file "cf1:\scripts-md\srrp-master"
 
 ## 2.   **Start PPPoE/IPoE Session using BNGBlaster**
 ----
-Start the broadband session using BNGBlaster to simulate PPPoE or IPoE sessions
+Start the broadband session using BNGBlaster to simulate PPPoE or IPoE sessions.
 
 ### 2.1. **IPoE session**
-The below section includes the steps to establish/debug IPoE sessions
+The below section includes the steps to establish/debug IPoE sessions.
 
 ### 2.1.1 **Start call-trace for the session**
 
-A call trace can be started using predefined script to check the operation on MAG1 and MAG2 once the session is started
+A call trace can be started using predefined script to check the operation on MAG1 and MAG2 once the session is started.
 
 ```bash
 A:admin@MAG1# show ct-ipoe
@@ -151,12 +151,12 @@ commit
 ```
 
 Note: The call-trace script includes all necessary protocol debugging and log settings via log-77. However, output redirection is not handled within the script and must be performed manually.
-      To view the debug output in your session you should subscribe to log-id 77, using command :
+      To view the debug output in your session you should subscribe to log-id 77, using command:
 ```bash
 tools perform log subscribe-to log-id 77
 ```
  
-To stop the output redirection  to your session, unsubscribe from log-id 77, using command :
+To stop the output redirection to your session, unsubscribe from log-id 77, using command:
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
@@ -170,7 +170,7 @@ tools perform log unsubscribe-from log-id 77
 
 ![dhcp_red](../snaps/dhcp.png)
 
-The 10 IPoEs sessions are established and besides generic also detailed session information for the first IPoE session is available using the below script
+The 10 IPoEs sessions are established and besides generic also detailed session information for the first IPoE session is available using the below script.
 
    
 ```bash
@@ -750,7 +750,7 @@ Executed 64 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 ```
 
 
-Same script can be run on the backup BNG 
+Same script can be run on the backup BNG.
 
 ```bash
 A:admin@MAG2# show s-ipoe
@@ -1324,7 +1324,7 @@ Executed 64 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 
 ### 2.1.3 **call-trace output**
 
-The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
+The call-trace was enabled before the session is started, below you can check the session call-trace debug output.
 
 ```bash
 491 2025/04/13 17:04:30.128 CEST minor: CALLTRACE #2003 Base CALL-TRACE
@@ -2567,7 +2567,7 @@ CALL-TRACE: CPM A
 [/]
 ```
 
-On the backup MAG2, protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created log
+On the backup MAG2, protocol packets like ARP, DHCP or PPP are dropped on the non-master SRRP node (backup MAG2), but subscribers are still created due to the multi-chassis synchronization mechanism as seen in the subscriber created log.
 
 ```bash
 3 2025/04/13 17:33:15.652 CEST minor: CALLTRACE #2003 Base CALL-TRACE
@@ -2619,8 +2619,8 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
 
 ### 2.1.4. **Data-plane verification IPoE sessions**
 
-The script ./start_dhcp_bng.sh, introduced in the previous section, was already generating traffic as part of the session establishment process.
-Additionally, you can manually initiate traffic for the first IPoE user by running the show ping-ipoe command via md-cli on the TRA-integrated node, as shown in the example below.
+The script `./start_dhcp_bng.sh`, introduced in the previous section, was already generating traffic as part of the session establishment process.
+Additionally, you can manually initiate traffic for the first IPoE user by running the `show ping-ipoe` command via md-cli on the TRA-integrated node, as shown in the example below.
 
 
 ```bash
@@ -2633,12 +2633,12 @@ PING 180.0.0.2 56 data bytes
 
 
 ## 2.2. **Start PPPoEv4v6 sessios**
-The below section include the steps to establish/debug PPPoE sessions
+The below section include the steps to establish/debug PPPoE sessions.
 
 
 
 ### 2.2.1. **Start call-trace for the session**
-A call trace is started using the customized md-cli command A:admin@MAG1# show ct-ipoe . The debug output is automatically routed to your current session as seen below.
+A call trace is started using the customized md-cli command `show ct-ipoe`. The debug output is automatically routed to your current session as seen below.
 
 ```bash
 A:admin@MAG1# show ct-pppoe
@@ -2698,18 +2698,18 @@ debug {
 }
 ```
 Note: The call-trace script includes all necessary protocol debugging and log settings via log-77. However, output redirection is not handled within the script and must be performed manually.
-      To view the debug output in your session you should subscribe to log-id 77, using command :
+      To view the debug output in your session you should subscribe to log-id 77, using command:
 ```bash
 tools perform log subscribe-to log-id 77
 ```
  
-To stop the output redirection  to your session, unsubscribe from log-id 77, using command :
+To stop the output redirection to your session, unsubscribe from log-id 77, using command:
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
 ### 2.2.2. **start PPPoEv4v6 session**
   
- Another example with 10 PPPoE v4v6 sessions can be started using the below predefined script
+ Another example with 10 PPPoE v4v6 sessions can be started using the below predefined script.
 	
  
 ```bash
@@ -2719,7 +2719,7 @@ tools perform log unsubscribe-from log-id 77
 ![pppoe](../snaps/pppoe.png)
   
 
-The 10 PPPoEv4v6 sessions are established and  besides generic also detailed session information for the first PPPoE session is available using the below script 
+The 10 PPPoEv4v6 sessions are established and besides generic also detailed session information for the first PPPoE session is available using the below script.
 
 ```bash
 A:admin@MAG1# show s-pppoe
@@ -3375,7 +3375,7 @@ Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 
 ```
 
-The same script can be run on the backup MAG
+The same script can be run on the backup MAG.
 
 ```bash
 A:admin@MAG2# show s-pppoe
@@ -4045,7 +4045,7 @@ Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 
 ### 2.2.3. **call-trace output**
 
-The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
+The call-trace was enabled before the session is started, below you can check the session call-trace debug output.
 ```bash
 585 2025/04/13 17:23:55.028 CEST minor: CALLTRACE #2003 Base CALL-TRACE
 CALL-TRACE: CPM A
@@ -7043,9 +7043,9 @@ Subscriber 02:00:05:00:00:0a|1/1/c2/1:201.10|1 has been created in the system
 ### 2.2.4. **Data-plane verification PPPoE sessions**
 
 There are two different scripts available for initiating PPPoE sessions.
-The first is ./start_pppoe_bng_traffic.sh, which was introduced in the previous section. As the name suggests, this script not only establishes PPPoE sessions but also starts bi-directional traffic for those sessions. 
-The second script, ./start_pppoe_bng_notraffic.sh, is used solely to establish the PPPoE sessions without initiating any traffic. 
-In this case, you can manually start traffic for the first PPPoE user using the md-cli command show ping-pppoe, executed from the TRA-integrated node, as demonstrated in the example below.
+The first is `./start_pppoe_bng_traffic.sh`, which was introduced in the previous section. As the name suggests, this script not only establishes PPPoE sessions but also starts bi-directional traffic for those sessions. 
+The second script, `./start_pppoe_bng_notraffic.sh`, is used solely to establish the PPPoE sessions without initiating any traffic. 
+In this case, you can manually start traffic for the first PPPoE user using the md-cli command `show ping-pppoe`, executed from the TRA-integrated node, as demonstrated in the example below.
 
 ```bash
 A:admin@TRA-integrated# show ping-pppoe
