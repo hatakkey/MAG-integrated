@@ -1,21 +1,21 @@
 ### 1. **Clearing the logs**
 
-Before starting your 4G FWA sessions, you can run a script that clears all relevant logs from Open5GS and UERANSIM. This ensures you start with a clean log environment, making it easier to identify and troubleshoot any issues that arise during the session
+Before starting your 4G FWA sessions, you can run a script that clears all relevant logs from Open5GS and UERANSIM. This ensures you start with a clean log environment, making it easier to identify and troubleshoot any issues that arise during the session.
 
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
 ```
 ## 2. **Checking the logs**    
-You can check the logs for the open5GS and UERANSIM
+You can check the logs for the open5GS and UERANSIM.
 ```bash
 [root@compute-4 logs]# ls
 enb1.log  hss.log  mme.log  pcrf.log  radiusd.log  ue1.log
 [root@compute-4 logs]#
 ```
-The below are the logs for single IMSI connected
+The below are the logs for single IMSI connected:
 
 ### 2.1. **Checking the HSS logs**
-The HSS diameter is connected with the MME
+The HSS diameter is connected with the MME.
 
 ```bash
 [root@compute-1 logs]# more hss.log
@@ -68,7 +68,7 @@ Open5GS daemon v2.7.1
 ```    
 
 ### 2.3. **Checking the eNB logs**
-The eNB log is showing that the user is connected
+The eNB log is showing that the user is connected.
 ```bash
 [root@compute-1 logs]#  more enb1.log
 Active RF plugins: libsrsran_rf_uhd.so libsrsran_rf_zmq.so
@@ -103,7 +103,7 @@ User 0x46 connected
 ```
 ### 2.4. **Checking the 4G FWA home-user logs**
 
-UE1 log showing that the session is created with IP 180.0.0.2
+UE1 log showing that the session is created with IP 180.0.0.2 .
 ```bash
 [root@compute-1 logs]#   more ue1.log
 Active RF plugins: libsrsran_rf_uhd.so libsrsran_rf_zmq.so
