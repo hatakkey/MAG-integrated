@@ -1,6 +1,6 @@
 ## 1. **FWA 4G session Verification**
 ----
-### 1.1. **Start the FWA debug**
+### 1.1 **Start the FWA debug**
 
 Enable call-trace on MAG2 (session is by default terminated on MAG2) using the below predefined script.
 
@@ -62,7 +62,7 @@ To stop the output redirection  to your session, unsubscribe from log-id 77, usi
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
-### 1.2. **Start 4G session**
+### 1.2 **Start 4G session**
 Use the below predefined script to start the 4G session and wait until the scripts returns "IP route added successfully".
 
 It takes 15~20 secs to have the session UP.
@@ -77,7 +77,7 @@ Waiting for tun_srsue to be ready...
 IP route added successfully.
 ```
 
-### 1.3. **Check the session on MAG2**
+### 1.3 **Check the session on MAG2**
 
 The session is created on MAG2 and can be checked via the predefined script.
 ```bash
@@ -247,7 +247,7 @@ Total                                            1
 # Last modified 2025-04-13T15:48:46.3+02:00 by admin (MD-CLI) from 172.31.255.29
 ```
 
-### 1.4. **GTP session debug output**
+### 1.4 **GTP session debug output**
 
 Since the gtp and Radius debug was enabled prior to the FWA 4G session activation we will see the call-trace output on the CLI session as shown below.
 
@@ -528,7 +528,7 @@ I:*** | A:*** | S11-C: 50.50.50.1 | Tx: Modify Bearer Resp
 ```
 
 
-### 1.5. **Checking the FWA 4G home-user**
+### 1.5 **Checking the FWA 4G home-user**
 
 You can check the 4G FWA home-user VM that tun_srsue is created with the 4G FWA home-user IP 180.0.0.1/24.
 ```bash
@@ -691,7 +691,7 @@ RRC IDLE
 ```
 
 
-### 1.6. **Checking the dataplane**
+### 1.6 **Checking the dataplane**
 
 The 4G FWA home-user can reach the internet VRF 500 on TRA via the tun_srsue.
 ```bash
@@ -976,7 +976,7 @@ Random Access Complete.     c-rnti=0x47, ta=0
 Service Request successful.
 ```
 
-### 1.7. **Stopping the 4G session**
+### 1.7 **Stopping the 4G session**
 
 You can stop the 4G session using the predefined script below.
 Note, however, that the `./stop_4g_bng.sh` script does not initiate a release procedure towards the network.
