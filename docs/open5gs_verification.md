@@ -14,7 +14,7 @@ enb1.log  hss.log  mme.log  pcrf.log  radiusd.log  ue1.log
 ```
 The below are the logs for single IMSI connected:
 
-### 2.1. **Checking the HSS logs**
+### 2.1 **Checking the HSS logs**
 The HSS diameter is connected with the MME.
 
 ```bash
@@ -28,7 +28,7 @@ Open5GS daemon v2.7.1
 ```
  
 
-### 2.2. **Checking the MME logs**
+### 2.2 **Checking the MME logs**
 
 The MME is showing that diameter is connected with HSS, that enb-s1 is established and that the session is created.
 
@@ -67,7 +67,7 @@ Open5GS daemon v2.7.1
 03/12 21:04:39.468: [emm] INFO:     LOCAL [2025-03-12T21:04:39] Timezone[0]/DST[0] (../src/mme/emm-handler.c:285)
 ```    
 
-### 2.3. **Checking the eNB logs**
+### 2.3 **Checking the eNB logs**
 The eNB log is showing that the user is connected.
 ```bash
 [root@compute-1 logs]#  more enb1.log
@@ -101,7 +101,7 @@ Closing stdin thread.
 RACH:  tti=341, cc=0, pci=1, preamble=34, offset=0, temp_crnti=0x46
 User 0x46 connected
 ```
-### 2.4. **Checking the 4G FWA home-user logs**
+### 2.4 **Checking the 4G FWA home-user logs**
 
 UE1 log showing that the session is created with IP 180.0.0.2 .
 ```bash
