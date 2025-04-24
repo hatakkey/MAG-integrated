@@ -73,7 +73,7 @@ Executed 10 lines in 0.2 seconds from file "cf1:\scripts-md\srrp-master"
 ----
 Start the broadband session using BNGBlaster to simulate PPPoE or IPoE sessions.
 
-### 2.1. **IPoE session**
+### 2.1 **IPoE session**
 The below section includes the steps to establish/debug IPoE sessions.
 
 ### 2.1.1 **Start call-trace for the session**
@@ -2617,7 +2617,7 @@ Subscriber 02:00:01:00:00:0a|1/1/c2/1:201.109 has been created in the system
 
 
 
-### 2.1.4. **Data-plane verification IPoE sessions**
+### 2.1.4 **Data-plane verification IPoE sessions**
 
 The script `./start_dhcp_bng.sh`, introduced in the previous section, was already generating traffic as part of the session establishment process.
 Additionally, you can manually initiate traffic for the first IPoE user by running the `show ping-ipoe` command via md-cli on the TRA-integrated node, as shown in the example below.
@@ -2632,12 +2632,12 @@ PING 180.0.0.2 56 data bytes
 ```
 
 
-## 2.2. **Start PPPoEv4v6 sessios**
+## 2.2 **Start PPPoEv4v6 sessios**
 The below section include the steps to establish/debug PPPoE sessions.
 
 
 
-### 2.2.1. **Start call-trace for the session**
+### 2.2.1 **Start call-trace for the session**
 A call trace is started using the customized md-cli command `show ct-ipoe`. The debug output is automatically routed to your current session as seen below.
 
 ```bash
@@ -2707,7 +2707,7 @@ To stop the output redirection to your session, unsubscribe from log-id 77, usin
 ```bash
 tools perform log unsubscribe-from log-id 77
 ```
-### 2.2.2. **start PPPoEv4v6 session**
+### 2.2.2 **start PPPoEv4v6 session**
   
  Another example with 10 PPPoE v4v6 sessions can be started using the below predefined script.
 	
@@ -4043,7 +4043,7 @@ Executed 65 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 ```
 
 
-### 2.2.3. **call-trace output**
+### 2.2.3 **call-trace output**
 
 The call-trace was enabled before the session is started, below you can check the session call-trace debug output.
 ```bash
@@ -7040,7 +7040,7 @@ Subscriber 02:00:05:00:00:09|1/1/c2/1:201.9|1 has been created in the system
 Subscriber 02:00:05:00:00:0a|1/1/c2/1:201.10|1 has been created in the system
 ```
 
-### 2.2.4. **Data-plane verification PPPoE sessions**
+### 2.2.4 **Data-plane verification PPPoE sessions**
 
 There are two different scripts available for initiating PPPoE sessions.
 The first is `./start_pppoe_bng_traffic.sh`, which was introduced in the previous section. As the name suggests, this script not only establishes PPPoE sessions but also starts bi-directional traffic for those sessions. 
