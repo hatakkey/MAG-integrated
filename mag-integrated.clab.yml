@@ -16,7 +16,7 @@ topology:
       env:
         PS1: \H>
 
-    vr-sros:
+    nokia_sros:
       license: license.lic
       env:
        CF1: 1G
@@ -67,7 +67,6 @@ topology:
     bngblaster:
       kind: linux
       image: htakkey/bngblaster:0.9.17
-      entrypoint: /bin/bash
       mgmt-ipv4: 192.168.41.8
       binds:
        - ./configs/bngblaster/:/opt/bngblaster
@@ -105,13 +104,10 @@ topology:
       image: gradiant/open5gs-dbctl:0.10.3
       entrypoint: /bin/bash
 
-
-
   ########################## Open5GS nodes ##################################
     mme:
       kind: linux
       mgmt-ipv4: 192.168.41.9
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -126,7 +122,6 @@ topology:
     hss:
       kind: linux
       mgmt-ipv4: 192.168.41.10
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -137,7 +132,6 @@ topology:
     pcrf:
       kind: linux
       mgmt-ipv4: 192.168.41.11
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
