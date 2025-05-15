@@ -37,8 +37,8 @@ topology:
 
 
     MAG1:
-     kind: vr-sros
-     image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+     kind: nokia_sros
+     image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
      startup-config: configs/nodes/MAG1_config.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
@@ -46,8 +46,8 @@ topology:
      mgmt-ipv4: 192.168.41.5
     
     MAG2:
-     kind: vr-sros
-     image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+     kind: nokia_sros
+     image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
      startup-config: configs/nodes/MAG2_config.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
@@ -56,8 +56,8 @@ topology:
 
 
     TRA-integrated:
-      kind: vr-sros
-      image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+      kind: nokia_sros
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
       startup-config: configs/nodes/TRA-integrated_config.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
