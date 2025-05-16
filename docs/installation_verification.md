@@ -33,7 +33,8 @@ The firewall should be enabled, if the firewall is not enabled or inactive, star
 ### 1.3 **Create the needed bridges**
 Create the bridges.
 ```bash   
-[root@compute-1 scripts]# ./create_bridges-centos.sh
+[root@compute-1 scripts]# ./create_bridges.sh
+Detected OS: centos
 Warning: ALREADY_ENABLED: br-s1ap
 success
 Warning: ALREADY_ENABLED: br-gtpc
@@ -62,6 +63,14 @@ In MME.log:
 ERROR: pid:Main in fd_sctp_create_bind_server@sctp.c:829: ERROR: in '(*sock = socket(family, SOCK_STREAM, IPPROTO_))' : Protocol not supported
 ```
 - If command checksctp ---> “STCP supported” then skip (2) install SCTP (ubuntu ---> supported by default).
+- If command checksctp ---> "not found" then install the needed package "lksctp-tools"
+
+```bash
+[root@compute-2 ~]# checksctp
+bash: checksctp: command not found...
+Install package 'lksctp-tools' to provide command 'checksctp'? [N/y] y
+```
+
 ```bash
 [root@compute-1 MAG-integrated]# checksctp
 SCTP supported
@@ -150,7 +159,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                           │ registry.srlinux.dev/pub/vr-sros:25.3.R1  │         │ N/A            │
 ├───────────────────────────┼───────────────────────────────────────────┼─────────┼────────────────┤
 │ integrated-bngblaster     │ linux                                     │ running │ 192.168.41.8   │
-│                           │ htakkey/bngblaster:0.9.17                 │         │ N/A            │
+│                           │ htakkey/bngblaster:0.9.18                 │         │ N/A            │
 ├───────────────────────────┼───────────────────────────────────────────┼─────────┼────────────────┤
 │ integrated-dbctl          │ linux                                     │ running │ 192.168.41.52  │
 │                           │ gradiant/open5gs-dbctl:0.10.3             │         │ N/A            │
