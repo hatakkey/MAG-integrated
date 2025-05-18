@@ -70,13 +70,20 @@ configure {
     port 1/1/c9 admin-state enable
     port 1/1/c9 connector breakout c1-10g
     port 1/1/c9/1 admin-state enable
-    port 1/1/c9/1 ethernet mode access
+    port 1/1/c9/1 ethernet mode hybrid
+    port 1/1/c9/1 ethernet encap-type qinq
     port 1/1/c10 admin-state enable
     port 1/1/c10 connector breakout c1-10g
     port 1/1/c10/1 admin-state enable
     port 1/1/c10/1 ethernet mode hybrid
-    port 1/1/c11 { }
-    port 1/1/c12 { }
+    port 1/1/c11 admin-state enable
+    port 1/1/c11 connector breakout c1-10g
+    port 1/1/c11/1 admin-state enable
+    port 1/1/c11/1 ethernet mode hybrid
+    port 1/1/c12 admin-state enable
+    port 1/1/c12 connector breakout c1-10g
+    port 1/1/c12/1 admin-state enable
+    port 1/1/c12/1 ethernet mode hybrid
     port 1/1/c13 { }
     port 1/1/c14 { }
     port 1/1/c15 { }
@@ -160,8 +167,9 @@ configure {
     service vpls "vpls-100" service-id 100
     service vpls "vpls-100" customer "1"
     service vpls "vpls-100" sap 1/1/c6/1:*.* description "BNGblaster"
-    service vpls "vpls-100" sap 1/1/c7/1:*.* description "BNG-1"
-    service vpls "vpls-100" sap 1/1/c8/1:*.* description "BNG-2"
+    service vpls "vpls-100" sap 1/1/c7/1:*.* description "BNGblaster2"
+    service vpls "vpls-100" sap 1/1/c8/1:*.* description "BNG-1"
+    service vpls "vpls-100" sap 1/1/c9/1:*.* description "BNG-2"
     service vprn "vprn-51" admin-state enable
     service vprn "vprn-51" service-id 51
     service vprn "vprn-51" customer "1"
@@ -172,8 +180,12 @@ configure {
     service vprn "vprn-51" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
     service vprn "vprn-51" interface "internet" ipv4 primary address 10.0.0.2
     service vprn "vprn-51" interface "internet" ipv4 primary prefix-length 24
-    service { vprn "vprn-51" interface "internet" sap 1/1/c9/1 }
+    service { vprn "vprn-51" interface "internet" sap 1/1/c10/1:0 }
     service vprn "vprn-51" interface "internet" ipv6 address 10:1:1::2 prefix-length 64
+    service vprn "vprn-51" interface "internet-2" ipv4 primary address 11.0.0.2
+    service vprn "vprn-51" interface "internet-2" ipv4 primary prefix-length 24
+    service { vprn "vprn-51" interface "internet-2" sap 1/1/c11/1:0 }
+    service vprn "vprn-51" interface "internet-2" ipv6 address 11:1:1::2 prefix-length 64
     service vprn "vprn-51" interface "loopback" loopback true
     service vprn "vprn-51" interface "loopback" ipv4 primary address 1.1.1.201
     service vprn "vprn-51" interface "loopback" ipv4 primary prefix-length 32
@@ -201,7 +213,7 @@ configure {
     service { vprn "vprn-2043" interface "to-mme" sap 1/1/c1/1:0 }
     service vprn "vprn-2043" interface "to-radius" ipv4 primary address 100.0.0.1
     service vprn "vprn-2043" interface "to-radius" ipv4 primary prefix-length 24
-    service { vprn "vprn-2043" interface "to-radius" sap 1/1/c10/1:0 }
+    service { vprn "vprn-2043" interface "to-radius" sap 1/1/c12/1:0 }
     system name "TRA-integrated"
     system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
     system management-interface cli md-cli environment command-alias alias "ping-fwa" admin-state enable
@@ -333,6 +345,6 @@ configure {
     system time ntp admin-state enable
     system { time ntp ntp-server }
     system time ntp server 10.171.8.4 router-instance "management" prefer true
-    system { time ntp server 10.171.8.45 router-instance "management" }
+    system { time ntp server 10.171.8.45 router-instance "management"
 }
 

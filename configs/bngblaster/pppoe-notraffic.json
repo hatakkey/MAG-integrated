@@ -2,7 +2,7 @@
     "interfaces": {
          "mac-modifier": 5,
          "access":{
-                "interface": "eth1",
+                "interface": "eth3",
                 "type": "pppoe",
                 "outer-vlan-min": 201,
                 "outer-vlan-max": 201,

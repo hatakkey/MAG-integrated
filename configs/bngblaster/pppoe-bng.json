@@ -2,12 +2,12 @@
     "interfaces": {
 	 "mac-modifier": 5,
 	 "network": {
-            "interface": "eth2",
-            "address": "10.0.0.1/24",
-            "gateway": "10.0.0.2"
+            "interface": "eth4",
+            "address": "11.0.0.1/24",
+            "gateway": "11.0.0.2"
 	 },
          "access":{
-                "interface": "eth1",
+                "interface": "eth3",
                 "type": "pppoe",
                 "outer-vlan-min": 201,
                 "outer-vlan-max": 201,

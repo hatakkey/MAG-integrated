@@ -88,3 +88,556 @@ Apr 13 15:14:40.503879 Teardown request (1)
 Apr 13 15:14:43.619439 Received signal Interrupt (2), initiating teardown
 Apr 13 15:14:43.619524 Teardown request (2)
 Apr 13 15:14:43.833286 ALL SESSIONS TERMINATED
+Apr 14 13:58:10.299307 Warning: Interfaces must not have an IP address configured in the host OS!
+Apr 14 13:58:10.299330 Warning: IP address fe80::a8c1:abff:fe05:c97b on interface eth1 is conflicting!
+Apr 14 13:58:10.330087 Warning: IP address fe80::a8c1:abff:fec6:9fe0 on interface eth2 is conflicting!
+Apr 14 13:58:10.347727 Total PPS of all streams: 200.00
+Apr 14 13:58:11.347791 Resolve network interfaces
+Apr 14 13:58:11.347902 All network interfaces resolved
+Apr 14 13:58:12.562091 ALL STREAM TRAFFIC FLOWS VERIFIED
+Apr 14 13:58:12.713788 ALL SESSIONS ESTABLISHED
+Apr 14 13:59:46.649531 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:46.649680 Teardown request (1)
+Apr 14 13:59:48.324487 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:48.324588 Teardown request (2)
+Apr 14 13:59:48.919934 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:48.920017 Teardown request (3)
+Apr 14 13:59:50.231837 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:50.231938 Teardown request (4)
+Apr 14 13:59:50.384589 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:50.384661 Teardown request (5)
+Apr 14 13:59:50.578306 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:50.578465 Teardown request (6)
+Apr 14 13:59:52.020951 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:52.021067 Teardown request (7)
+Apr 14 13:59:52.208678 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:52.208814 Teardown request (8)
+Apr 14 13:59:52.390004 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:52.390095 Teardown request (9)
+Apr 14 13:59:52.601309 Received signal Interrupt (2), initiating teardown
+Apr 14 13:59:52.601470 Teardown request (10)
+Apr 14 14:03:39.479917 Warning: Interfaces must not have an IP address configured in the host OS!
+Apr 14 14:03:39.479940 Warning: IP address fe80::a8c1:abff:fe05:c97b on interface eth1 is conflicting!
+Apr 14 14:03:39.519961 Warning: IP address fe80::a8c1:abff:fec6:9fe0 on interface eth2 is conflicting!
+Apr 14 14:03:39.554522 Total PPS of all streams: 200.00
+Apr 14 14:03:40.554596 Resolve network interfaces
+Apr 14 14:03:40.554701 All network interfaces resolved
+Apr 14 14:03:41.768884 ALL STREAM TRAFFIC FLOWS VERIFIED
+Apr 14 14:03:41.963940 ALL SESSIONS ESTABLISHED
+Apr 14 14:03:52.861992 Received signal Interrupt (2), initiating teardown
+Apr 14 14:03:52.862086 Teardown request (1)
+Apr 14 14:03:54.676401 Received signal Interrupt (2), initiating teardown
+Apr 14 14:03:54.676535 Teardown request (2)
+Apr 14 14:03:55.415754 Received signal Interrupt (2), initiating teardown
+Apr 14 14:03:55.415875 Teardown request (3)
+Apr 14 14:03:56.555965 ALL SESSIONS TERMINATED
+May 13 08:40:07.746506 Warning: Interfaces must not have an IP address configured in the host OS!
+May 13 08:40:07.746530 Warning: IP address fe80::a8c1:abff:fe05:c97b on interface eth1 is conflicting!
+May 13 08:40:07.785066 Warning: IP address fe80::a8c1:abff:fec6:9fe0 on interface eth2 is conflicting!
+May 13 08:40:07.818771 Total PPS of all streams: 200.00
+May 13 08:40:08.818855 Resolve network interfaces
+May 13 08:40:08.818909 All network interfaces resolved
+May 13 08:40:10.033103 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 13 08:40:10.079007 ALL SESSIONS ESTABLISHED
+May 13 08:40:25.735201 Received signal Interrupt (2), initiating teardown
+May 13 08:40:25.735255 Teardown request (1)
+May 13 08:40:28.820436 ALL SESSIONS TERMINATED
+May 18 10:16:03.608504 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 10:16:03.608538 Warning: IP address fe80::a8c1:abff:fe97:90be on interface eth1 is conflicting!
+May 18 10:16:03.648887 Warning: IP address fe80::a8c1:abff:fe90:6972 on interface eth2 is conflicting!
+May 18 10:16:03.680603 Total PPS of all streams: 200.00
+May 18 10:16:04.680680 Resolve network interfaces
+May 18 10:16:04.680728 All network interfaces resolved
+May 18 10:16:09.841768 ALL SESSIONS ESTABLISHED
+May 18 10:16:10.894966 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 10:16:13.729784 Received signal Interrupt (2), initiating teardown
+May 18 10:16:13.729807 Teardown request (1)
+May 18 10:16:14.394233 Received signal Interrupt (2), initiating teardown
+May 18 10:16:14.394251 Teardown request (2)
+May 18 10:16:14.742731 Received signal Interrupt (2), initiating teardown
+May 18 10:16:14.742748 Teardown request (3)
+May 18 10:16:15.035382 Received signal Interrupt (2), initiating teardown
+May 18 10:16:15.035403 Teardown request (4)
+May 18 10:16:17.541100 Received signal Interrupt (2), initiating teardown
+May 18 10:16:17.541146 Teardown request (5)
+May 18 10:16:18.681834 ALL SESSIONS TERMINATED
+May 18 14:14:06.449150 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 14:14:06.449178 Warning: IP address fe80::a8c1:abff:fee9:d117 on interface eth1 is conflicting!
+May 18 14:14:06.479886 Warning: IP address fe80::a8c1:abff:fe8b:24b7 on interface eth3 is conflicting!
+May 18 14:14:06.507652 Total PPS of all streams: 200.00
+May 18 14:14:07.507732 Resolve network interfaces
+May 18 14:14:08.507845 Resolve network interfaces
+May 18 14:14:09.507946 Resolve network interfaces
+May 18 14:14:10.507996 Resolve network interfaces
+May 18 14:14:11.508118 Resolve network interfaces
+May 18 14:14:12.508217 Resolve network interfaces
+May 18 14:14:13.508321 Resolve network interfaces
+May 18 14:14:14.508388 Resolve network interfaces
+May 18 14:14:15.508475 Resolve network interfaces
+May 18 14:14:16.508551 Resolve network interfaces
+May 18 14:14:17.508631 Resolve network interfaces
+May 18 14:14:18.508731 Resolve network interfaces
+May 18 14:14:19.508784 Resolve network interfaces
+May 18 14:14:20.508853 Resolve network interfaces
+May 18 14:14:21.508941 Resolve network interfaces
+May 18 14:14:22.509048 Resolve network interfaces
+May 18 14:14:23.509152 Resolve network interfaces
+May 18 14:14:24.509230 Resolve network interfaces
+May 18 14:14:25.509319 Resolve network interfaces
+May 18 14:14:26.509389 Resolve network interfaces
+May 18 14:14:27.509476 Resolve network interfaces
+May 18 14:14:28.509567 Resolve network interfaces
+May 18 14:14:29.509636 Resolve network interfaces
+May 18 14:14:30.509736 Resolve network interfaces
+May 18 14:14:31.509842 Resolve network interfaces
+May 18 14:14:32.509946 Resolve network interfaces
+May 18 14:14:33.510006 Resolve network interfaces
+May 18 14:14:34.510097 Resolve network interfaces
+May 18 14:14:35.510192 Resolve network interfaces
+May 18 14:14:36.510306 Resolve network interfaces
+May 18 14:14:37.510407 Resolve network interfaces
+May 18 14:14:38.510560 Resolve network interfaces
+May 18 14:14:39.510697 Resolve network interfaces
+May 18 14:14:40.510785 Resolve network interfaces
+May 18 14:14:41.510873 Resolve network interfaces
+May 18 14:14:42.511008 Resolve network interfaces
+May 18 14:14:43.511152 Resolve network interfaces
+May 18 14:14:44.511303 Resolve network interfaces
+May 18 14:14:45.511447 Resolve network interfaces
+May 18 14:14:46.511606 Resolve network interfaces
+May 18 14:14:47.511696 Resolve network interfaces
+May 18 14:14:48.511844 Resolve network interfaces
+May 18 14:14:49.511985 Resolve network interfaces
+May 18 14:14:50.512100 Resolve network interfaces
+May 18 14:14:51.512230 Resolve network interfaces
+May 18 14:14:52.512385 Resolve network interfaces
+May 18 14:14:52.606459 Received signal Interrupt (2), initiating teardown
+May 18 14:14:52.606540 Teardown request (1)
+May 18 14:14:52.797156 Received signal Interrupt (2), initiating teardown
+May 18 14:14:52.797245 Teardown request (2)
+May 18 14:14:53.019614 Received signal Interrupt (2), initiating teardown
+May 18 14:14:53.019667 Teardown request (3)
+May 18 14:14:53.272417 Received signal Interrupt (2), initiating teardown
+May 18 14:14:53.272488 Teardown request (4)
+May 18 14:14:54.202269 Received signal Interrupt (2), initiating teardown
+May 18 14:14:54.202361 Teardown request (5)
+May 18 14:14:54.428319 Received signal Interrupt (2), initiating teardown
+May 18 14:14:54.428400 Teardown request (6)
+May 18 14:14:54.656880 Received signal Interrupt (2), initiating teardown
+May 18 14:14:54.656952 Teardown request (7)
+May 18 14:14:54.940535 Received signal Interrupt (2), initiating teardown
+May 18 14:14:54.940629 Teardown request (8)
+May 18 14:14:55.149355 Received signal Interrupt (2), initiating teardown
+May 18 14:14:55.149454 Teardown request (9)
+May 18 14:14:55.361444 Received signal Interrupt (2), initiating teardown
+May 18 14:14:55.361525 Teardown request (10)
+May 18 14:16:06.836599 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 14:16:06.836621 Warning: IP address fe80::a8c1:abff:fee9:d117 on interface eth1 is conflicting!
+May 18 14:16:06.877912 Warning: IP address fe80::a8c1:abff:fe8b:24b7 on interface eth3 is conflicting!
+May 18 14:16:06.908533 Total PPS of all streams: 200.00
+May 18 14:16:07.908611 Resolve network interfaces
+May 18 14:16:08.908700 Resolve network interfaces
+May 18 14:16:09.908801 Resolve network interfaces
+May 18 14:16:10.908915 Resolve network interfaces
+May 18 14:16:11.908983 Resolve network interfaces
+May 18 14:16:12.909054 Resolve network interfaces
+May 18 14:16:13.909124 Resolve network interfaces
+May 18 14:16:14.909192 Resolve network interfaces
+May 18 14:16:15.909296 Resolve network interfaces
+May 18 14:16:16.909386 Resolve network interfaces
+May 18 14:16:17.909492 Resolve network interfaces
+May 18 14:16:18.909596 Resolve network interfaces
+May 18 14:16:19.909694 Resolve network interfaces
+May 18 14:16:20.909781 Resolve network interfaces
+May 18 14:16:21.909855 Resolve network interfaces
+May 18 14:16:22.909947 Resolve network interfaces
+May 18 14:16:23.910008 Resolve network interfaces
+May 18 14:16:24.910107 Resolve network interfaces
+May 18 14:16:25.910205 Resolve network interfaces
+May 18 14:16:26.910300 Resolve network interfaces
+May 18 14:16:27.910373 Resolve network interfaces
+May 18 14:16:28.910442 Resolve network interfaces
+May 18 14:16:29.910518 Resolve network interfaces
+May 18 14:16:30.910588 Resolve network interfaces
+May 18 14:16:31.910610 Resolve network interfaces
+May 18 14:16:32.910684 Resolve network interfaces
+May 18 14:16:33.910788 Resolve network interfaces
+May 18 14:16:34.910854 Resolve network interfaces
+May 18 14:16:35.910941 Resolve network interfaces
+May 18 14:16:36.911045 Resolve network interfaces
+May 18 14:16:37.911143 Resolve network interfaces
+May 18 14:16:38.911292 Resolve network interfaces
+May 18 14:16:39.911456 Resolve network interfaces
+May 18 14:16:40.911592 Resolve network interfaces
+May 18 14:16:41.911730 Resolve network interfaces
+May 18 14:16:42.911843 Resolve network interfaces
+May 18 14:16:43.911973 Resolve network interfaces
+May 18 14:16:44.912091 Resolve network interfaces
+May 18 14:16:45.912231 Resolve network interfaces
+May 18 14:16:46.912324 Resolve network interfaces
+May 18 14:16:47.912466 Resolve network interfaces
+May 18 14:16:48.912609 Resolve network interfaces
+May 18 14:16:49.912701 Resolve network interfaces
+May 18 14:16:50.912847 Resolve network interfaces
+May 18 14:16:51.912999 Resolve network interfaces
+May 18 14:16:52.913137 Resolve network interfaces
+May 18 14:16:53.913230 Resolve network interfaces
+May 18 14:16:54.913320 Resolve network interfaces
+May 18 14:16:55.913458 Resolve network interfaces
+May 18 14:16:56.913616 Resolve network interfaces
+May 18 14:16:57.913755 Resolve network interfaces
+May 18 14:16:58.913899 Resolve network interfaces
+May 18 14:16:59.914007 Resolve network interfaces
+May 18 14:17:00.914150 Resolve network interfaces
+May 18 14:17:01.914312 Resolve network interfaces
+May 18 14:17:02.914453 Resolve network interfaces
+May 18 14:17:03.914596 Resolve network interfaces
+May 18 14:17:04.914745 Resolve network interfaces
+May 18 14:17:05.914852 Resolve network interfaces
+May 18 14:17:06.914995 Resolve network interfaces
+May 18 14:17:07.915094 Resolve network interfaces
+May 18 14:17:08.915231 Resolve network interfaces
+May 18 14:17:09.915373 Resolve network interfaces
+May 18 14:17:10.915477 Resolve network interfaces
+May 18 14:17:11.915620 Resolve network interfaces
+May 18 14:17:12.915763 Resolve network interfaces
+May 18 14:17:13.915907 Resolve network interfaces
+May 18 14:17:14.916006 Resolve network interfaces
+May 18 14:17:15.916122 Resolve network interfaces
+May 18 14:17:16.916229 Resolve network interfaces
+May 18 14:17:17.916378 Resolve network interfaces
+May 18 14:17:18.916475 Resolve network interfaces
+May 18 14:17:19.916624 Resolve network interfaces
+May 18 14:17:20.916769 Resolve network interfaces
+May 18 14:17:21.916913 Resolve network interfaces
+May 18 14:17:22.917091 Resolve network interfaces
+May 18 14:17:23.917231 Resolve network interfaces
+May 18 14:17:24.917369 Resolve network interfaces
+May 18 14:17:25.917533 Resolve network interfaces
+May 18 14:17:26.917704 Resolve network interfaces
+May 18 14:17:27.917819 Resolve network interfaces
+May 18 14:17:28.917977 Resolve network interfaces
+May 18 14:17:29.918107 Resolve network interfaces
+May 18 14:17:30.918232 Resolve network interfaces
+May 18 14:17:31.918359 Resolve network interfaces
+May 18 14:17:32.918487 Resolve network interfaces
+May 18 14:17:33.918614 Resolve network interfaces
+May 18 14:17:34.918752 Resolve network interfaces
+May 18 14:17:35.918892 Resolve network interfaces
+May 18 14:17:36.919012 Resolve network interfaces
+May 18 14:17:37.919150 Resolve network interfaces
+May 18 14:17:38.919310 Resolve network interfaces
+May 18 14:17:39.919449 Resolve network interfaces
+May 18 14:17:40.919543 Resolve network interfaces
+May 18 14:17:41.919697 Resolve network interfaces
+May 18 14:17:42.919814 Resolve network interfaces
+May 18 14:17:43.919943 Resolve network interfaces
+May 18 14:17:44.920083 Resolve network interfaces
+May 18 14:17:45.920231 Resolve network interfaces
+May 18 14:17:46.920375 Resolve network interfaces
+May 18 14:17:47.920507 Resolve network interfaces
+May 18 14:17:48.920658 Resolve network interfaces
+May 18 14:17:49.920787 Resolve network interfaces
+May 18 14:17:50.920926 Resolve network interfaces
+May 18 14:17:51.921070 Resolve network interfaces
+May 18 14:17:52.921193 Resolve network interfaces
+May 18 14:17:53.921320 Resolve network interfaces
+May 18 14:17:54.921446 Resolve network interfaces
+May 18 14:17:55.921585 Resolve network interfaces
+May 18 14:17:56.921719 Resolve network interfaces
+May 18 14:17:57.921852 Resolve network interfaces
+May 18 14:17:58.921993 Resolve network interfaces
+May 18 14:17:59.922161 Resolve network interfaces
+May 18 14:18:00.922313 Resolve network interfaces
+May 18 14:18:01.922458 Resolve network interfaces
+May 18 14:18:02.922543 Resolve network interfaces
+May 18 14:18:03.922692 Resolve network interfaces
+May 18 14:18:04.922788 Resolve network interfaces
+May 18 14:18:05.922919 Resolve network interfaces
+May 18 14:18:06.923073 Resolve network interfaces
+May 18 14:18:07.923170 Resolve network interfaces
+May 18 14:18:08.923317 Resolve network interfaces
+May 18 14:18:09.923459 Resolve network interfaces
+May 18 14:18:10.923604 Resolve network interfaces
+May 18 14:18:11.923746 Resolve network interfaces
+May 18 14:18:12.923854 Resolve network interfaces
+May 18 14:18:13.923996 Resolve network interfaces
+May 18 14:18:14.924149 Resolve network interfaces
+May 18 14:18:15.924301 Resolve network interfaces
+May 18 14:18:16.924444 Resolve network interfaces
+May 18 14:18:17.924585 Resolve network interfaces
+May 18 14:18:18.924737 Resolve network interfaces
+May 18 14:18:19.924903 Resolve network interfaces
+May 18 14:18:20.925040 Resolve network interfaces
+May 18 14:18:21.925136 Resolve network interfaces
+May 18 14:18:22.925230 Resolve network interfaces
+May 18 14:18:23.925304 Resolve network interfaces
+May 18 14:18:24.925385 Resolve network interfaces
+May 18 14:18:25.925479 Resolve network interfaces
+May 18 14:18:26.925631 Resolve network interfaces
+May 18 14:18:27.925773 Resolve network interfaces
+May 18 14:18:28.925894 Resolve network interfaces
+May 18 14:18:29.926044 Resolve network interfaces
+May 18 14:18:30.926176 Resolve network interfaces
+May 18 14:18:31.926307 Resolve network interfaces
+May 18 14:18:32.926431 Resolve network interfaces
+May 18 14:18:33.926555 Resolve network interfaces
+May 18 14:18:34.926674 Resolve network interfaces
+May 18 14:18:35.926799 Resolve network interfaces
+May 18 14:18:36.926924 Resolve network interfaces
+May 18 14:18:37.927049 Resolve network interfaces
+May 18 14:18:38.927125 Resolve network interfaces
+May 18 14:18:39.927230 Resolve network interfaces
+May 18 14:18:40.927353 Resolve network interfaces
+May 18 14:18:41.927484 Resolve network interfaces
+May 18 14:18:42.927612 Resolve network interfaces
+May 18 14:18:43.927766 Resolve network interfaces
+May 18 14:18:44.927954 Resolve network interfaces
+May 18 14:18:45.928071 Resolve network interfaces
+May 18 14:18:46.928205 Resolve network interfaces
+May 18 14:18:47.928300 Resolve network interfaces
+May 18 14:18:48.928429 Resolve network interfaces
+May 18 14:18:49.928556 Resolve network interfaces
+May 18 14:18:50.928685 Resolve network interfaces
+May 18 14:18:51.928824 Resolve network interfaces
+May 18 14:18:52.928971 Resolve network interfaces
+May 18 14:18:53.929096 Resolve network interfaces
+May 18 14:18:54.929231 Resolve network interfaces
+May 18 14:18:55.929375 Resolve network interfaces
+May 18 14:18:56.929474 Resolve network interfaces
+May 18 14:18:57.929608 Resolve network interfaces
+May 18 14:18:58.929765 Resolve network interfaces
+May 18 14:18:59.929927 Resolve network interfaces
+May 18 14:19:00.930077 Resolve network interfaces
+May 18 14:19:01.930229 Resolve network interfaces
+May 18 14:19:02.930371 Resolve network interfaces
+May 18 14:19:03.930508 Resolve network interfaces
+May 18 14:19:04.930618 Resolve network interfaces
+May 18 14:19:05.930778 Resolve network interfaces
+May 18 14:19:06.930917 Resolve network interfaces
+May 18 14:19:07.931094 Resolve network interfaces
+May 18 14:19:08.931231 Resolve network interfaces
+May 18 14:19:09.931384 Resolve network interfaces
+May 18 14:19:10.931541 Resolve network interfaces
+May 18 14:19:11.931683 Resolve network interfaces
+May 18 14:19:12.931781 Resolve network interfaces
+May 18 14:19:13.931921 Resolve network interfaces
+May 18 14:19:14.932070 Resolve network interfaces
+May 18 14:19:15.932218 Resolve network interfaces
+May 18 14:19:16.932318 Resolve network interfaces
+May 18 14:19:17.932471 Resolve network interfaces
+May 18 14:19:18.932616 Resolve network interfaces
+May 18 14:19:19.932751 Resolve network interfaces
+May 18 14:19:20.932895 Resolve network interfaces
+May 18 14:19:21.933007 Resolve network interfaces
+May 18 14:19:22.933092 Resolve network interfaces
+May 18 14:19:23.933233 Resolve network interfaces
+May 18 14:19:24.933386 Resolve network interfaces
+May 18 14:19:25.933527 Resolve network interfaces
+May 18 14:19:26.933630 Resolve network interfaces
+May 18 14:19:27.933789 Resolve network interfaces
+May 18 14:19:28.933966 Resolve network interfaces
+May 18 14:19:29.934090 Resolve network interfaces
+May 18 14:19:30.934231 Resolve network interfaces
+May 18 14:19:31.934378 Resolve network interfaces
+May 18 14:19:32.934529 Resolve network interfaces
+May 18 14:19:33.934696 Resolve network interfaces
+May 18 14:19:34.934853 Resolve network interfaces
+May 18 14:19:35.934996 Resolve network interfaces
+May 18 14:19:36.935091 Resolve network interfaces
+May 18 14:19:37.935231 Resolve network interfaces
+May 18 14:19:38.935380 Resolve network interfaces
+May 18 14:19:39.935520 Resolve network interfaces
+May 18 14:19:40.935630 Resolve network interfaces
+May 18 14:19:41.935774 Resolve network interfaces
+May 18 14:19:42.935936 Resolve network interfaces
+May 18 14:19:43.936080 Resolve network interfaces
+May 18 14:19:44.936212 Resolve network interfaces
+May 18 14:19:45.936360 Resolve network interfaces
+May 18 14:19:46.936503 Resolve network interfaces
+May 18 14:19:47.936630 Resolve network interfaces
+May 18 14:19:48.936775 Resolve network interfaces
+May 18 14:19:49.936914 Resolve network interfaces
+May 18 14:19:50.937056 Resolve network interfaces
+May 18 14:19:51.937163 Resolve network interfaces
+May 18 14:19:52.937307 Resolve network interfaces
+May 18 14:19:53.937452 Resolve network interfaces
+May 18 14:19:54.937601 Resolve network interfaces
+May 18 14:19:55.937743 Resolve network interfaces
+May 18 14:19:56.937881 Resolve network interfaces
+May 18 14:19:57.938006 Resolve network interfaces
+May 18 14:19:58.938139 Resolve network interfaces
+May 18 14:19:59.938318 Resolve network interfaces
+May 18 14:20:00.938463 Resolve network interfaces
+May 18 14:20:01.938603 Resolve network interfaces
+May 18 14:20:02.938698 Resolve network interfaces
+May 18 14:20:03.938869 Resolve network interfaces
+May 18 14:20:04.939004 Resolve network interfaces
+May 18 14:20:05.939161 Resolve network interfaces
+May 18 14:20:06.939315 Resolve network interfaces
+May 18 14:20:07.939470 Resolve network interfaces
+May 18 14:20:08.939615 Resolve network interfaces
+May 18 14:20:09.939760 Resolve network interfaces
+May 18 14:20:10.939852 Resolve network interfaces
+May 18 14:20:11.939994 Resolve network interfaces
+May 18 14:20:12.940101 Resolve network interfaces
+May 18 14:20:13.940231 Resolve network interfaces
+May 18 14:20:14.940382 Resolve network interfaces
+May 18 14:20:15.940527 Resolve network interfaces
+May 18 14:20:16.940622 Resolve network interfaces
+May 18 14:20:17.940774 Resolve network interfaces
+May 18 14:20:18.940929 Resolve network interfaces
+May 18 14:20:19.941056 Resolve network interfaces
+May 18 14:20:20.941161 Resolve network interfaces
+May 18 14:20:21.941303 Resolve network interfaces
+May 18 14:20:22.941449 Resolve network interfaces
+May 18 14:20:23.941607 Resolve network interfaces
+May 18 14:20:24.941696 Resolve network interfaces
+May 18 14:20:25.941833 Resolve network interfaces
+May 18 14:20:26.942004 Resolve network interfaces
+May 18 14:20:27.942137 Resolve network interfaces
+May 18 14:20:28.942308 Resolve network interfaces
+May 18 14:20:29.942474 Resolve network interfaces
+May 18 14:20:30.942615 Resolve network interfaces
+May 18 14:20:31.942696 Resolve network interfaces
+May 18 14:20:32.942782 Resolve network interfaces
+May 18 14:20:33.942920 Resolve network interfaces
+May 18 14:20:34.943006 Resolve network interfaces
+May 18 14:20:35.943140 Resolve network interfaces
+May 18 14:20:36.943230 Resolve network interfaces
+May 18 14:20:37.943321 Resolve network interfaces
+May 18 14:20:38.943460 Resolve network interfaces
+May 18 14:20:39.943618 Resolve network interfaces
+May 18 14:20:40.943761 Resolve network interfaces
+May 18 14:20:41.943852 Resolve network interfaces
+May 18 14:20:42.943943 Resolve network interfaces
+May 18 14:20:43.944120 Resolve network interfaces
+May 18 14:20:44.944320 Resolve network interfaces
+May 18 14:20:45.944499 Resolve network interfaces
+May 18 14:20:46.944648 Resolve network interfaces
+May 18 14:20:47.944762 Resolve network interfaces
+May 18 14:20:48.944934 Resolve network interfaces
+May 18 14:20:49.945069 Resolve network interfaces
+May 18 14:20:50.945162 Resolve network interfaces
+May 18 14:20:51.945305 Resolve network interfaces
+May 18 14:20:52.945461 Resolve network interfaces
+May 18 14:20:53.945601 Resolve network interfaces
+May 18 14:20:54.945738 Resolve network interfaces
+May 18 14:20:55.945831 Resolve network interfaces
+May 18 14:20:56.945983 Resolve network interfaces
+May 18 14:20:57.946069 Resolve network interfaces
+May 18 14:20:58.946230 Resolve network interfaces
+May 18 14:20:59.946397 Resolve network interfaces
+May 18 14:21:00.946541 Resolve network interfaces
+May 18 14:21:01.946682 Resolve network interfaces
+May 18 14:21:02.946835 Resolve network interfaces
+May 18 14:21:03.946985 Resolve network interfaces
+May 18 14:21:04.947094 Resolve network interfaces
+May 18 14:21:05.947230 Resolve network interfaces
+May 18 14:21:06.947389 Resolve network interfaces
+May 18 14:21:07.947536 Resolve network interfaces
+May 18 14:21:08.947633 Resolve network interfaces
+May 18 14:21:09.947775 Resolve network interfaces
+May 18 14:21:10.947919 Resolve network interfaces
+May 18 14:21:11.948069 Resolve network interfaces
+May 18 14:21:12.948163 Resolve network interfaces
+May 18 14:21:13.948305 Resolve network interfaces
+May 18 14:21:14.948447 Resolve network interfaces
+May 18 14:21:15.948593 Resolve network interfaces
+May 18 14:21:16.948736 Resolve network interfaces
+May 18 14:21:17.948852 Resolve network interfaces
+May 18 14:21:18.948945 Resolve network interfaces
+May 18 14:21:19.949085 Resolve network interfaces
+May 18 14:21:20.949230 Resolve network interfaces
+May 18 14:21:21.949373 Resolve network interfaces
+May 18 14:21:22.949509 Resolve network interfaces
+May 18 14:21:23.949632 Resolve network interfaces
+May 18 14:21:24.089296 Received signal Interrupt (2), initiating teardown
+May 18 14:21:24.089382 Teardown request (1)
+May 18 14:21:24.265164 Received signal Interrupt (2), initiating teardown
+May 18 14:21:24.265298 Teardown request (2)
+May 18 14:21:25.949845 ALL SESSIONS TERMINATED
+May 18 14:24:24.839367 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 14:24:24.839393 Warning: IP address fe80::a8c1:abff:fe33:175a on interface eth1 is conflicting!
+May 18 14:24:24.884036 Warning: IP address fe80::a8c1:abff:fe27:fb on interface eth2 is conflicting!
+May 18 14:24:24.923745 Total PPS of all streams: 200.00
+May 18 14:24:25.923819 Resolve network interfaces
+May 18 14:24:26.923905 Resolve network interfaces
+May 18 14:24:27.923974 Resolve network interfaces
+May 18 14:24:28.924011 Resolve network interfaces
+May 18 14:24:29.924106 Resolve network interfaces
+May 18 14:24:30.924206 Resolve network interfaces
+May 18 14:24:31.924300 Resolve network interfaces
+May 18 14:24:32.924379 Resolve network interfaces
+May 18 14:24:33.512834 Received signal Interrupt (2), initiating teardown
+May 18 14:24:33.512863 Teardown request (1)
+May 18 14:24:33.713021 Received signal Interrupt (2), initiating teardown
+May 18 14:24:33.713051 Teardown request (2)
+May 18 14:24:33.937532 Received signal Interrupt (2), initiating teardown
+May 18 14:24:33.937549 Teardown request (3)
+May 18 14:24:35.924548 ALL SESSIONS TERMINATED
+May 18 14:57:36.068889 Interface eth1 in use by process 21 (/run/lock/bngblaster_eth1.lock)
+May 18 14:57:36.068917 Failed to add link eth1
+May 18 14:58:29.963333 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 14:58:29.963354 Warning: IP address fe80::a8c1:abff:fe33:175a on interface eth1 is conflicting!
+May 18 14:58:30.002244 Warning: IP address fe80::a8c1:abff:fe27:fb on interface eth2 is conflicting!
+May 18 14:58:30.044814 Total PPS of all streams: 200.00
+May 18 14:58:31.044855 Resolve network interfaces
+May 18 14:58:31.044966 All network interfaces resolved
+May 18 14:58:32.259165 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 14:58:32.637696 ALL SESSIONS ESTABLISHED
+May 18 14:59:21.947594 Received signal Interrupt (2), initiating teardown
+May 18 14:59:21.947724 Teardown request (1)
+May 18 14:59:22.247536 Received signal Interrupt (2), initiating teardown
+May 18 14:59:22.247662 Teardown request (2)
+May 18 14:59:23.530609 Received signal Interrupt (2), initiating teardown
+May 18 14:59:23.530714 Teardown request (3)
+May 18 14:59:23.768565 Received signal Interrupt (2), initiating teardown
+May 18 14:59:23.768674 Teardown request (4)
+May 18 14:59:23.972342 Received signal Interrupt (2), initiating teardown
+May 18 14:59:23.972449 Teardown request (5)
+May 18 14:59:24.154889 Received signal Interrupt (2), initiating teardown
+May 18 14:59:24.155077 Teardown request (6)
+May 18 14:59:25.032640 Received signal Interrupt (2), initiating teardown
+May 18 14:59:25.032785 Teardown request (7)
+May 18 14:59:25.228722 Received signal Interrupt (2), initiating teardown
+May 18 14:59:25.228846 Teardown request (8)
+May 18 14:59:25.455472 Received signal Interrupt (2), initiating teardown
+May 18 14:59:25.455648 Teardown request (9)
+May 18 14:59:29.048108 ALL SESSIONS TERMINATED
+May 18 17:52:39.739771 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 17:52:39.739793 Warning: IP address fe80::a8c1:abff:fe33:175a on interface eth1 is conflicting!
+May 18 17:52:39.770277 Warning: IP address fe80::a8c1:abff:fe27:fb on interface eth2 is conflicting!
+May 18 17:52:39.806739 Total PPS of all streams: 200.00
+May 18 17:52:40.806783 Resolve network interfaces
+May 18 17:52:40.806836 All network interfaces resolved
+May 18 17:52:42.021102 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 17:52:43.845852 ALL SESSIONS ESTABLISHED
+May 18 17:53:03.409088 Received signal Interrupt (2), initiating teardown
+May 18 17:53:03.409129 Teardown request (1)
+May 18 17:53:06.808523 ALL SESSIONS TERMINATED
+May 18 17:53:09.282291 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 17:53:09.282313 Warning: IP address fe80::a8c1:abff:fe33:175a on interface eth1 is conflicting!
+May 18 17:53:09.319097 Warning: IP address fe80::a8c1:abff:fe27:fb on interface eth2 is conflicting!
+May 18 17:53:09.357803 Total PPS of all streams: 200.00
+May 18 17:53:10.357883 Resolve network interfaces
+May 18 17:53:10.357990 All network interfaces resolved
+May 18 17:53:11.572172 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 17:53:13.825856 ALL SESSIONS ESTABLISHED
+May 18 17:53:22.547693 Received signal Interrupt (2), initiating teardown
+May 18 17:53:22.547784 Teardown request (1)
+May 18 17:53:23.847297 Received signal Interrupt (2), initiating teardown
+May 18 17:53:23.847394 Teardown request (2)
+May 18 17:53:24.067279 Received signal Interrupt (2), initiating teardown
+May 18 17:53:24.067383 Teardown request (3)
+May 18 17:53:24.270942 Received signal Interrupt (2), initiating teardown
+May 18 17:53:24.271032 Teardown request (4)
+May 18 17:53:24.477003 Received signal Interrupt (2), initiating teardown
+May 18 17:53:24.477081 Teardown request (5)
+May 18 17:53:24.674130 Received signal Interrupt (2), initiating teardown
+May 18 17:53:24.674191 Teardown request (6)
+May 18 17:53:24.884572 Received signal Interrupt (2), initiating teardown
+May 18 17:53:24.884640 Teardown request (7)
+May 18 17:53:25.080775 Received signal Interrupt (2), initiating teardown
+May 18 17:53:25.080845 Teardown request (8)
+May 18 17:53:28.359434 ALL SESSIONS TERMINATED

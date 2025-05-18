@@ -38,8 +38,8 @@ topology:
 
     MAG1:
      kind: nokia_sros
-     image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-     startup-config: configs/nodes/MAG1_config.txt
+     image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+     #startup-config: configs/nodes/bng1_myconfig.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
      type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -47,8 +47,8 @@ topology:
     
     MAG2:
      kind: nokia_sros
-     image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-     startup-config: configs/nodes/MAG2_config.txt
+     image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+     #startup-config: configs/nodes/bng2_myconfig.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
      type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -57,8 +57,8 @@ topology:
 
     TRA-integrated:
       kind: nokia_sros
-      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-      startup-config: configs/nodes/TRA-integrated_config.txt
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+      #startup-config: configs/nodes/tra_myconfig.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
       type: "cpu=4 min_ram=16 chassis=sr-1s slot=A card=xcm-1s mda/1=s36-100gb-qsfp28"
@@ -67,10 +67,10 @@ topology:
     bngblaster:
       kind: linux
       image: htakkey/bngblaster:0.9.18
+      entrypoint: /bin/bash
       mgmt-ipv4: 192.168.41.8
       binds:
        - ./configs/bngblaster/:/opt/bngblaster
-
 ##### mongo db##
     mongo:
       kind: linux
@@ -103,6 +103,8 @@ topology:
       mgmt-ipv4: 192.168.41.52
       image: gradiant/open5gs-dbctl:0.10.3
       entrypoint: /bin/bash
+
+
 
   ########################## Open5GS nodes ##################################
     mme:
@@ -179,11 +181,14 @@ topology:
     br-enb:
       kind: bridge
 
+
   links:
 
    #br-s1ap
    - endpoints: ["br-s1ap:eth1", "mme:eth1"]
    - endpoints: ["br-s1ap:eth2", "enodeb1:eth1"]
+
+
 
    # br-gtpc links
    - endpoints: ["br-gtpc:eth6", "mme:eth2"]
@@ -199,22 +204,30 @@ topology:
    - endpoints: ["br-diam:eth15", "hss:eth1"]
    - endpoints: ["br-diam:eth16", "pcrf:eth1"]
 
+
+
     # backbone links
    - endpoints: ["MAG1:eth1", "TRA-integrated:eth4"]
    - endpoints: ["MAG2:eth1", "TRA-integrated:eth5"]
 
    #  bng access side
-   - endpoints: ["TRA-integrated:eth6",  "bngblaster:eth1"]
-   - endpoints: ["TRA-integrated:eth7", "MAG1:eth2"]
-   - endpoints: ["TRA-integrated:eth8", "MAG2:eth2"]
+   - endpoints: ["TRA-integrated:eth6",  "bngblaster:eth1"]  # IPoE sessions
+   - endpoints: ["TRA-integrated:eth7",  "bngblaster:eth3"]  # PPPoE sessions
+   - endpoints: ["TRA-integrated:eth8", "MAG1:eth2"]
+   - endpoints: ["TRA-integrated:eth9", "MAG2:eth2"]
+
 
   #  bng network side
-   - endpoints: ["TRA-integrated:eth9", "bngblaster:eth2"]
+   - endpoints: ["TRA-integrated:eth10", "bngblaster:eth2"]   # IPoE sessions
+   - endpoints: ["TRA-integrated:eth11", "bngblaster:eth4"]   # PPPoE sessions
+
+
+
 
   # br-enb - UEs
    - endpoints: ["br-enb:eth32", "enodeb1:eth3"]
    - endpoints: ["br-enb:eth34", "ue1:eth1"]
   # Radius
-   - endpoints: ["TRA-integrated:eth10", "radius:eth1"]
+   - endpoints: ["TRA-integrated:eth12", "radius:eth1"]
 
 
