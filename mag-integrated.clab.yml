@@ -39,7 +39,7 @@ topology:
     MAG1:
      kind: nokia_sros
      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
-     #startup-config: configs/nodes/bng1_myconfig.txt
+     startup-config: configs/nodes/bng1_myconfig.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
      type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -48,7 +48,7 @@ topology:
     MAG2:
      kind: nokia_sros
      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
-     #startup-config: configs/nodes/bng2_myconfig.txt
+     startup-config: configs/nodes/bng2_myconfig.txt
      binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
      type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -58,7 +58,7 @@ topology:
     TRA-integrated:
       kind: nokia_sros
       image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
-      #startup-config: configs/nodes/tra_myconfig.txt
+      startup-config: configs/nodes/tra_myconfig.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
       type: "cpu=4 min_ram=16 chassis=sr-1s slot=A card=xcm-1s mda/1=s36-100gb-qsfp28"
