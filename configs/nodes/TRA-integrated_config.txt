@@ -160,8 +160,8 @@ configure {
     service vpls "srrp-messages" description "SRRP-messages"
     service vpls "srrp-messages" service-id 201
     service vpls "srrp-messages" customer "1"
-    service vpls "srrp-messages" sap 1/1/c7/1:201.201 description "BNG-1"
-    service vpls "srrp-messages" sap 1/1/c8/1:201.201 description "BNG-2"
+    service vpls "srrp-messages" sap 1/1/c8/1:201.201 description "BNG-1"
+    service vpls "srrp-messages" sap 1/1/c9/1:201.201 description "BNG-2"
     service vpls "vpls-100" admin-state enable
     service vpls "vpls-100" description "bngblaster-eth1"
     service vpls "vpls-100" service-id 100
