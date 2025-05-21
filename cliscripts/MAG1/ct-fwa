@@ -2,7 +2,7 @@
 debug exclusive
 subscriber-mgmt gtp packets detail-level high
 subscriber-mgmt gtp packets mode all
-   router "vprn-2043" {
+router "vprn-2043" {
         radius {
             servers {
                 detail-level medium
@@ -10,12 +10,6 @@ subscriber-mgmt gtp packets mode all
                     authentication true
                     accounting true
                     coa true
-                }
-                attribute "radius-attr" {
-                    type 1
-                    value {
-                        string "206010000000001"
-                    }
                 }
             }
         }

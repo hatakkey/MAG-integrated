@@ -12,9 +12,9 @@ commit
 #echo
 #echo
 configure global
-/configure log log-id 77
-/configure log log-id 77 source debug
-/configure log log-id 77 destination cli
-/configure log log-id 77 admin-state enable
+/configure log log-id 79
+/configure log log-id 79 source debug
+/configure log log-id 79 destination cli
+/configure log log-id 79 admin-state enable
 commit
 exit all
