@@ -1,7 +1,4 @@
 configure {
-    aaa radius server-policy "FreeRadius" servers router-instance "vprn-2043"
-    aaa radius server-policy "FreeRadius" servers source-address 192.0.2.10
-    aaa radius server-policy "FreeRadius" servers server 1 server-name "FreeRadius1"
     aaa radius server-policy "FreeRadius-acct" servers router-instance "vprn-2043"
     aaa radius server-policy "FreeRadius-acct" servers source-address 192.0.2.10
     aaa radius server-policy "FreeRadius-acct" servers server 1 server-name "FreeRadius1"
