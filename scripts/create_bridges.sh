@@ -40,8 +40,7 @@ function configure_firewalld() {
 function configure_iptables() {
     echo "Configuring iptables rules for bridges..."
     for br in "${BRIDGES[@]}"; do
-        iptables -C DOCKER-USER -i "$br" -j ACCEPT 2>/dev/null || iptables -I DOCKER-USER -i "$br"
- -j ACCEPT
+        iptables -C DOCKER-USER -i "$br" -j ACCEPT 2>/dev/null || iptables -I DOCKER-USER -i "$br" -j ACCEPT
     done
     iptables-save > /etc/iptables/rules.v4
 }
